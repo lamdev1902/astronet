@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 return array (
-  'homepage' => 'abc.local',
+  'homepage' => 'https://34.163.253.54/',
   'cache_options' => 
   array (
     'breeze-active' => '1',
