@@ -1,7 +1,9 @@
 <?php 
-defined( 'ABSPATH' ) || exit;
-return array (
-  'homepage' => 'http://test-dev.local',
+
+defined( 'ABSPATH' ) || exit;
+
+return array (
+  'homepage' => 'abc.local',
   'cache_options' => 
   array (
     'breeze-active' => '1',
@@ -119,4 +121,4 @@
   'woocommerce_geolocation_ajax' => 0,
   'permalink_structure' => '/%post_id%/%postname%/',
 ); 
-
+
