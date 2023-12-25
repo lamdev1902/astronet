@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
+	"apiVersion": 2,
 	"name": "core/group",
 	"title": "Group",
 	"category": "design",
@@ -15,27 +15,17 @@
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
-		},
-		"allowedBlocks": {
-			"type": "array"
 		}
 	},
 	"supports": {
 		"__experimentalOnEnter": true,
-		"__experimentalOnMerge": true,
 		"__experimentalSettings": true,
-		"__experimentalMetadata": true,
 		"align": [ "wide", "full" ],
 		"anchor": true,
 		"ariaLabel": true,
 		"html": false,
-		"background": {
-			"backgroundImage": true
-		},
 		"color": {
 			"gradients": true,
-			"heading": true,
-			"button": true,
 			"link": true,
 			"__experimentalDefaultControls": {
 				"background": true,
@@ -82,7 +72,7 @@
 				"fontSize": true
 			}
 		},
-		"layout": {
+		"__experimentalLayout": {
 			"allowSizingOnChildren": true
 		}
 	},

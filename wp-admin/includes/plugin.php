@@ -102,7 +102,7 @@ function get_plugin_data( $plugin_file, $markup = true, $translate = true ) {
 	// If no text domain is defined fall back to the plugin slug.
 	if ( ! $plugin_data['TextDomain'] ) {
 		$plugin_slug = dirname( plugin_basename( $plugin_file ) );
-		if ( '.' !== $plugin_slug && ! str_contains( $plugin_slug, '/' ) ) {
+		if ( '.' !== $plugin_slug && false === strpos( $plugin_slug, '/' ) ) {
 			$plugin_data['TextDomain'] = $plugin_slug;
 		}
 	}
@@ -178,10 +178,8 @@ function _get_plugin_data_markup_translate( $plugin_file, $plugin_data, $markup 
 		'title' => true,
 	);
 
-	/*
-	 * Name is marked up inside <a> tags. Don't allow these.
-	 * Author is too, but some plugins have used <a> here (omitting Author URI).
-	 */
+	// Name is marked up inside <a> tags. Don't allow these.
+	// Author is too, but some plugins have used <a> here (omitting Author URI).
 	$plugin_data['Name']   = wp_kses( $plugin_data['Name'], $allowed_tags_in_links );
 	$plugin_data['Author'] = wp_kses( $plugin_data['Author'], $allowed_tags );
 
@@ -296,7 +294,7 @@ function get_plugins( $plugin_folder = '' ) {
 
 	if ( $plugins_dir ) {
 		while ( ( $file = readdir( $plugins_dir ) ) !== false ) {
-			if ( str_starts_with( $file, '.' ) ) {
+			if ( '.' === substr( $file, 0, 1 ) ) {
 				continue;
 			}
 
@@ -305,11 +303,11 @@ function get_plugins( $plugin_folder = '' ) {
 
 				if ( $plugins_subdir ) {
 					while ( ( $subfile = readdir( $plugins_subdir ) ) !== false ) {
-						if ( str_starts_with( $subfile, '.' ) ) {
+						if ( '.' === substr( $subfile, 0, 1 ) ) {
 							continue;
 						}
 
-						if ( str_ends_with( $subfile, '.php' ) ) {
+						if ( '.php' === substr( $subfile, -4 ) ) {
 							$plugin_files[] = "$file/$subfile";
 						}
 					}
@@ -317,7 +315,7 @@ function get_plugins( $plugin_folder = '' ) {
 					closedir( $plugins_subdir );
 				}
 			} else {
-				if ( str_ends_with( $file, '.php' ) ) {
+				if ( '.php' === substr( $file, -4 ) ) {
 					$plugin_files[] = $file;
 				}
 			}
@@ -373,7 +371,7 @@ function get_mu_plugins() {
 	$plugins_dir = @opendir( WPMU_PLUGIN_DIR );
 	if ( $plugins_dir ) {
 		while ( ( $file = readdir( $plugins_dir ) ) !== false ) {
-			if ( str_ends_with( $file, '.php' ) ) {
+			if ( '.php' === substr( $file, -4 ) ) {
 				$plugin_files[] = $file;
 			}
 		}
@@ -854,7 +852,7 @@ function deactivate_plugins( $plugins, $silent = false, $network_wide = null ) {
  * @param bool            $network_wide Whether to enable the plugin for all sites in the network.
  *                                      Default false.
  * @param bool            $silent       Prevent calling activation hooks. Default false.
- * @return true|WP_Error True when finished or WP_Error if there were errors during a plugin activation.
+ * @return bool|WP_Error True when finished or WP_Error if there were errors during a plugin activation.
  */
 function activate_plugins( $plugins, $redirect = '', $network_wide = false, $silent = false ) {
 	if ( ! is_array( $plugins ) ) {
@@ -971,10 +969,8 @@ function delete_plugins( $plugins, $deprecated = '' ) {
 
 		$this_plugin_dir = trailingslashit( dirname( $plugins_dir . $plugin_file ) );
 
-		/*
-		 * If plugin is in its own directory, recursively delete the directory.
-		 * Base check on if plugin includes directory separator AND that it's not the root plugin folder.
-		 */
+		// If plugin is in its own directory, recursively delete the directory.
+		// Base check on if plugin includes directory separator AND that it's not the root plugin folder.
 		if ( strpos( $plugin_file, '/' ) && $this_plugin_dir !== $plugins_dir ) {
 			$deleted = $wp_filesystem->delete( $this_plugin_dir, true );
 		} else {
@@ -1939,7 +1935,7 @@ function get_admin_page_parent( $parent_page = '' ) {
 				$parent_file = $parent_page;
 				return $parent_page;
 			} elseif ( empty( $typenow ) && $pagenow === $submenu_array[2]
-				&& ( empty( $parent_file ) || ! str_contains( $parent_file, '?' ) )
+				&& ( empty( $parent_file ) || false === strpos( $parent_file, '?' ) )
 			) {
 				$parent_file = $parent_page;
 				return $parent_page;
@@ -2440,7 +2436,7 @@ function wp_get_plugin_error( $plugin ) {
  *
  * @param string $plugin   Single plugin to resume.
  * @param string $redirect Optional. URL to redirect to. Default empty string.
- * @return true|WP_Error True on success, false if `$plugin` was not paused,
+ * @return bool|WP_Error True on success, false if `$plugin` was not paused,
  *                       `WP_Error` on failure.
  */
 function resume_plugin( $plugin, $redirect = '' ) {
@@ -2497,16 +2493,12 @@ function paused_plugins_notice() {
 		return;
 	}
 
-	$message = sprintf(
-		'<strong>%s</strong><br>%s</p><p><a href="%s">%s</a>',
+	printf(
+		'<div class="notice notice-error"><p><strong>%s</strong><br>%s</p><p><a href="%s">%s</a></p></div>',
 		__( 'One or more plugins failed to load properly.' ),
 		__( 'You can find more details and make changes on the Plugins screen.' ),
 		esc_url( admin_url( 'plugins.php?plugin_status=paused' ) ),
 		__( 'Go to the Plugins screen' )
-	);
-	wp_admin_notice(
-		$message,
-		array( 'type' => 'error' )
 	);
 }
 
@@ -2575,8 +2567,8 @@ function deactivated_plugins_notice() {
 			);
 		}
 
-		$message = sprintf(
-			'<strong>%s</strong><br>%s</p><p><a href="%s">%s</a>',
+		printf(
+			'<div class="notice notice-warning"><p><strong>%s</strong><br>%s</p><p><a href="%s">%s</a></p></div>',
 			sprintf(
 				/* translators: %s: Name of deactivated plugin. */
 				__( '%s plugin deactivated during WordPress upgrade.' ),
@@ -2586,7 +2578,6 @@ function deactivated_plugins_notice() {
 			esc_url( admin_url( 'plugins.php?plugin_status=inactive' ) ),
 			__( 'Go to the Plugins screen' )
 		);
-		wp_admin_notice( $message, array( 'type' => 'warning' ) );
 	}
 
 	// Empty the options.

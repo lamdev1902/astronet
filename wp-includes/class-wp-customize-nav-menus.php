@@ -1472,7 +1472,7 @@ final class WP_Customize_Nav_Menus {
 			(
 				! empty( $args['container'] )
 				||
-				( isset( $args['items_wrap'] ) && str_starts_with( $args['items_wrap'], '<' ) )
+				( isset( $args['items_wrap'] ) && '<' === substr( $args['items_wrap'], 0, 1 ) )
 			)
 		);
 		$args['can_partial_refresh'] = $can_partial_refresh;
@@ -1559,7 +1559,7 @@ final class WP_Customize_Nav_Menus {
 		$exports = array(
 			'navMenuInstanceArgs' => $this->preview_nav_menu_instance_args,
 		);
-		wp_print_inline_script_tag( sprintf( 'var _wpCustomizePreviewNavMenusExports = %s;', wp_json_encode( $exports ) ) );
+		printf( '<script>var _wpCustomizePreviewNavMenusExports = %s;</script>', wp_json_encode( $exports ) );
 	}
 
 	/**

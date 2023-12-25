@@ -1069,10 +1069,6 @@ form#tags-filter {
 	padding: 0 8px 8px;
 }
 
-#postcustom #postcustomstuff .add-custom-field {
-	padding: 12px 8px 8px;
-}
-
 #side-sortables #postcustom #postcustomstuff .submit {
 	margin: 0;
 	padding: 0;
@@ -1123,8 +1119,7 @@ form#tags-filter {
 	width: auto;
 }
 
-#postcustomstuff #newmetaleft a,
-#postcustomstuff #newmeta-button {
+#postcustomstuff #newmetaleft a {
 	display: inline-block;
 	margin: 0 8px 8px;
 	text-decoration: none;

@@ -1,0 +1,50 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Remove CPT base\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-05 07:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#. Name of the plugin
+#: remove-cpt-base.php:50 remove-cpt-base.php:51
+msgid "Remove CPT base"
+msgstr ""
+
+#: remove-cpt-base.php:63
+msgid "Remove base slug from url for these custom post types:"
+msgstr ""
+
+#: remove-cpt-base.php:107
+msgid "alternation"
+msgstr ""
+
+#: remove-cpt-base.php:116
+msgid ""
+"* if your custom post type children return error 404, then try alternation "
+"mode"
+msgstr ""
+
+#: remove-cpt-base.php:121
+msgid "debug mode"
+msgstr ""
+
+#. Description of the plugin
+msgid "Remove custom post type base slug from url"
+msgstr ""
+
+#. Author of the plugin
+msgid "KubiQ"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://kubiq.sk"
+msgstr ""

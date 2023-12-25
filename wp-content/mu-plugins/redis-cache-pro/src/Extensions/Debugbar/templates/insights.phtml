@@ -1,0 +1,63 @@
+
+<div id="debug-bar-wp-query">
+
+    <h2>
+        <span>Hit Ratio:</span>
+        <?php echo $metrics->hitRatio; ?>%
+    </h2>
+    <h2>
+        <span>Hits:</span>
+        <?php echo $metrics->hits; ?>
+    </h2>
+    <h2>
+        <span>Misses:</span>
+        <?php echo $metrics->misses; ?>
+    </h2>
+
+    <?php if (isset($metrics->prefetches)) : ?>
+        <h2>
+            <span>Prefetches:</span>
+            <?php echo $metrics->prefetches; ?>
+        </h2>
+    <?php endif; ?>
+
+    <h2>
+        <span>Size:</span>
+        <?php echo size_format($metrics->memory, 2); ?>
+    </h2>
+
+    <div style="clear: both;"></div>
+
+    <div id="debug-bar-php">
+        <ol class="debug-bar-php-list">
+            <li class="debug-bar-php-notice">
+                For extensive insights into the object cache, please use the <a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a> plugin.
+            </li>
+        </ol>
+    </div>
+
+    <?php if (! empty($metrics->groups)) : ?>
+
+        <h3>Request Groups</h3>
+
+        <ul style="font-family: monospace;">
+
+            <?php foreach ($metrics->groups as $name => $group): ?>
+
+                <?php
+                    printf(
+                        '<li>%s: %s %s (%s)</li>',
+                        esc_html($name),
+                        esc_html($group->keys),
+                        $group->keys > 1 ? 'keys' : 'key',
+                        size_format($group->memory)
+                    );
+                ?>
+
+            <?php endforeach; ?>
+
+        </ul>
+
+    <?php endif; ?>
+
+</div>

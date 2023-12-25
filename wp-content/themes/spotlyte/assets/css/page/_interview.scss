@@ -1,0 +1,11 @@
+.interview-list{
+	padding: 40px 0 50px;
+}
+.interview-top .box .info p{
+	max-width: 450px;
+}
+@media(max-width: 1022px){
+	.text-vertical{
+		display: none;
+	}
+}

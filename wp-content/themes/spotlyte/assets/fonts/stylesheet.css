@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Georgia';
+    src: url('Georgia-Bold.woff2') format('woff2'),
+        url('Georgia-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('Georgia.woff2') format('woff2'),
+        url('Georgia.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effra';
+    src: url('Effra-Regular.woff2') format('woff2'),
+        url('Effra-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effra';
+    src: url('EffraLight-Regular.woff2') format('woff2'),
+        url('EffraLight-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Effra';
+    src: url('EffraMedium-Regular.woff2') format('woff2'),
+        url('EffraMedium-Regular.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lingerie Bold Plain Picot';
+    src: url('Lingerie-BoldPlainPicot.woff2') format('woff2'),
+        url('Lingerie-BoldPlainPicot.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}

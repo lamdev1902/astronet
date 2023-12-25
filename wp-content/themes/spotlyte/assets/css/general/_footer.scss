@@ -1,0 +1,191 @@
+#footer{
+    background: #000000;
+    color: #fff;
+    padding-bottom: 50px;
+    .ft-top{
+    	padding: 35px 0;
+    	.newsletter{
+    		display: none;
+    	}
+    	.ft-logo{
+    		margin-right: 20px;
+    		display: inline-block;
+    		vertical-align: middle;
+    		svg, img{
+    			height: 20px;
+    			width: auto;
+    		}
+    	}
+    	.social{
+    		display: inline-block;
+    		a{
+	    		color: #fff;
+	    	}
+    	} 
+    	.ft-menu{
+    		max-width: 490px;
+    		text-align: right;
+    		li{
+    			display: inline-block;
+    			margin: 0 0 10px 40px;
+    			font-family: "Effra";
+    			font-size: 12px;
+    			letter-spacing: 1.5px;
+			    line-height: 1;
+			    border-bottom: 1px solid #ffffff;
+			    padding-bottom: 3px;
+			    text-transform: uppercase;
+			    a{
+			    	color: #fff;
+			    	display: block;
+			    }
+    		}
+    	}
+    }
+    .ft-bottom{
+    	p.copyright{
+    		max-width: 370px;
+    		font-family: "Effra";
+		    line-height: 18px;
+		    font-size: 12px;
+		    margin-bottom: 0;
+    	}
+    	.divider{
+    		display: none;
+    	}
+    }
+	.newsletter{
+		width: 400px;
+		label{
+			font-family: "Effra";
+		    line-height: 14px;
+		    font-size: 12px;
+		    letter-spacing: 1.5px;
+		    text-transform: uppercase;
+		    text-align: right;
+		    display: block;
+		    margin-bottom: 8px;
+		}
+		.newsletter-box{
+			.input-email{
+				background-color: transparent;
+			    color: #ffffff;
+			    border: 1px solid #ffffff;
+			    padding: 18px 15px;
+			    font-family: "Effra";
+			    line-height: 1;
+			    font-size: 12px;
+			    letter-spacing: 1.5px;
+			    text-transform: uppercase;
+			    width: 55%;
+			    &::placeholder{
+			    	color:#fff;
+			    }
+			}
+			.email-btn{
+				position: relative;
+				width: 45%;
+				&:after{
+				    font-family: "Font Awesome 5 Pro";
+				    content: "\f178";
+				    position: absolute;
+				    top: 50%;
+				    color: #222;
+				    left: 50%;
+				    transform: translate(-50%, -50%);
+				    -webkit-transform: translate(-50%, -50%);
+				    margin-left: 48px;
+				}
+			    .email-submit{
+			    	background-color: #fff;
+				    padding: 15px 50px;
+				    font-family: "Effra";
+				    line-height: 20px;
+				    font-size: 14px;
+				    letter-spacing: 2px;
+				    text-transform: uppercase;
+				    color: #222;
+				    border: 1px solid #fff;
+				    width: 100%;
+				    cursor: pointer;
+				    border-radius: 0 4px 4px 0;
+			    }
+			}
+		}
+	}
+}
+
+@media(max-width: 1022px){
+	#footer{
+		padding: 66px 0 50px;
+		.ft-top{
+			padding: 0;
+			.left{
+				width: 100%;
+				text-align: center;
+				.social{
+					display: block;
+					margin: 30px 0;
+					a{
+						font-size: 13px;
+					}
+				}
+			}
+			.right{
+			    width: 100%;
+			}
+			.ft-menu {
+				 max-width: 100%;
+			    width: 100%;
+			    text-align: center;
+				ul{
+				    display: flex;
+				    flex-direction: column;
+				    align-items: center;
+				}
+				li{
+					margin: 0 0 20px;
+				}
+			}
+			.newsletter{
+				display: block;
+				margin: 0 auto 35px;
+    			label{
+    				text-align: left;
+    			}
+			}
+		}
+		.ft-bottom{
+			display: block;
+			 p.copyright{
+			 	margin: 0 auto;
+			    text-align: left;
+			    max-width: 425px;
+			    padding-top: 10px;
+			 }
+			 .newsletter{
+			 	display: none;
+			 }
+			 .divider{
+			 	display: block;
+			 }
+		}
+	}
+	
+}
+@media(max-width: 767px){
+	#footer {
+		.ft-bottom p.copyright{
+			text-align: center;
+		}
+		.newsletter .newsletter-box {
+			.input-email{
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			.email-btn{
+				width: 100%;
+			}
+		}
+	}
+}

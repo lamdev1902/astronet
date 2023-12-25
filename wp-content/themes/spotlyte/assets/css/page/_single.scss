@@ -1,0 +1,412 @@
+.single-top{
+	background: #000;
+	.video{
+		height: 562px;
+		width: 60%;
+		iframe{
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	.info{
+		padding: 20px 30px 20px 0;
+		color: #fff;
+		width: 40%;
+		h1{
+			margin: 5px 0 15px 0;
+			font-size: 24px;
+			line-height: 30px;
+		}
+		p{
+			margin-bottom: 0;
+		}
+		.social{
+			    padding-top: 30px;
+			a{
+				background-color: rgba(255, 255, 255, 0.15);
+				color: #fff;
+				margin-right: 5px;
+			}
+		}
+	}
+}
+.single-top-2{
+	padding: 20px 0 0;
+	margin-bottom: 320px;
+	background-color: #fcf8f5;
+	.info{
+		max-width: 650px;
+		margin: 0 auto;
+	}
+	h1{
+		font-size: 32px;
+		line-height: 50px;
+		margin: 10px 0;
+	}
+	.social{
+		margin: 10px 0 20px;
+	}
+	.featured{
+		max-width: 900px;
+	    margin: -285px auto 0;
+	    position: relative;
+	    bottom: -285px;
+		img{
+			height: 500px;
+    		object-fit: cover;
+    		width: 100%;
+		}
+		p{
+		    margin-top: 10px;
+	        line-height: 16px;
+			font-size: 12px;
+			a:hover{
+				color: #d6bbad;
+			}
+		}
+	}
+}
+.single-custom{
+	max-width: 530px;
+	margin: 20px auto;
+	p{	
+		margin: 0 0 10px;
+		a{
+    		border-bottom: 1px solid #222222;
+		}
+		sup {
+		    top: -0.5em;
+		}
+		&:first-child:first-letter{
+			color: #222222;
+		  font-family: 'Lingerie Bold Plain Picot';
+		  line-height: 1;
+		  font-size: 120px;
+		  text-transform: none;
+		  margin-top: -10px;
+		  margin-bottom: -10px;
+		  float: left;
+		  padding-right: 20px;
+		  font-weight: 700;
+		}
+	}
+	ul{
+		margin-left: 1em;
+		li{
+			list-style: disc;
+			a{
+				text-decoration: underline;
+			}
+		}
+		&.list-step{
+			counter-reset: section;
+			margin-left: 0 !important;
+			li{
+				position: relative;
+			    list-style: none  !important;
+			    &:before{
+					counter-increment: section; 
+				  	content: "Step " counter(section) ": ";
+					font-weight: 700;
+				}
+				ul{
+					margin-left: 2em !important;
+					li{
+						list-style: disc  !important;
+						&:before{
+							display: none !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	h2{
+		font-size: 32px;
+		margin: 15px 0;
+    	line-height: 44px;
+	}
+	.wp-caption{
+		margin: 50px -275px;
+		max-width: calc(100% + 550px) !important;
+	    img{
+	    	margin: 0;
+	    }
+		.wp-caption-text{
+			color: #222222;
+		    font-family: "Effra";
+		    line-height: 16px;
+		    font-size: 12px;
+		    letter-spacing: 2px;
+		    text-transform: uppercase;
+		    display: block;
+		    margin: 5px 0 0;
+		    a:hover{
+		    	    color: #d6bbad;
+		    }
+		}
+		&.wp-caption-small{
+			margin: 50px 0;
+			max-width: 100% !important;
+		}
+	}
+	img{
+		margin: 30px 0;
+	}
+}
+.single-related{
+	padding: 40px 0 50px;
+	background-color: #d6bbad;
+	color: #fff;
+	h4{
+		margin-bottom: 25px;
+	}
+	a{
+		color: #fff;
+	}
+	.related-list{
+	    justify-content: center;
+	    margin-bottom: 25px;
+		.related-it{
+			a{
+				display: flex;
+    			align-items: center;
+    			&:hover h3{
+    				border-bottom: 1px solid #fff;
+    			}
+			}
+			.featured{
+				width: 60px;
+				height: 60px;
+				margin-right: 10px;
+				img{
+					border-radius: 50%;
+				}
+			}
+			h3{
+			    line-height: 1;
+				font-size: 42px;
+				margin: 0;
+				border-bottom: 1px solid transparent;
+			}
+		}
+		.dots{
+			margin: 0 10px;
+		}
+	}
+	.tags-list{
+    	font-family: "Playfair";
+    	font-size: 22px;
+		a{
+			display: inline-block;
+			border-bottom: 1px solid #fff;
+			line-height: 25px;
+    		font-size: 20px;
+		}
+		span{
+			margin-right: 5px;
+		}
+	}
+}
+.single-pd-other{
+	padding: 40px 0 0;
+	background-color: #fcf8f5;
+	.other-title{
+		margin-bottom: 40px;
+	}
+	.pd-it{
+		width: 50%;
+		padding-bottom: 40px;
+		.featured{
+			height: 420px;
+		}
+		.info{
+			h3{
+				font-size: 32px;
+    			line-height: 44px;
+			}
+		}
+	}
+}
+.single-recommended{
+	padding: 40px 0 20px;
+	.recommended-title{
+		margin-bottom: 60px;
+	}
+	.pd-list{
+		margin: 0 -17.5px;
+	}
+	.pd-it{
+		width: 25%;
+		padding: 0 17.5px 40px; 
+		.featured{
+			height: 295px;
+		}
+	}
+}
+
+@media(max-width: 1280px){
+	.single-custom .wp-caption {
+	    margin: 50px -150px;
+	    max-width: calc(100% + 300px) !important;
+	}
+}
+@media(max-width: 1022px){
+	.single-top {
+		.container{
+			padding: 0;
+		}
+		.info{
+			width: 100%;
+			padding: 50px 100px;
+		}
+		.video{
+			width: 100%;
+		}
+		.list-flex{
+			    flex-direction: column-reverse;
+		}
+	}
+	.single-custom .wp-caption {
+	    margin: 50px -100px;
+	    max-width: calc(100% + 200px) !important;
+	}
+	.single-pd-other .pd-it {
+		.featured{
+			height: 350px;
+		}
+		.info h3{
+			font-size: 24px;
+			line-height: 32px;
+		}
+	}
+	.single-recommended .pd-it{
+		width: 50%
+	}
+	.single-top-2{
+		.container{
+			padding: 0;
+		}
+		.featured p{
+			max-width: 530px;
+			margin: 0 auto;
+		}
+	}
+}
+@media(max-width: 768px){
+	.single-top {
+		.video{
+			height: 400px;
+		}
+		.info{
+			padding: 30px 20px;
+		}
+	}
+	.single-custom {
+		.wp-caption{
+			margin: 30px -20px;
+			max-width: calc(100% + 40px) !important;
+			.wp-caption-text{
+				padding: 0 20px;
+			}
+		}
+		p{
+			&:first-child:first-letter{
+				font-size: 90px;
+			}
+		}
+		
+	}
+	.single-related .related-list .related-it {
+		margin-bottom: 10px;
+		.featured{
+			width: 50px;
+			height: 50px;
+		}
+		h3{
+			font-size: 24px;
+			line-height: 32px;
+		}
+	}
+	.single-pd-other {
+		.pd-list{
+			margin: 0;
+			.pd-it{
+			    width: 100%;
+			    padding: 0 0 30px 0;
+			    border: none;
+			    .featured{
+			    	height: 200px;
+				    position: relative;
+				    top: 0;
+				    width: 100%;
+			    }
+			    .info{
+			    	h3{
+			    		font-size: 20px;
+			    		line-height: 1.5;
+			    	}
+			    }
+			}
+		}
+	}
+	.single-recommended{
+		.recommended-title{
+			margin-bottom: 0;
+		}
+		.divider{
+			margin: 40px auto;
+		}
+		.pd-list{
+			margin: 0;
+		}
+		.pd-it{
+			width: 100%;
+			padding: 0 0 20px 120px;
+			border: none;
+			.featured{
+			    height: 80px;
+			    left: 0;
+			    top: 6px;
+			}
+		}
+	}
+	.single-top-2{
+		margin-bottom: 50px;
+		background: none;
+		padding:0;
+		.info{
+			padding: 20px;
+			max-width: 100%;
+			h4{
+				font-size: 14px;
+			}
+			h1{
+				line-height: 1.2;
+			}
+			background-color: #fcf8f5;
+			.social{
+				margin: 10px 0 0;
+			}
+			.author-date{
+				a{
+					display: block;
+				}
+				.pipe{
+					display: none;
+				}
+			}
+		}
+		.featured{
+			margin: 0 auto;
+			bottom: 0;
+			img{
+				height: auto;
+			}
+			p{
+				padding: 0 20px;
+			}
+		}
+	}
+}

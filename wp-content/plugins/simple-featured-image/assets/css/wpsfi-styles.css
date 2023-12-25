@@ -1,0 +1,68 @@
+/* Custom */
+.slides, .slides > li, .flex-control-nav, .flex-direction-nav{
+    padding:0 !important;
+}
+.widget_wpsfi_taxonomy_slider_widget,
+.widget_wpsfi_taxonomy_slider_widget .slides li,
+.flexslider .slides li, .flexslider{
+    position: relative;
+}
+.widget_wpsfi_taxonomy_slider_widget .flex-control-nav {
+    bottom: 18px;
+}
+.widget_wpsfi_taxonomy_slider_widget .flex-control-nav li,
+.widget_wpsfi_taxonomy_slider_widget .flex-direction-nav li{
+    border:none ! important;
+}
+.flexslider .flex-control-nav {
+    bottom: -28px;
+}
+.flex-viewport .slides,
+.flexslider .slides > li,
+.widget_wpsfi_taxonomy_slider_widget .slides li img,
+.flexslider .slides li img{
+    margin: 0;
+}
+.widget_wpsfi_taxonomy_slider_widget .slides li .flex-caption,
+.flexslider .slides li .flex-caption {
+    position: absolute;
+    width: 100%;
+    padding: 2%;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5); 
+    text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    font-size: 14px;
+    line-height: 18px;
+    margin:0;
+}
+.widget_wpsfi_taxonomy_slider_widget .slides li .flex-caption,
+.widget_wpsfi_taxonomy_slider_widget .slides li .flex-caption a,
+.flexslider .slides li .flex-caption,
+.flexslider .slides li .flex-caption a{
+    color: #fff;
+}
+.flex-control-nav li{
+    margin: 0 6px !important;
+}
+.flex-direction-nav a:before{
+    font-size: 36px;
+}
+.widget_wpsfi_taxonomy_slider_widget .flex-control-nav{
+    position: initial;
+}
+/* Clean up */
+.flex-direction-nav a:before{
+    line-height: 1;
+}
+.flex-viewport .slide li:before,
+.flex-direction-nav li:before{
+    display:none;
+}
+.flex-direction-nav li{
+    list-style-type: none !important;
+    list-style: none !important;
+}
+.widget_wpsfi_taxonomy_slider_widget .flex-direction-nav li{
+    position: initial !important;
+}

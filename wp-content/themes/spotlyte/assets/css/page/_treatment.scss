@@ -1,0 +1,615 @@
+.treatmentsg-top{
+	background: #222;
+	.info{
+		width: 54%;
+		color: #fff;
+		padding: 50px 30px 50px calc(50vw - 661.5px);
+		display: flex;
+	    align-items: center;
+	    justify-content: center;
+		.box{
+			max-width: 430px;
+		}
+		h4{
+			font-weight: 400;
+			color: #fff;
+			a{
+				color: #fff;
+			}
+		}
+		h1{
+			font-size: 32px;
+    		line-height: 44px;
+    		margin: 10px 0 0;
+		}
+		.social{
+			a{
+			    background-color: rgba(255, 255, 255, 0.2);
+			    color: #fff;
+			    font-size: 10px;
+			    width: 24px;
+			    height: 24px;
+			    margin-right: 5px;
+			    line-height: 24px;
+			}
+		}
+	}
+	.featured{
+		width: 46%;
+		padding-bottom: 30px;
+    
+		p{
+			margin: 5px 0 0;
+			line-height: 16px;
+			font-size: 12px;
+			font-family: "Effra";
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			a{
+				color: #777777;
+			}
+		}
+	}
+}
+.treatmentsg-nav{
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #000;
+	padding: 17px 20px;
+	z-index: 1000;
+	.treatmentsg-menu{
+		ul{
+			display: flex;
+			justify-content: center;
+		}
+		li{
+			display: inline-block;
+			font-size: 15px;
+			font-family: 'Effra';
+			font-weight: 700;
+			line-height: 20px;
+			letter-spacing: 4px;
+			text-transform: uppercase;
+			margin: 0 20px;
+			word-break: keep-all;
+			a{
+				color: #777;
+			}
+			&.active a{
+				color: #fff;
+			}
+		}
+	}
+}
+.facts-it{
+	margin-bottom: 80px;
+	.featured{
+		width: 50%;
+		p{
+			margin: 7px 0 0;
+			line-height: 16px;
+    		font-size: 12px;
+    		font-family: "Effra";
+    		letter-spacing: 2px;
+    		text-transform: uppercase;
+    		a:hover{
+    			color: #d6bbad;
+    		}
+		}
+		.image-fit{
+			height: 100%;
+		}
+	}
+	.info{
+		width: 50%;
+	    padding: 70px 0;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+		.box{
+			max-width: 555px;
+			h4{
+				font-weight: 700;
+				margin-bottom: 16px;
+			}
+			ul{
+				margin: 90px 0 20px;
+			    padding: 15px 20px;
+			    border: 1px solid #f4dcca;
+			    li{
+			    	min-height: 62px;
+			    	display: flex;
+			    	border-top: 1px solid #f4dcca;
+			    	padding: 10px 0;
+			    	font-family: "Effra";
+			    	margin: 0 -10px;
+			    	&:first-child{
+			    		border-top: none;
+			    	}
+			    	span:first-child{
+			    		color: #996b0e;
+					    font-weight: 500;
+					    line-height: 20px;
+					    letter-spacing: 4px;
+    					text-transform: uppercase;
+    					    padding-top: 5px;
+			    	}
+			    	span{
+			    		width: 50%;
+			    		padding: 0 10px;
+			    	}
+			    }
+			}
+			p{
+				sup{
+					display: block;
+					color: #996b0e;
+				}
+				a{
+					border-bottom: 1px solid #222222;
+				}
+			}
+		}
+	}
+}
+.treatmentsg-facts{
+	.facts-it{
+		.info{
+			.box{
+				max-width: 420px;
+				h4{
+					padding-left: 20px;
+				}
+				p{
+					padding-left: 20px;
+					font-family: "Effra";
+					line-height: 22px;
+				    letter-spacing: 0.5px;
+				}
+			}
+		}
+
+		.featured{
+			p{
+				padding: 0 70px;
+			}
+		}
+	}
+}
+.treatmentsg-risk{
+	padding: 50px 0 70px;
+	.container{
+		max-width: 1660px;
+	}
+	.box{
+		padding: 25px 30px 40px;
+		background-color: #ffffff;
+    	border: 1px solid #f4dcca;
+    	margin: 50px -30px 30px;
+    	.it{
+    		width: 33.33%;
+    		padding: 0 30px;
+    		&:first-child{
+    			border-right: 1px solid #f4dcca;
+    		}
+    		h4{
+    			margin-bottom: 5px;
+    			font-size: 15px;
+			    font-family: "Effra";
+			    font-weight: 700;
+			    line-height: 20px;
+			    letter-spacing: 4px;
+			    text-transform: uppercase;
+			    color: #996b0e
+    		}
+    		p{
+    			font-family: "Effra";
+    			line-height: 22px;
+			    letter-spacing: 0.5px;
+			    margin-bottom: 5px;
+			    &:last-child{
+			    	margin-bottom: 0;
+			    }
+    		}
+    	}
+	}
+	.bottom{
+		padding: 0 30px;
+		max-width: 800px;
+		p{
+			font-family: "Effra";
+		    line-height: 22px;
+		    font-size: 16px;
+		    letter-spacing: 0.5px;
+			sup{
+			    color: #996b0e;
+			    display: block;
+			}
+		}
+	}
+}
+.treatmentsg-faq{
+	padding: 50px 0 40px;
+	background-color: #faf0e6;
+	h4{
+		font-weight: 400;
+		margin-bottom: 30px;
+	}
+	.faq-list{
+		margin: 0 -10px;
+		.faq-it{
+			width: 33.33%;
+			padding: 0 10px 20px;
+			.faq-box{
+			    -webkit-box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.15);
+			    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.15);
+			    background-color: #ffffff;
+			    padding: 20px;
+			    height: 100%;
+			    border-radius: 5px;
+			    border: solid 2px #f4dcca;
+			    h2{
+			    	font-size: 32px;
+    				line-height: 44px;
+    				margin-bottom: 16px;
+			    }
+			    p{
+			    	letter-spacing: 0.5px;
+		    	    font-family: "Effra";
+		    	    margin-bottom: 0;
+			    }
+			}
+		}
+	}
+}
+.treatmentsg-area{
+	padding: 45px 0 50px;
+	.area-list{
+		margin: 10px -7.5px 0;
+		justify-content: center;
+		.area-it{
+			padding: 0 7.5px;
+			width: 244px;
+			.area-box{
+				border: 2px solid #f4dcca;
+				border-radius: 5px;
+				box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.08);
+				padding: 22px 15px 15px;
+				background: #fff;
+				.featured{
+					margin-bottom: 15px;
+					height: 104px;
+					text-align: center;
+					img{
+						height: 100%;
+					}
+				}
+				h4{
+					padding-bottom: 15px;
+					border-bottom: 1px solid #f4dcca;
+				}
+				h5.cost{
+					padding-top: 20px;
+					font-family: "Effra";
+				    line-height: 16px;
+				    font-size: 14px;
+				    margin-bottom: 15px;
+					span:first-child{
+						color: #996b0e;
+				    	text-transform: uppercase;
+					    font-weight: 700;
+					    font-size: 12px;
+				    	letter-spacing: 2px;
+					}
+				}
+				.btn-white{
+					text-align: center;
+					display: block;
+					padding: 10px;
+				}
+			}
+		}
+	}
+}
+.treatmentsg-diaries{
+	padding-bottom: 55px;
+	.container{
+		max-width: 1480px;
+	}
+	.diaries-top{
+		.featured{
+			width: 55%;
+		}
+		.info{
+			width: 45%;
+			padding: 10px 40px 10px 40px;
+			h4{
+				margin-bottom: 50px;
+			}
+			.box{
+				box-shadow: -20px 20px 0px 0px rgba(214, 187, 173, 0.25);
+				padding: 20px;
+				border: solid 1px #777777;
+    			border-radius: 5px;
+    			margin-left: 45px;
+    			min-height: 390px;
+    			h2{
+				    font-size: 32px;
+					line-height: 44px;
+					margin-bottom: 10px;
+    			}
+    			p{
+    				color: #777777;
+				    font-family: "Effra";
+				    font-weight: 400;
+			        line-height: 20px;
+					font-size: 13px;
+				    letter-spacing: 3px;
+				    text-transform: uppercase;
+				    margin-bottom: 10px;
+    			}
+			}
+		}
+	}
+	.diaries-bottom{
+		.diaries-it{
+			width: 33.33%;
+			padding: 23px 40px 20px;
+			h2{
+				margin-bottom: 10px;
+				font-size: 32px;
+    			line-height: 44px;
+			}
+			h5{
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+.treatmentsg-bottom{
+	.facts-it{
+		padding-bottom: 25px;
+		margin-bottom: 0;
+		.info .box{
+			width: 476px;
+		}
+	}
+	.treatmentsg-video{
+		padding: 120px 0 50px;
+		position: relative;
+		&:after{
+			background: #fcf8f5;
+			top: 50%;
+			left: 0;
+			right: 0;
+			content: "";
+			position: absolute;
+			width: 100%;
+    		height: 50%;
+		}
+		.box{
+			max-width: 900px;
+			margin: 0 auto;
+			position: relative;
+			    z-index: 2;
+			.video-box{
+				height: 506px;
+				iframe{
+					width: 100%;
+					height: 100%;
+				}
+			}
+			p{
+				margin: 15px 0 0;
+			}
+		}
+	}
+	.treatmentsg-reducers{
+		padding: 70px 0 60px;
+		.interview-title{
+			margin-bottom: 40px;
+		}
+	}
+}
+
+@media(max-width: 1022px){
+	.treatmentsg-nav {
+		padding: 15px 20px;
+		position: relative;
+		.treatmentsg-menu{
+			ul{
+				display: block;
+			}
+			li{
+				display: none;
+				&:first-child{
+					display: block;
+					text-align: left;
+				}
+				a{
+					color: #fff;
+				}
+			}
+		}
+	}
+	.treatmentsg-top{
+		.info{
+			width: 100%;
+			.box{
+				max-width: 580px;
+				h1{
+					font-size: 24px;
+					line-height: 34px;
+					margin: 5px 0 15px;
+				}
+			}
+		}
+		.featured{
+			width: 100%;
+			padding-bottom: 10px;
+			p{
+				margin: 10px 20px 0;
+			}
+		}
+	}
+	.facts-it {
+		flex-direction: column-reverse;
+		margin-bottom: 40px;
+		.featured{
+			width: 100%;
+			p{
+				padding: 0 20px !important;
+			}
+		}
+		.info{
+			width: 100%;
+			padding: 30px 20px 40px;
+			.box{
+				ul{
+					margin: 20px 0 20px;
+				}
+			}
+		}
+	}
+	.treatmentsg-overview{
+		.facts-it{
+			flex-direction: column;
+			margin-bottom: 10px;
+		}
+	}
+	.treatmentsg-risk{
+		padding: 30px 0 30px;
+		.container{
+			max-width: 690px;
+		}
+		.box{
+			padding: 10px 30px;
+			margin: 30px 0 ;
+			.it{
+				border-right: none !important;
+				width: 50%;
+				padding: 20px 0;
+				&:first-child{
+					width: 100%;
+					border-bottom: 1px solid #f4dcca;
+				}
+			}
+		}
+	}
+	.treatmentsg-faq .faq-list .faq-it{
+		width: 50%;
+		.faq-box h2{
+			font-size: 24px;
+			line-height: 34px;
+		}
+	}
+	.treatmentsg-area{
+		.type-style-overline{
+			max-width: 710px;
+    		margin: 0 auto;
+		}
+	}
+	.treatmentsg-diaries {
+		padding-bottom: 40px;
+		.container{
+			padding: 0;
+		}
+		.diaries-top {
+			.featured{
+				width: 100%;
+			}
+			.info{
+				width: 100%;
+				padding: 50px 80px;
+				.type-style-overline{
+					display: none;
+				}
+				.box{
+					min-height: 100%;
+					box-shadow: -10px 10px 0px 0px rgba(214, 187, 173, 0.25);
+					margin-left: 0;
+				}
+			}
+		}
+		.diaries-bottom{
+			padding: 0 50px;
+			.diaries-it{
+				width: 100%;
+				h2{
+					font-size: 24px;
+					line-height: 34px;
+				}
+			}
+		}
+		.type-style-overline{
+			&.on-sp{
+				display: block !important;
+				padding: 20px;
+			}
+		}
+	}
+}
+@media(max-width: 767px){
+	.treatmentsg-top .info{
+		padding: 30px 20px;
+		.social{
+			margin: 0;
+		}
+	}
+	.facts-it .info .box ul li span:first-child{
+		font-size: 14px;
+	}
+	.treatmentsg-risk .box{
+		padding: 10px 20px;
+		.it{
+			width: 100%;
+			&:last-child{
+				padding-top: 0;
+			}
+		}
+		.bottom{
+			padding: 0 20px;
+		}
+	}
+	.treatmentsg-faq .faq-list .faq-it{
+		width: 100%;
+	}
+	.treatmentsg-area{
+		.container{
+			padding: 0 50px;
+		}
+		.area-list .area-it{
+			width: 100%;
+			margin-bottom: 20px;
+		}
+	}
+	.treatmentsg-diaries {
+		.diaries-top .info{
+			padding: 50px 20px;
+			.box{
+				h2{
+					font-size: 24px;
+					line-height: 34px;
+				}
+			}
+		}
+		.diaries-bottom{
+			padding: 0 20px;
+			.diaries-it{
+				padding: 20px;
+			}
+		}
+	}
+	.treatment-diaries__hero{
+		margin: 30px 20px 0 20px;
+	}
+	.treatmentsg-bottom .treatmentsg-video{
+		padding: 50px 0;
+		.box .video-box{
+			height: 300px;
+		}
+	}
+
+}

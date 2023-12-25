@@ -1,0 +1,101 @@
+.signup-custom{
+	padding: 80px 0 150px;
+	min-height: calc(100vh - 324px);
+	.box{
+		max-width: 640px;
+		margin: 0 auto;
+		h1{
+		    font-size: 22px;
+			letter-spacing: 3px;
+			font-family: Effra;
+			line-height: 24px;
+			margin-bottom: 25px;
+			font-weight: 700;
+		}
+		label{
+			font-family: Playfair Display,serif;
+		    font-weight: 400;
+		    font-size: 20px;		    
+		    line-height: 26px;
+		    margin: 0 0 15px;	
+		    display: block;
+		}
+		p.help-block{
+			font-family: Effra;
+			line-height: 18px;
+		    font-weight: 400;
+		    font-size: 14px;
+		    margin: 0 0 20px 18px;
+		    color: #000;
+		    a{
+		    	border-bottom: 3px solid #a18d92;
+		    }
+		}
+		.form-control{
+		    display: block;
+		    padding: 8px 20px;
+		    line-height: 18px;
+		    font-family: Playfair Display,serif;
+		    font-weight: 400;
+		    font-size: 16px;
+		    background-color: #fff;
+		    color: #000;
+		    border: 1px solid #979797;
+		    min-height: 40px;
+		    outline: none;
+		    border-radius: 0;
+		    margin-left: 18px;
+		    width: calc(100% - 18px);
+		}
+		.checkbox{
+			margin: 18px 0;
+			label{
+				display: flex;
+				align-items: center;
+				font-size: 16px;
+				margin-bottom: 0;
+				a{
+					border-bottom: 3px solid #a18d92;
+				}
+				input[type=checkbox] {
+				    display: inline-block;
+				    margin: auto 18px;
+				}
+				p{
+					margin: 0;
+					font-family: Playfair Display,"serif";
+					line-height: 1.15;
+				}
+			}
+		}
+		.btn-submit{
+			margin-top: 70px;
+    		width: 100%;
+    		font-family: Effra,sans-serif;
+		    font-weight: 400;
+		    font-size: 12px;
+		    letter-spacing: 2px;
+		    line-height: 14px;
+		    text-transform: uppercase;
+		    color: #000;
+		    border: 1px solid #000;
+		    outline: none;
+		    padding: 12px 38px;
+		    text-align: center;
+		    -webkit-transition: color .3s ease-out,background-color .3s ease-out;
+		    -o-transition: color .3s ease-out,background-color .3s ease-out;
+		    transition: color .3s ease-out,background-color .3s ease-out;
+		    cursor: pointer;
+		    display: block;
+		    &:disabled{
+		    	cursor: default;
+			    opacity: .25;
+		    }
+		}
+	}
+}
+@media(max-width: 767px){
+	.signup-custom{
+		padding: 50px 0 100px;
+	}
+}
