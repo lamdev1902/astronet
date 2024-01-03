@@ -67,33 +67,21 @@ endif;
 <div class="wpcc-title" style="<?php echo $title_show ? '' : 'display: none'; ?>"><?php echo esc_attr( $title_text ); ?></div>
 
 	<form>
-
 		<div class="wpcc-switch-wrapper">
 			<div class="wpcc-switch">
-				<div class="wpcc-switch-option" data-position="left"><?php esc_attr_e( 'Imperial', 'wp-calorie-calculator' ); ?></div>
+				<div class="wpcc-switch-option selected" data-position="left"><?php esc_attr_e( 'Imperial', 'wp-calorie-calculator' ); ?></div>
+				<div class="wpcc-switch-option not-selected" data-position="right"><?php esc_attr_e( 'Metric', 'wp-calorie-calculator' ); ?></div>
 				<label class="wpcc-switch-toggle">
 					<input type="checkbox" name="wpcc-metric-system" value="true" <?php checked( 'true', $metric_system ); ?>>
 					<div class="wpcc-switch-toggle-circle"></div>
 					<div class="wpcc-switch-toggle-background wpcc-switch-toggle-background--two-sided"></div>				
 				</label>
-				<div class="wpcc-switch-option" data-position="right"><?php esc_attr_e( 'Metric', 'wp-calorie-calculator' ); ?></div>
 			</div>
 		</div>
 
 		<div class="wpcc-group">
-			<div class="wpcc-group-title"><?php esc_attr_e( 'Basic Information', 'wp-calorie-calculator' ); ?></div>
 
 			<div id="wpcc_metric" class="wpcc-row wpcc-row-basic wpcc-metric<?php echo ! $metric_system ? ' imperial' : ''; ?>">
-
-				<div class="wpcc-select-wrapper wpcc-sex">
-					<input class="wpcc-sex-placeholder" type="hidden" value="<?php esc_attr_e( 'm / f', 'wp-calorie-calculator' ); ?>"/>					
-					<label for="wpcc-gender"><?php esc_attr_e( 'Sex', 'wp-calorie-calculator' ); ?></label>
-					<select class="wpcc-select select-sex" name="wpcc-gender" id="wpcc-gender" value="false">
-						<option value="male"><?php esc_attr_e( 'Male', 'wp-calorie-calculator' ); ?></option>
-						<option value="female"><?php esc_attr_e( 'Female', 'wp-calorie-calculator' ); ?></option>
-					</select>
-				</div>
-
 				<div class="wpcc-input-wrapper wpcc-age">
 					<label class="wpcc-group-label" for="wpcc-age"><?php esc_attr_e( 'Age', 'wp-calorie-calculator' ); ?></label>
 
@@ -101,7 +89,16 @@ endif;
 						<input type="number" class="wpcc-need-validate" id="wpcc-age" name="wpcc-age" placeholder="&nbsp;">
 						<span class="wpcc-input-placeholder"><?php esc_attr_e( 'years', 'wp-calorie-calculator' ); ?></span>
 					</div>
+					<label class="wpcc-group-label range" for="wpcc-age"><?php esc_attr_e( 'ages 15 - 80', 'wp-calorie-calculator' ); ?></label>
+				</div>
 
+				<div class="wpcc-select-wrapper wpcc-sex">
+					<input class="wpcc-sex-placeholder" type="hidden" value="<?php esc_attr_e( 'm / f', 'wp-calorie-calculator' ); ?>"/>					
+					<label for="wpcc-gender"><?php esc_attr_e( 'Gender', 'wp-calorie-calculator' ); ?></label>
+					<select class="wpcc-select select-sex" name="wpcc-gender" id="wpcc-gender" value="false">
+						<option value="male"><?php esc_attr_e( 'Male', 'wp-calorie-calculator' ); ?></option>
+						<option value="female"><?php esc_attr_e( 'Female', 'wp-calorie-calculator' ); ?></option>
+					</select>
 				</div>
 
 				<div class="wpcc-input-wrapper wpcc-weight">
@@ -127,52 +124,39 @@ endif;
 						</div>
 					</div>
 				</div>			
+				<div class="wpcc-group wpcc-group-activity">
+					<div class="wpcc-group-title"><?php esc_html_e( 'Activity', 'wp-calorie-calculator' ); ?></div>
 
+					<div class="wpcc-row">
+						<select name="wpcc-activity">
+							<?php
+								$i = 0;
+								foreach ( $wpcc_activity as $key => $activity ) :
+									?>
+										<option class="wpcc-radio" name="wpcc-activity" value="<?php echo esc_attr( $activity['name'] . '%-%' . $activity['coefficient'] ); ?>" <?php checked( 0, $i ); ?>>
+											<?php echo esc_attr( $activity['name'] ); ?>
+										</option>
+									<?php
+									$i++;
+								endforeach;
+							?>
+						</select>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="wpcc-row">
-
+		<div class="wpcc-row" style="display:none">
+ 
 			<div class="wpcc-group wpcc-group-goal">
-				<label class="wpcc-group-title" for="wpcc-goal"><?php esc_attr_e( 'Goal', 'wp-calorie-calculator' ); ?></label>
-				<select class="wpcc-select select-value" name="wpcc-goal" id="wpcc-goal">
 					<?php $i = 0; foreach ( $wpcc_goals as $key => $goal ) : ?>
-						<option value="<?php echo esc_attr( $goal['name'] . '%-%' . $goal['coefficient'] ); ?>" <?php selected( 0, $i ); ?>><?php echo esc_attr( $goal['name'] ); ?></option>
-						<?php
-						$i++;
-					endforeach;
-					?>
-				</select>
-			</div>
-
-			<div class="wpcc-group wpcc-group-activity">
-				<div class="wpcc-group-title"><?php esc_html_e( 'Activity Level', 'wp-calorie-calculator' ); ?></div>
-
-				<div class="wpcc-row">
+					<input type="hidden" name="<?php echo  str_replace(' ', '_', strtolower($goal['name'])) ?>" value="<?php echo esc_attr( $goal['name'] . '%-%' . $goal['coefficient'] ); ?>" />
 					<?php
-					$i = 0;
-					foreach ( $wpcc_activity as $key => $activity ) :
-						?>
-						<label class="wpcc-radio">
-							<input type="radio" name="wpcc-activity" value="<?php echo esc_attr( $activity['name'] . '%-%' . $activity['coefficient'] ); ?>" <?php checked( 0, $i ); ?> />
-							<span class="wpcc-radio-title"><?php echo esc_attr( $activity['name'] ); ?></span>
-							<span class="wpcc-tooltip">
-								<svg class="wpcc-tooltip-icon" style="width:16px;height:16px">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M7.99996 15.3334C12.05 15.3334 15.3333 12.0501 15.3333 8.00002C15.3333 3.94993 12.05 0.666687 7.99996 0.666687C3.94987 0.666687 0.666626 3.94993 0.666626 8.00002C0.666626 12.0501 3.94987 15.3334 7.99996 15.3334ZM7.88538 9.7396C7.31246 9.7396 7.026 9.38153 7.026 8.91278C7.026 8.21617 7.37105 7.76695 8.17834 7.15497C8.19291 7.14388 8.20736 7.13289 8.2217 7.12198C8.77152 6.70372 9.15491 6.41207 9.15491 5.88544C9.15491 5.29299 8.60152 4.94794 7.98303 4.94794C7.47522 4.94794 7.08459 5.13674 6.7786 5.53387C6.55725 5.76174 6.38147 5.88544 6.08199 5.88544C5.5872 5.88544 5.33329 5.54038 5.33329 5.14325C5.33329 4.7396 5.56116 4.32945 5.91923 4.01695C6.401 3.60028 7.16923 3.33335 8.18485 3.33335C9.99475 3.33335 11.2643 4.22528 11.2643 5.76174C11.2643 6.88153 10.5937 7.4219 9.80595 7.96877C9.27209 8.3594 9.01819 8.58726 8.81637 9.0495L8.81583 9.05044C8.59474 9.4406 8.42531 9.7396 7.88538 9.7396ZM7.87235 12.513C7.24735 12.513 6.73303 12.1094 6.73303 11.4844C6.73303 10.8594 7.24735 10.4557 7.87235 10.4557C8.49735 10.4557 9.00517 10.8594 9.00517 11.4844C9.00517 12.1094 8.49735 12.513 7.87235 12.513Z" fill="currentColor"/>
-								</svg>
-								<div class="wpcc-tooltip-text">
-									<?php echo esc_attr( $activity['description'] ); ?>
-								</div>
-							</span>
-						</label>
-						<?php
 						$i++;
 					endforeach;
 					?>
-				</div>
 			</div>
-	</div>
-
+		</div>
 	</form>
 
 	<div class="wpcc-result">
@@ -188,7 +172,22 @@ endif;
 				<div class="wpcc-row-group wpcc-result-calorie">
 					<div class="wpcc-result-subtitle"><?php esc_attr_e( 'Target calorie intake per day:', 'wp-calorie-calculator' ); ?></div>		
 					<div class="wpcc-result-data">
-						<span class="wpcc-result-data-count wp-calorie-calculator-result-count">0</span>			
+						<div class="maintain-weight">
+							<span>Maintain weight</span>
+							<span class="wpcc-result-data-count  wp-calorie-calculator-result-count" id="maintain_weight">0</span>			
+						</div>
+						<div class="mid-weight">
+							<span>Mid weight loss</span>
+							<span class="wpcc-result-data-count  wp-calorie-calculator-result-count" id="mild_weight_loss">0</span>			
+						</div>
+						<div class="weight-loss">
+							<span>Weight loss</span>
+							<span class="wpcc-result-data-count wp-calorie-calculator-result-count" id="weight_loss">0</span>			
+						</div>
+						<div class="extreme-weight">
+							<span>Extreme weight loss</span>
+							<span class="wpcc-result-data-count wp-calorie-calculator-result-count" id="mild_weight_gain">0</span>			
+						</div>
 					</div>
 				</div>
 			</div>
@@ -231,7 +230,6 @@ endif;
 			</a>
 		</div>
 	</div>
-
 	<?php
 	if ( current_user_can( 'administrator' ) ) :
 		?>
@@ -249,4 +247,5 @@ endif;
 		<?php
 	endif;
 	?>
+	
 </div>
