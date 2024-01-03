@@ -1,0 +1,1341 @@
+.wp-calorie-calculator-select {
+    position: relative;
+}
+.wp-calorie-calculator-select__option {
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 0;
+    background-color: transparent !important;
+    border: 0;
+    border-radius: 0;
+    font-family: inherit;
+    white-space: nowrap;
+    text-align: left;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.wp-calorie-calculator-select__option-wrap {
+    position: relative;
+}
+.wp-calorie-calculator-select__input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border-width: 1px 0;
+    border-style: solid;
+    border-radius: 0;
+    font-family: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.wp-calorie-calculator-select__dropdown {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    top: 100%;
+    left: 0;
+}
+.wp-calorie-calculator-select--dropup .wp-calorie-calculator-select__dropdown {
+    top: auto;
+    bottom: 100%;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select {
+    background-color: #fff;
+    border-radius: 3px;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select--active {
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+}
+.wp-calorie-calculator .wp-calorie-calculator-select--dropup {
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__placeholder {
+    font-weight: 600;
+    color: rgba(28, 31, 35, 0.6);
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option {
+    width: 100%;
+    position: relative;
+    padding: 10px;
+    color: #212121 !important;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: normal;
+    text-decoration: none;
+    text-transform: none;
+}
+.rtl .wp-calorie-calculator .wp-calorie-calculator-select__option {
+    text-align: right;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option:focus {
+    outline: none;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option:hover,
+.wp-calorie-calculator .wp-calorie-calculator-select__option:focus {
+    background-color: rgba(var(--wpcc-border-color), 0.1) !important;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value {
+    padding: 5px 10px;
+    background-color: #fff !important;
+    border: 1px solid rgba(var(--wpcc-border-color), 1);
+    border-radius: 3px;
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 14px;
+    height: 8px;
+    background: url(../images/arrow-down.svg) no-repeat;
+    background-size: contain;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.wp-calorie-calculator-select--active .wp-calorie-calculator .wp-calorie-calculator-select__option--value::after {
+    transform: translateY(-50%) rotate(-180deg);
+}
+.rtl .wp-calorie-calculator .wp-calorie-calculator-select__option--value {
+    text-align: right;
+}
+.rtl .wp-calorie-calculator .wp-calorie-calculator-select__option--value::after {
+    right: unset;
+    left: 10px;
+}
+.wp-calorie-calculator-select--active .wp-calorie-calculator .wp-calorie-calculator-select__option--value {
+    border-bottom-color: transparent;
+    border-radius: 8px 8px 0 0;
+}
+.wp-calorie-calculator-select--active .wp-calorie-calculator .wp-calorie-calculator-select__option--value:hover,
+.wp-calorie-calculator-select--active .wp-calorie-calculator .wp-calorie-calculator-select__option--value:focus {
+    background-color: #fff;
+}
+.wp-calorie-calculator-select--dropup.wp-calorie-calculator-select--active .wp-calorie-calculator .wp-calorie-calculator-select__option--value {
+    border-top-color: transparent;
+    border-bottom-color: rgba(var(--wpcc-border-color), 1);
+    border-radius: 0 0 8px 8px;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option--selected {
+    background-color: #fcfcfc;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option[disabled] {
+    color: #a1a1a1;
+    cursor: default;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option[disabled]:hover,
+.wp-calorie-calculator .wp-calorie-calculator-select__option[disabled]:focus {
+    background-color: transparent;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option-wrap {
+    overflow-y: auto;
+    max-height: 11.25rem;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option-wrap::-webkit-scrollbar {
+    width: 16px;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__option-wrap::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    background-clip: padding-box;
+    border-width: 0 4px;
+    border-style: solid;
+    border-color: transparent;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__input {
+    position: relative;
+    z-index: 1;
+    height: 2.25rem;
+    margin-top: -1px;
+    padding: 0 0.75rem;
+    border-color: #e6e6e6;
+    transform: translateY(1px);
+    color: #212121;
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__input:focus {
+    outline: none;
+}
+.wp-calorie-calculator-select--dropup .wp-calorie-calculator .wp-calorie-calculator-select__input {
+    border-top-width: 0;
+    margin-top: 0;
+    transform: translateY(0);
+}
+.wp-calorie-calculator .wp-calorie-calculator-select__dropdown {
+    overflow: hidden;
+    z-index: 1;
+    top: calc(100% + 4px);
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--wpcc-border-color), 0.08);
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.3);
+}
+.wp-calorie-calculator-select--dropup .wp-calorie-calculator .wp-calorie-calculator-select__dropdown {
+    bottom: calc(100% - 1px);
+    border-width: 1px 1px 0;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.3);
+}
+.wp-calorie-calculator {
+    box-sizing: border-box;
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    color: rgba(var(--wpcc-text-color), 1);
+    background-color: rgba(var(--wpcc-background-color), 1);
+}
+.wp-calorie-calculator *,
+.wp-calorie-calculator *::before,
+.wp-calorie-calculator *::after {
+    box-sizing: border-box;
+}
+.wp-calorie-calculator-header {
+    font-size: 32px;
+    padding-bottom: 0.2em;
+    margin-top: 0.65em;
+    margin-bottom: 1em;
+}
+.wp-calorie-calculator .wpcc-edit-link {
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.wp-calorie-calculator .wpcc-edit-link-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.wp-calorie-calculator .wpcc-edit-link-wrapper .wpcc-tooltip {
+    top: 1px;
+}
+.wp-calorie-calculator .wpcc-edit-link-wrapper .wpcc-tooltip .wpcc-tooltip-icon {
+    width: 16px !important;
+    height: 16px !important;
+    color: #888;
+}
+.wp-calorie-calculator .wpcc-radio {
+    display: flex;
+    margin-bottom: 15px;
+    font-size: inherit;
+}
+.wp-calorie-calculator .wpcc-radio input {
+    display: none;
+}
+.wp-calorie-calculator .wpcc-radio input + span {
+    position: relative;
+    padding-left: 24px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    font-weight: normal;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.rtl .wp-calorie-calculator .wpcc-radio input + span {
+    padding-left: unset;
+    padding-right: 24px;
+}
+.wp-calorie-calculator .wpcc-radio input + span::before {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    content: "";
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+    border: 1px solid rgba(var(--wpcc-radio-button-color), 1);
+    border-radius: 50%;
+    transition: all 0.1s ease;
+}
+.rtl .wp-calorie-calculator .wpcc-radio input + span::before {
+    left: unset;
+    right: 0;
+    margin-right: unset;
+    margin-left: 5px;
+}
+.wp-calorie-calculator .wpcc-radio input + span:hover::before {
+    background-color: rgba(var(--wpcc-radio-button-color), 0.1);
+}
+.wp-calorie-calculator .wpcc-radio input:checked + span::before {
+    border: 0.3em solid rgba(var(--wpcc-radio-button-color), 1);
+}
+.wp-calorie-calculator .wpcc-radio span {
+    color: rgba(var(--wpcc-text-color), 1);
+}
+.wp-calorie-calculator .wpcc-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: inherit;
+}
+.wp-calorie-calculator .wpcc-checkbox--privacy {
+    margin-bottom: 0;
+}
+.wp-calorie-calculator .wpcc-checkbox input,
+.wp-calorie-calculator .wpcc-checkbox-check {
+    display: none;
+}
+.wp-calorie-calculator .wpcc-checkbox input + span {
+    position: relative;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    padding-left: 24px;
+    font-weight: normal;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.wp-calorie-calculator .wpcc-checkbox input + span::before {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    content: "";
+    width: 1.1em;
+    height: 1.1em;
+    margin-right: 0.5em;
+    border: 1px solid rgba(var(--wpcc-form-checkbox-color), 1);
+    transition: all 200ms ease;
+}
+.wp-calorie-calculator .wpcc-checkbox input + span:hover::before {
+    background-color: rgba(var(--wpcc-form-checkbox-color), 0.1);
+}
+.wp-calorie-calculator .wpcc-checkbox input:checked + span .wpcc-checkbox-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 1.1em;
+    height: 1.1em;
+    color: rgba(var(--wpcc-form-checkbox-color), 1);
+    fill: currentColor;
+}
+.wp-calorie-calculator .wpcc-checkbox input:checked + span .wpcc-checkbox-check svg {
+    width: 0.8em;
+    height: 0.8em;
+}
+.wp-calorie-calculator .wpcc-checkbox--privacy input + span {
+    font-size: 13px;
+}
+.wp-calorie-calculator .wpcc-checkbox.wpcc-empty input + span::before {
+    border: 1px solid red;
+    transform: scale(1.2);
+}
+.wp-calorie-calculator input[type="text"],
+.wp-calorie-calculator input[type="email"],
+.wp-calorie-calculator textarea,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgba(var(--wpcc-border-color), 1);
+    color: rgba(var(--wpcc-text-color), 1);
+    padding: 15px !important;
+    margin: 0;
+    outline: 0;
+    -moz-appearance: textfield;
+    transition: border 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+}
+.rtl .wp-calorie-calculator input[type="text"],
+.rtl .wp-calorie-calculator input[type="email"],
+.rtl .wp-calorie-calculator textarea,
+.rtl .wp-calorie-calculator .wp-calorie-calculator-select__option--value {
+    padding: 15px 15px 15px 35px !important;
+}
+.wp-calorie-calculator input[type="text"]:hover,
+.wp-calorie-calculator input[type="text"]:focus,
+.wp-calorie-calculator input[type="email"]:hover,
+.wp-calorie-calculator input[type="email"]:focus,
+.wp-calorie-calculator textarea:hover,
+.wp-calorie-calculator textarea:focus,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value:hover,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value:focus {
+    background-color: rgba(var(--wpcc-border-color), 0.1);
+}
+.wp-calorie-calculator input[type="text"]::-webkit-outer-spin-button,
+.wp-calorie-calculator input[type="text"]::-webkit-inner-spin-button,
+.wp-calorie-calculator input[type="email"]::-webkit-outer-spin-button,
+.wp-calorie-calculator input[type="email"]::-webkit-inner-spin-button,
+.wp-calorie-calculator textarea::-webkit-outer-spin-button,
+.wp-calorie-calculator textarea::-webkit-inner-spin-button,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::-webkit-outer-spin-button,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.wp-calorie-calculator input[type="text"].wpcc-empty,
+.wp-calorie-calculator input[type="email"].wpcc-empty,
+.wp-calorie-calculator textarea.wpcc-empty,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value.wpcc-empty {
+    border: 1px solid red !important;
+}
+.wp-calorie-calculator input[type="text"].wpcc-wrong,
+.wp-calorie-calculator input[type="email"].wpcc-wrong,
+.wp-calorie-calculator textarea.wpcc-wrong,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value.wpcc-wrong {
+    text-decoration: line-through;
+    border: 1px solid red !important;
+}
+.wp-calorie-calculator input[type="text"]::placeholder,
+.wp-calorie-calculator input[type="email"]::placeholder,
+.wp-calorie-calculator textarea::placeholder,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::placeholder {
+    color: rgba(28, 31, 35, 0.6);
+    font-weight: 600;
+    font-size: 16px;
+}
+.wp-calorie-calculator input[type="text"]:-ms-input-placeholder,
+.wp-calorie-calculator input[type="email"]:-ms-input-placeholder,
+.wp-calorie-calculator textarea:-ms-input-placeholder,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value:-ms-input-placeholder {
+    color: rgba(28, 31, 35, 0.6);
+    font-weight: 600;
+    font-size: 16px;
+}
+.wp-calorie-calculator input[type="text"]::-ms-input-placeholder,
+.wp-calorie-calculator input[type="email"]::-ms-input-placeholder,
+.wp-calorie-calculator textarea::-ms-input-placeholder,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::-ms-input-placeholder {
+    color: rgba(28, 31, 35, 0.6);
+    font-weight: 600;
+    font-size: 16px;
+}
+.wp-calorie-calculator input[type="text"]::-webkit-input-placeholder,
+.wp-calorie-calculator input[type="email"]::-webkit-input-placeholder,
+.wp-calorie-calculator textarea::-webkit-input-placeholder,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::-webkit-input-placeholder {
+    color: rgba(28, 31, 35, 0.6);
+    font-weight: 600;
+    font-size: 16px;
+}
+.wp-calorie-calculator input[type="text"]::-moz-placeholder,
+.wp-calorie-calculator input[type="email"]::-moz-placeholder,
+.wp-calorie-calculator textarea::-moz-placeholder,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value::-moz-placeholder {
+    color: rgba(28, 31, 35, 0.6);
+    font-weight: 600;
+    font-size: 16px;
+}
+.wp-calorie-calculator input[type="text"]:-moz-placeholder,
+.wp-calorie-calculator input[type="email"]:-moz-placeholder,
+.wp-calorie-calculator textarea:-moz-placeholder,
+.wp-calorie-calculator .wp-calorie-calculator-select__option--value:-moz-placeholder {
+    font-family: inherit;
+    color: rgba(28, 31, 35, 0.6);
+    font-weight: 600;
+    font-size: 16px;
+}
+.wp-calorie-calculator .wpcc-input {
+    position: relative;
+    background-color: #fff;
+}
+.wp-calorie-calculator .wpcc-input-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.wp-calorie-calculator .wpcc-input-wrapper label {
+    display: block;
+    font-family: inherit;
+    font-size: calc(16px * 1.1);
+    line-height: calc(16px * 1.25);
+    font-weight: 600;
+    color: rgba(var(--wpcc-labels-color), 1);
+}
+.wp-calorie-calculator .wpcc-input input[type="number"] {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgba(var(--wpcc-border-color), 1);
+    color: rgba(var(--wpcc-text-color), 1);
+    padding: 15px;
+    margin: 0;
+    outline: 0;
+    -moz-appearance: textfield;
+    transition: border 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+}
+.wp-calorie-calculator .wpcc-input input[type="number"]:hover,
+.wp-calorie-calculator .wpcc-input input[type="number"]:focus {
+    background-color: rgba(var(--wpcc-border-color), 0.1);
+}
+.wp-calorie-calculator .wpcc-input input[type="number"]:not(:placeholder-shown) {
+    padding-top: 23px;
+    padding-bottom: 7px;
+}
+.wp-calorie-calculator .wpcc-input input[type="number"]:not(:placeholder-shown) + .wpcc-input-placeholder,
+.wp-calorie-calculator .wpcc-input input[type="number"]:not(:placeholder-shown) + .wpcc-input-placeholder + .wpcc-input-placeholder {
+    transform: translate3d(0, -0.75em, 0) scale(0.75);
+}
+.wp-calorie-calculator .wpcc-input input[type="number"]:focus {
+    padding-top: 23px;
+    padding-bottom: 7px;
+}
+.wp-calorie-calculator .wpcc-input input[type="number"]:focus + .wpcc-input-placeholder,
+.wp-calorie-calculator .wpcc-input input[type="number"]:focus + .wpcc-input-placeholder + .wpcc-input-placeholder {
+    transform: translate3d(0, -0.75em, 0) scale(0.75);
+}
+.wp-calorie-calculator .wpcc-input input[type="number"]::-webkit-outer-spin-button,
+.wp-calorie-calculator .wpcc-input input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.wp-calorie-calculator .wpcc-input input[type="number"].wpcc-empty {
+    border: 1px solid red !important;
+}
+.wp-calorie-calculator .wpcc-input input[type="number"].wpcc-wrong {
+    text-decoration: line-through;
+    border: 1px solid red !important;
+}
+.wp-calorie-calculator .wpcc-input span.wpcc-input-placeholder,
+.wp-calorie-calculator .wpcc-input label.wpcc-input-placeholder {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 15px;
+    font-size: 16px;
+    line-height: 1em;
+    color: rgba(var(--wpcc-text-color), 1);
+    transform-origin: 0 0;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+.wp-calorie-calculator .wpcc-switch {
+    display: flex;
+    align-items: center;
+}
+.wp-calorie-calculator .wpcc-switch.hidden {
+    display: none;
+}
+.wp-calorie-calculator .wpcc-switch-option {
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    color: rgba(var(--wpcc-text-color), 1);
+    cursor: pointer;
+}
+.wp-calorie-calculator .wpcc-switch-toggle {
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 32px;
+    margin: 0 15px;
+    cursor: pointer;
+    z-index: 1;
+}
+.rtl .wp-calorie-calculator .wpcc-switch-toggle {
+    transform: scaleX(-1);
+}
+.wp-calorie-calculator .wpcc-switch-toggle input {
+    opacity: 0;
+    min-width: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+}
+.wp-calorie-calculator .wpcc-switch-toggle input:checked + .wpcc-switch-toggle-circle {
+    transform: translate(23px, -50%);
+}
+.wp-calorie-calculator .wpcc-switch-toggle input:checked + .wpcc-switch-toggle-circle:hover + .wpcc-switch-toggle-background,
+.wp-calorie-calculator .wpcc-switch-toggle input:checked + .wpcc-switch-toggle-circle:focus + .wpcc-switch-toggle-background {
+    background: rgba(var(--wpcc-switcher-background-color), 1);
+}
+.wp-calorie-calculator .wpcc-switch-toggle input:checked + .wpcc-switch-toggle-circle + .wpcc-switch-toggle-background {
+    background: rgba(var(--wpcc-switcher-background-color), 0.8);
+}
+.wp-calorie-calculator .wpcc-switch-toggle-background {
+    background: rgba(46, 50, 56, 0.09);
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.wp-calorie-calculator .wpcc-switch-toggle-background--two-sided {
+    background: rgba(var(--wpcc-switcher-background-color), 0.8) !important;
+}
+.wp-calorie-calculator .wpcc-switch-toggle-circle {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translate(0, -50%);
+    height: 24px;
+    width: 24px;
+    background: rgba(var(--wpcc-switcher-circle-color), 1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
+}
+.wp-calorie-calculator .wpcc-switch-toggle-circle:hover + .wpcc-switch-toggle-background,
+.wp-calorie-calculator .wpcc-switch-toggle-circle:focus + .wpcc-switch-toggle-background {
+    background: rgba(46, 50, 56, 0.13);
+}
+.wp-calorie-calculator .wpcc-switch-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.wp-calorie-calculator .wpcc-switch-wrapper div{
+    margin-right: 6px;
+}
+
+.wpcc-switch .not-selected {
+    color: #fff;
+    background: #336699;
+    border: 1px solid #336699;
+    padding: 8px 5px 8px 5px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.wpcc-switch .selected {
+    color: #000;
+    background: #eee;
+    border: 1px solid #bbbbbb;
+    padding: 8px 5px 8px 5px;
+    margin: 0;
+    text-decoration: none;
+    border-bottom: 2px solid #eee;
+}
+
+.wp-calorie-calculator .wpcc-select-wrapper label {
+    display: block;
+    font-family: inherit;
+    font-size: calc(16px * 1.1);
+    line-height: calc(16px * 1.25);
+    font-weight: 600;
+    color: rgba(var(--wpcc-labels-color), 1);
+}
+.wp-calorie-calculator .wpcc-select-wrapper .wpcc-select__placeholder {
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+}
+.wp-calorie-calculator .wpcc-select-wrapper .wpcc-select__option {
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+}
+.wp-calorie-calculator .wpcc-select-wrapper .wpcc-select__option.wpcc-empty {
+    border: 1px solid red;
+}
+.wp-calorie-calculator .wpcc-select-wrapper .wpcc-select__value {
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+}
+.wp-calorie-calculator .wpcc-select-wrapper .wpcc-select__input {
+    font-size: 16px;
+    color: rgba(var(--wpcc-text-color), 1);
+}
+.wp-calorie-calculator .wpcc-tooltip {
+    position: relative;
+    top: 3px;
+    margin-left: 5px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+.rtl .wp-calorie-calculator .wpcc-tooltip {
+    margin-left: unset;
+    margin-right: 5px;
+}
+.wp-calorie-calculator .wpcc-tooltip svg {
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(var(--wpcc-tooltip-icon-color), 1);
+    fill: currentColor;
+}
+.rtl .wp-calorie-calculator .wpcc-tooltip svg {
+    left: unset;
+    right: 0;
+}
+.wp-calorie-calculator .wpcc-tooltip:hover .wpcc-tooltip-text {
+    visibility: visible;
+}
+.wp-calorie-calculator .wpcc-tooltip .wpcc-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    bottom: 150%;
+    margin-left: -100px;
+    padding: 7px 10px;
+    width: 200px;
+    font-family: inherit;
+    font-size: calc(16px * 0.85);
+    line-height: 1.4em;
+    color: #fff;
+    text-align: center;
+    background-color: #41464c;
+    border-radius: 6px;
+    z-index: 1;
+}
+.rtl .wp-calorie-calculator .wpcc-tooltip .wpcc-tooltip-text {
+    left: unset;
+    right: 50%;
+}
+.wp-calorie-calculator .wpcc-tooltip .wpcc-tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #41464c transparent transparent transparent;
+}
+.rtl .wp-calorie-calculator .wpcc-tooltip .wpcc-tooltip-text::after {
+    left: unset;
+    right: 50%;
+    margin-left: unset;
+    margin-right: -5px;
+}
+.wp-calorie-calculator .wpcc-loading {
+    position: relative;
+}
+.wp-calorie-calculator .wpcc-loading::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 10px;
+    box-sizing: border-box;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(var(--wpcc-button-text-color), 1);
+    border-color: rgba(var(--wpcc-button-text-color), 1) transparent rgba(var(--wpcc-button-text-color), 1) transparent;
+    animation: spin 1.2s linear infinite;
+}
+.rtl .wp-calorie-calculator .wpcc-loading::after {
+    right: unset;
+    left: 10px;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.wp-calorie-calculator .wpcc-row {
+    display: block;
+}
+
+.wp-calorie-calculator .wpcc-group.hidden {
+    display: none;
+}
+.wp-calorie-calculator .wpcc-group-title {
+    display: block;
+    font-size: calc(16px * 1.125);
+    line-height: 1.1em;
+    font-weight: 600;
+    color: rgba(var(--wpcc-labels-color), 1);
+}
+.wp-calorie-calculator .wpcc-title {
+    color: rgba(var(--wpcc-main-title-color), 1);
+    font-size: calc(16px * 1.5);
+    line-height: 1.25em;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 0.4em;
+    margin-top: 0.65em;
+    margin-bottom: 1.25em;
+    border-bottom: 1px solid rgba(var(--wpcc-main-title-border-color), 1);
+}
+@media (max-width: 425px) {
+    .wp-calorie-calculator .wpcc-title {
+        text-align: center !important;
+    }
+}
+.wp-calorie-calculator .wpcc-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(var(--wpcc-result-background-color), 1);
+    padding: 25px 20px 20px 20px;
+    color: rgba(var(--wpcc-result-text-color), 1);
+}
+@media (max-width: 900px) {
+    .wp-calorie-calculator .wpcc-result-bmi {
+        order: 3;
+    }
+}
+@media (max-width: 565px) {
+    .wp-calorie-calculator .wpcc-result {
+        padding: 25px 15px 15px 15px;
+    }
+}
+.wp-calorie-calculator .wpcc-result-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--wpcc-result-icon-background), 1);
+    border-radius: 16px;
+    margin-bottom: 15px;
+}
+.wp-calorie-calculator .wpcc-result-icon svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: rgba(var(--wpcc-result-icon-color), 1);
+    fill: currentColor;
+}
+.wp-calorie-calculator .wpcc-result-title {
+    font-size: calc(16px * 1.5);
+    line-height: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(var(--wpcc-result-title-color), 1);
+    margin-bottom: 0.5em;
+}
+@media (max-width: 600px) {
+    .wp-calorie-calculator .wpcc-result-title {
+        text-align: center;
+    }
+}
+.wp-calorie-calculator .wpcc-result-subtitle {
+    font-weight: 600;
+    font-size: calc(16px * 1.1);
+    line-height: 1.3em;
+    color: rgba(var(--wpcc-result-text-color), 1);
+    margin-top: 0.4em;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+@media (max-width: 1024px) {
+    .wp-calorie-calculator .wpcc-result-subtitle {
+        font-size: calc(16px * 1.1);
+    }
+}
+.wp-calorie-calculator .wpcc-result-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: calc(16px * 1.2);
+    line-height: 1.25em;
+    background-color: #fff;
+    border: 1.5px solid rgba(var(--wpcc-input-border-color), 0.3);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+@media (max-width: 1024px) {
+    .wp-calorie-calculator .wpcc-result-data {
+    }
+}
+@media (max-width: 768px) {
+    .wp-calorie-calculator .wpcc-result-data {
+
+    }
+}
+@media (max-width: 565px) {
+    .wp-calorie-calculator .wpcc-result .wpcc-row .wpcc-result-data div{
+        width: 80% !important;
+        margin-bottom: 10px;
+    }
+}
+.wp-calorie-calculator .wpcc-result-data-type {
+    margin-right: 5px;
+}
+.rtl .wp-calorie-calculator .wpcc-result-data-type {
+    margin-right: unset;
+    margin-left: 5px;
+}
+.wp-calorie-calculator .wpcc-result-data-count {
+    font-weight: 600;
+    margin-right: 3px;
+}
+.rtl .wp-calorie-calculator .wpcc-result-data-count {
+    margin-right: unset;
+    margin-left: 3px;
+}
+.wp-calorie-calculator .wpcc-result-data-unit {
+    font-weight: 600;
+}
+.wp-calorie-calculator .wpcc-result-bmi-type {
+    color: #fff;
+    font-weight: 600;
+}
+.wp-calorie-calculator .wpcc-result .wpcc-row {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+@media (max-width: 565px) {
+    .wp-calorie-calculator .wpcc-result .wpcc-row-group {
+        width: 100%;
+    }
+}
+
+.wp-calorie-calculator .wpcc-result .wpcc-row .wpcc-result-data div{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+@media (max-width: 565px) {
+    .wp-calorie-calculator .wpcc-result .wpcc-row .wpcc-result-data {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+.wp-calorie-calculator .wpcc-result-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 80%;
+    margin: 20px auto;
+}
+@media (max-width: 900px) {
+    .wp-calorie-calculator .wpcc-result-form {
+        max-width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .wp-calorie-calculator .wpcc-result-form {
+        flex-direction: column;
+        align-items: center;
+        max-width: 80%;
+    }
+}
+@media (max-width: 425px) {
+    .wp-calorie-calculator .wpcc-result-form {
+        max-width: 100%;
+    }
+}
+.wp-calorie-calculator .wpcc-result-form-wrapper {
+    display: flex;
+    margin-right: 20px;
+}
+.rtl .wp-calorie-calculator .wpcc-result-form-wrapper {
+    margin-right: unset;
+    margin-left: 20px;
+}
+@media (max-width: 767px) {
+    .wp-calorie-calculator .wpcc-result-form-wrapper {
+        flex-direction: column;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .rtl .wp-calorie-calculator .wpcc-result-form-wrapper {
+        margin-left: 0;
+    }
+}
+.wp-calorie-calculator .wpcc-result-form input[type="email"].wpcc-result-form-email {
+    width: 100%;
+    min-width: 250px;
+    min-height: 50px;
+    background: #fff;
+    border-radius: 5px;
+    border: 0;
+    font-size: calc(16px * 1.1);
+    color: rgba(var(--wpcc-text-color), 1);
+    padding: 8px 15px;
+    outline: none;
+    box-shadow: none;
+}
+@media (max-width: 600px) {
+    .wp-calorie-calculator .wpcc-result-form input[type="email"].wpcc-result-form-email {
+        min-width: unset;
+    }
+}
+.wp-calorie-calculator .wpcc-result-form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    min-height: 50px;
+    text-align: center;
+    background: rgba(var(--wpcc-button-background-color), 1) !important;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color: rgba(var(--wpcc-button-text-color), 1) !important;
+    letter-spacing: 0;
+    text-decoration: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    transition: box-shadow 0.4s ease-in-out;
+    cursor: pointer;
+}
+@media (max-width: 565px) {
+    .wp-calorie-calculator .wpcc-result-form-submit {
+        width: 100%;
+    }
+}
+.wp-calorie-calculator .wpcc-result-form-submit:hover {
+    background: rgba(var(--wpcc-button-background-color-hover), 1) !important;
+}
+.wp-calorie-calculator .wpcc-result-form-notice {
+    border-radius: 5px;
+    border: 1px solid transparent;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.wp-calorie-calculator .wpcc-result-form-notice span {
+    padding: 8px 12px;
+    display: block;
+}
+.wp-calorie-calculator .wpcc-result-form-notice.wpcc-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+.wp-calorie-calculator .wpcc-result-form-notice.wpcc-error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.wp-calorie-calculator .wpcc-result-form-user-agreement {
+    margin-top: 20px;
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+.wp-calorie-calculator .wpcc-result-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgba(var(--wpcc-form-link-color), 1);
+}
+.wp-calorie-calculator .wpcc-result-link:hover,
+.wp-calorie-calculator .wpcc-result-link:focus {
+    color: rgba(var(--wpcc-form-link-color-hover), 1);
+}
+.wp-calorie-calculator .wpcc-powered {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4px 10px;
+    border-radius: 5px;
+    align-self: flex-end;
+    margin-top: 10px;
+}
+@media (max-width: 565px) {
+    .wp-calorie-calculator .wpcc-powered {
+        align-self: center;
+    }
+}
+.wp-calorie-calculator .wpcc-powered a {
+    font-size: 0.8em;
+    line-height: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: rgba(var(--wpcc-form-link-color), 1);
+}
+.wp-calorie-calculator .wpcc-powered a:hover,
+.wp-calorie-calculator .wpcc-powered a:focus {
+    color: rgba(var(--wpcc-form-link-color), 1);
+}
+.wp-calorie-calculator .wpcc-powered a:hover svg,
+.wp-calorie-calculator .wpcc-powered a:focus svg {
+    margin-left: 10px;
+}
+.wp-calorie-calculator .wpcc-powered svg {
+    color: rgba(var(--wpcc-form-link-color), 1);
+    fill: currentColor;
+    margin-left: 5px;
+    margin-top: 1px;
+    transition: all 200ms ease-in-out;
+}
+.wpcc-two-compact-pretty {
+    padding: 15px;
+}
+.wpcc-two-compact-pretty-header {
+    font-size: 50px;
+    padding-bottom: 0.2em;
+    margin-top: 0.65em;
+    margin-bottom: 1em;
+}
+.wpcc-two-compact-pretty .wpcc-row {
+    flex-wrap: wrap;
+}
+.wpcc-two-compact-pretty .wpcc-row .wpcc-group {
+    flex-grow: 1;
+}
+.wpcc-two-compact-pretty .wpcc-row .wpcc-radio {
+    margin-right: 30px;
+}
+.rtl .wpcc-two-compact-pretty .wpcc-row .wpcc-radio {
+    margin-right: unset;
+    margin-left: 30px;
+}
+.wpcc-two-compact-pretty .wpcc-row .wpcc-radio:last-child {
+    margin-right: 0;
+}
+.rtl .wpcc-two-compact-pretty .wpcc-row .wpcc-radio:last-child {
+    margin-left: 0;
+}
+.wpcc-two-compact-pretty .wpcc-row.wpcc-metric {
+    justify-content: space-between;
+}
+.wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-sex {
+    flex-grow: 1;
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-sex {
+        width: 100%;
+        margin-right: 0;
+    }
+    .rtl .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-sex {
+        margin-right: unset;
+        margin-left: 0;
+    }
+}
+.wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-input-wrapper.wpcc-age .wpcc-input{
+    flex-basis: 45%;
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-input-wrapper {
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-input-wrapper.wpcc-weight {
+        margin-right: 0;
+    }
+    .rtl .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-input-wrapper.wpcc-weight {
+        margin-right: unset;
+        margin-left: 0;
+    }
+}
+.wpcc-two-compact-pretty .wpcc-row.wpcc-metric.imperial .wpcc-height .wpcc-input:first-child {
+    margin-right: 10px;
+}
+.rtl .wpcc-two-compact-pretty .wpcc-row.wpcc-metric.imperial .wpcc-height .wpcc-input:first-child {
+    margin-right: unset;
+    margin-left: 10px;
+}
+.wpcc-two-compact-pretty .wpcc-row.wpcc-metric.imperial .wpcc-height .wpcc-row {
+    flex-wrap: nowrap;
+}
+.wpcc-two-compact-pretty .wpcc-row-basic {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.wpcc-two-compact-pretty .wpcc-row-basic .wpcc-select-wrapper,
+.wpcc-two-compact-pretty .wpcc-row-basic .wpcc-input-wrapper {
+    min-width: unset;
+    width: 70%;
+    padding: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-input-wrapper.wpcc-age .wpcc-group-label.range{
+        display:none;
+    }
+
+    .wpcc-two-compact-pretty .wpcc-row.wpcc-metric .wpcc-input-wrapper.wpcc-age .wpcc-input{
+        flex-basis: 70%;
+    }
+    
+    .wpcc-two-compact-pretty .wpcc-row-basic .wpcc-select-wrapper.wpcc-sex .wp-calorie-calculator-select{
+        flex-basis: 70%;
+    }
+    
+    .wpcc-two-compact-pretty .wpcc-row-basic .wpcc-input-wrapper.wpcc-weight .wpcc-input{
+        flex-basis: 70%;
+    }
+    
+    .wpcc-two-compact-pretty .wpcc-row-basic .wpcc-input-wrapper.wpcc-height .wpcc-row{
+        flex-basis: 70%;
+    }
+
+    .wpcc-two-compact-pretty .wpcc-group.wpcc-group-activity {
+        width: 100%;
+    }
+
+    .wpcc-two-compact-pretty .wpcc-group.wpcc-group-activity .wpcc-row {
+        flex-basis: 70%;
+    }
+
+    .wpcc-two-compact-pretty .wpcc-group.wpcc-group-activity .wpcc-row select {
+        padding: 15px 40px 15px 15px;
+    }
+}
+
+.wpcc-two-compact-pretty .wpcc-row-basic .wpcc-sex .wp-calorie-calculator-select{
+    flex-basis: 80%;
+}
+
+.wpcc-two-compact-pretty .wpcc-row-basic .wpcc-weight .wpcc-input{
+    flex-basis: 80%;
+}
+
+.wpcc-two-compact-pretty .wpcc-row-basic .wpcc-height .wpcc-row{
+    flex-basis: 80%;
+    display: flex;
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-row-basic .wpcc-select-wrapper,
+    .wpcc-two-compact-pretty .wpcc-row-basic .wpcc-input-wrapper {
+        width: 100%;
+    }
+}
+.wpcc-two-compact-pretty .wpcc-group {
+    padding: 10px;
+    background-color: #eeeeee;
+}
+.wpcc-two-compact-pretty .wpcc-group-title {
+    font-size: calc(16px * 1.1);
+}
+@media (max-width: 425px) {
+    .wpcc-two-compact-pretty .wpcc-group-title {
+        text-align: center !important;
+    }
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-group-formula .wpcc-row {
+        flex-direction: column;
+    }
+}
+.wpcc-two-compact-pretty .wpcc-group-goal {
+    padding-right: 30px;
+    max-width: 300px;
+}
+.rtl .wpcc-two-compact-pretty .wpcc-group-goal {
+    padding-right: unset;
+    padding-left: 30px;
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-group-goal {
+        padding-right: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .rtl .wpcc-two-compact-pretty .wpcc-group-goal {
+        padding-left: 0;
+    }
+}
+.wpcc-two-compact-pretty .wpcc-group-goal .wpcc-select {
+    min-width: 180px;
+    width: 100%;
+}
+.wpcc-two-compact-pretty .wpcc-group-activity {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* @media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-group-activity {
+        width: 70%;
+    }
+} */
+.wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row {
+    display: block;
+    flex-basis: 80%;
+    position: relative;
+}
+
+.wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row select {
+    height: 50px;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: calc(16px * 1.25);
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgba(var(--wpcc-border-color), 1);
+    color: rgba(var(--wpcc-text-color), 1);
+    padding: 15px;
+    margin: 0;
+    outline: 0;
+}
+
+.wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 14px;
+    height: 8px;
+    background: url(../images/arrow-down.svg) no-repeat;
+    background-size: contain;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row {
+        flex-direction: column;
+    }
+}
+.wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row .wpcc-radio {
+    width: 183px;
+    min-width: 30%;
+    margin-bottom: 12px;
+    margin-right: 15px;
+}
+.rtl .wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row .wpcc-radio {
+    margin-right: unset;
+    margin-left: 15px;
+}
+@media (max-width: 900px) {
+    .wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row .wpcc-radio {
+        width: calc(100% / 2 - 20px);
+    }
+}
+@media (max-width: 600px) {
+    .wpcc-two-compact-pretty .wpcc-group-activity .wpcc-row .wpcc-radio {
+        width: 100%;
+        min-width: 100%;
+    }
+}
