@@ -1,0 +1,214 @@
+[02-Jan-2024 07:08:43 UTC] PHP Fatal error:  Uncaught RedisCachePro\Exceptions\PhpRedisMissingException: Object Cache Pro requires the `redis` PHP extension. The PhpRedis extension is not loaded in this environment (fpm-fcgi). If it was installed, be sure to load the extension in your php.ini and to restart your PHP and web server processes. in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php:62
+Stack trace:
+#0 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(716): RedisCachePro\Connectors\PhpRedisConnector::boot()
+#1 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(653): RedisCachePro\Configuration\Configuration->setClient()
+#2 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(605): RedisCachePro\Configuration\Configuration::fromArray()
+#3 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(626): RedisCachePro\Configuration\Configuration::from()
+#4 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Plugin.php(109): RedisCachePro\Configuration\Configuration::safelyFrom()
+#5 /var/www/html/wp-content/mu-plugins/redis-cache-pro/redis-cache-pro.php(54): RedisCachePro\Plugin::boot()
+#6 /var/www/html/wp-includes/class-wp-hook.php(308): {closure}()
+#7 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#9 /var/www/html/wp-settings.php(486): do_action()
+#10 /var/www/html/wp-config.php(105): require_once('...')
+#11 /var/www/html/wp-load.php(50): require_once('...')
+#12 /var/www/html/wp-blog-header.php(13): require_once('...')
+#13 /var/www/html/index.php(17): require('...')
+#14 {main}
+  thrown in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php on line 62
+[02-Jan-2024 07:08:43 UTC] PHP Notice:  Function is_embed was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:08:43 UTC] PHP Notice:  Function is_search was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:09:27 UTC] PHP Fatal error:  Uncaught RedisCachePro\Exceptions\PhpRedisMissingException: Object Cache Pro requires the `redis` PHP extension. The PhpRedis extension is not loaded in this environment (fpm-fcgi). If it was installed, be sure to load the extension in your php.ini and to restart your PHP and web server processes. in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php:62
+Stack trace:
+#0 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(716): RedisCachePro\Connectors\PhpRedisConnector::boot()
+#1 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(653): RedisCachePro\Configuration\Configuration->setClient()
+#2 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(605): RedisCachePro\Configuration\Configuration::fromArray()
+#3 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(626): RedisCachePro\Configuration\Configuration::from()
+#4 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Plugin.php(109): RedisCachePro\Configuration\Configuration::safelyFrom()
+#5 /var/www/html/wp-content/mu-plugins/redis-cache-pro/redis-cache-pro.php(54): RedisCachePro\Plugin::boot()
+#6 /var/www/html/wp-includes/class-wp-hook.php(308): {closure}()
+#7 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#9 /var/www/html/wp-settings.php(486): do_action()
+#10 /var/www/html/wp-config.php(105): require_once('...')
+#11 /var/www/html/wp-load.php(50): require_once('...')
+#12 /var/www/html/wp-admin/admin.php(34): require_once('...')
+#13 /var/www/html/wp-admin/index.php(10): require_once('...')
+#14 {main}
+  thrown in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php on line 62
+[02-Jan-2024 07:09:27 UTC] PHP Notice:  Function is_embed was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:09:27 UTC] PHP Notice:  Function is_search was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:12:20 UTC] PHP Fatal error:  Uncaught RedisCachePro\Exceptions\PhpRedisMissingException: Object Cache Pro requires the `redis` PHP extension. The PhpRedis extension is not loaded in this environment (fpm-fcgi). If it was installed, be sure to load the extension in your php.ini and to restart your PHP and web server processes. in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php:62
+Stack trace:
+#0 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(716): RedisCachePro\Connectors\PhpRedisConnector::boot()
+#1 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(653): RedisCachePro\Configuration\Configuration->setClient()
+#2 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(605): RedisCachePro\Configuration\Configuration::fromArray()
+#3 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(626): RedisCachePro\Configuration\Configuration::from()
+#4 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Plugin.php(109): RedisCachePro\Configuration\Configuration::safelyFrom()
+#5 /var/www/html/wp-content/mu-plugins/redis-cache-pro/redis-cache-pro.php(54): RedisCachePro\Plugin::boot()
+#6 /var/www/html/wp-includes/class-wp-hook.php(308): {closure}()
+#7 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#9 /var/www/html/wp-settings.php(486): do_action()
+#10 /var/www/html/wp-config.php(105): require_once('...')
+#11 /var/www/html/wp-load.php(50): require_once('...')
+#12 /var/www/html/wp-blog-header.php(13): require_once('...')
+#13 /var/www/html/index.php(17): require('...')
+#14 {main}
+  thrown in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php on line 62
+[02-Jan-2024 07:12:20 UTC] PHP Notice:  Function is_embed was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:12:20 UTC] PHP Notice:  Function is_search was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:12:25 UTC] PHP Fatal error:  Uncaught RedisCachePro\Exceptions\PhpRedisMissingException: Object Cache Pro requires the `redis` PHP extension. The PhpRedis extension is not loaded in this environment (fpm-fcgi). If it was installed, be sure to load the extension in your php.ini and to restart your PHP and web server processes. in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php:62
+Stack trace:
+#0 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(716): RedisCachePro\Connectors\PhpRedisConnector::boot()
+#1 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(653): RedisCachePro\Configuration\Configuration->setClient()
+#2 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(605): RedisCachePro\Configuration\Configuration::fromArray()
+#3 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(626): RedisCachePro\Configuration\Configuration::from()
+#4 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Plugin.php(109): RedisCachePro\Configuration\Configuration::safelyFrom()
+#5 /var/www/html/wp-content/mu-plugins/redis-cache-pro/redis-cache-pro.php(54): RedisCachePro\Plugin::boot()
+#6 /var/www/html/wp-includes/class-wp-hook.php(308): {closure}()
+#7 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#9 /var/www/html/wp-settings.php(486): do_action()
+#10 /var/www/html/wp-config.php(105): require_once('...')
+#11 /var/www/html/wp-load.php(50): require_once('...')
+#12 /var/www/html/wp-blog-header.php(13): require_once('...')
+#13 /var/www/html/index.php(17): require('...')
+#14 {main}
+  thrown in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php on line 62
+[02-Jan-2024 07:12:25 UTC] PHP Notice:  Function is_embed was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:12:25 UTC] PHP Notice:  Function is_search was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:13:33 UTC] Cron reschedule event error for hook: breeze_purge_cache, Error code: invalid_schedule, Error message: Event schedule does not exist., Data: {"schedule":"breeze_varnish_time","args":[],"interval":86400}
+[02-Jan-2024 07:13:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /var/www/html/wp-content/themes/spotlyte/header.php:26
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(783): require_once()
+#1 /var/www/html/wp-includes/template.php(718): load_template()
+#2 /var/www/html/wp-includes/general-template.php(48): locate_template()
+#3 /var/www/html/wp-content/themes/spotlyte/template/home.php(4): get_header()
+#4 /var/www/html/wp-includes/template-loader.php(106): include('...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('...')
+#6 /var/www/html/index.php(17): require('...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/spotlyte/header.php on line 26
+[02-Jan-2024 07:13:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /var/www/html/wp-content/themes/spotlyte/header.php:26
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(783): require_once()
+#1 /var/www/html/wp-includes/template.php(718): load_template()
+#2 /var/www/html/wp-includes/general-template.php(48): locate_template()
+#3 /var/www/html/wp-content/themes/spotlyte/template/home.php(4): get_header()
+#4 /var/www/html/wp-includes/template-loader.php(106): include('...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('...')
+#6 /var/www/html/index.php(17): require('...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/spotlyte/header.php on line 26
+[02-Jan-2024 07:13:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /var/www/html/wp-content/themes/spotlyte/header.php:26
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(783): require_once()
+#1 /var/www/html/wp-includes/template.php(718): load_template()
+#2 /var/www/html/wp-includes/general-template.php(48): locate_template()
+#3 /var/www/html/wp-content/themes/spotlyte/template/home.php(4): get_header()
+#4 /var/www/html/wp-includes/template-loader.php(106): include('...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('...')
+#6 /var/www/html/index.php(17): require('...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/spotlyte/header.php on line 26
+[02-Jan-2024 07:13:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /var/www/html/wp-content/themes/spotlyte/header.php:26
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(783): require_once()
+#1 /var/www/html/wp-includes/template.php(718): load_template()
+#2 /var/www/html/wp-includes/general-template.php(48): locate_template()
+#3 /var/www/html/wp-content/themes/spotlyte/template/home.php(4): get_header()
+#4 /var/www/html/wp-includes/template-loader.php(106): include('...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('...')
+#6 /var/www/html/index.php(17): require('...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/spotlyte/header.php on line 26
+[02-Jan-2024 07:13:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /var/www/html/wp-content/themes/spotlyte/header.php:26
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(783): require_once()
+#1 /var/www/html/wp-includes/template.php(718): load_template()
+#2 /var/www/html/wp-includes/general-template.php(48): locate_template()
+#3 /var/www/html/wp-content/themes/spotlyte/template/home.php(4): get_header()
+#4 /var/www/html/wp-includes/template-loader.php(106): include('...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('...')
+#6 /var/www/html/index.php(17): require('...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/spotlyte/header.php on line 26
+[02-Jan-2024 07:16:51 UTC] PHP Fatal error:  Uncaught RedisCachePro\Exceptions\PhpRedisMissingException: Object Cache Pro requires the `redis` PHP extension. The PhpRedis extension is not loaded in this environment (fpm-fcgi). If it was installed, be sure to load the extension in your php.ini and to restart your PHP and web server processes. in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php:62
+Stack trace:
+#0 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(716): RedisCachePro\Connectors\PhpRedisConnector::boot()
+#1 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(653): RedisCachePro\Configuration\Configuration->setClient()
+#2 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(605): RedisCachePro\Configuration\Configuration::fromArray()
+#3 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(626): RedisCachePro\Configuration\Configuration::from()
+#4 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Plugin.php(109): RedisCachePro\Configuration\Configuration::safelyFrom()
+#5 /var/www/html/wp-content/mu-plugins/redis-cache-pro/redis-cache-pro.php(54): RedisCachePro\Plugin::boot()
+#6 /var/www/html/wp-includes/class-wp-hook.php(308): {closure}()
+#7 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#9 /var/www/html/wp-settings.php(486): do_action()
+#10 /var/www/html/wp-config.php(105): require_once('...')
+#11 /var/www/html/wp-load.php(50): require_once('...')
+#12 /var/www/html/wp-admin/admin.php(34): require_once('...')
+#13 /var/www/html/wp-admin/plugins.php(10): require_once('...')
+#14 {main}
+  thrown in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php on line 62
+[02-Jan-2024 07:16:51 UTC] PHP Notice:  Function is_embed was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:16:51 UTC] PHP Notice:  Function is_search was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:16:54 UTC] PHP Fatal error:  Uncaught RedisCachePro\Exceptions\PhpRedisMissingException: Object Cache Pro requires the `redis` PHP extension. The PhpRedis extension is not loaded in this environment (fpm-fcgi). If it was installed, be sure to load the extension in your php.ini and to restart your PHP and web server processes. in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php:62
+Stack trace:
+#0 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(716): RedisCachePro\Connectors\PhpRedisConnector::boot()
+#1 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(653): RedisCachePro\Configuration\Configuration->setClient()
+#2 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(605): RedisCachePro\Configuration\Configuration::fromArray()
+#3 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Configuration/Configuration.php(626): RedisCachePro\Configuration\Configuration::from()
+#4 /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Plugin.php(109): RedisCachePro\Configuration\Configuration::safelyFrom()
+#5 /var/www/html/wp-content/mu-plugins/redis-cache-pro/redis-cache-pro.php(54): RedisCachePro\Plugin::boot()
+#6 /var/www/html/wp-includes/class-wp-hook.php(308): {closure}()
+#7 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#9 /var/www/html/wp-settings.php(486): do_action()
+#10 /var/www/html/wp-config.php(105): require_once('...')
+#11 /var/www/html/wp-load.php(50): require_once('...')
+#12 /var/www/html/wp-admin/admin.php(34): require_once('...')
+#13 /var/www/html/wp-admin/themes.php(10): require_once('...')
+#14 {main}
+  thrown in /var/www/html/wp-content/mu-plugins/redis-cache-pro/src/Connectors/PhpRedisConnector.php on line 62
+[02-Jan-2024 07:16:54 UTC] PHP Notice:  Function is_embed was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:16:54 UTC] PHP Notice:  Function is_search was called <strong>incorrectly</strong>. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a href="https://wordpress.org/documentation/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in /var/www/html/wp-includes/functions.php on line 5865
+[02-Jan-2024 07:18:46 UTC] PHP Fatal error:  Uncaught TypeError: ftp_fput(): Argument #1 ($ftp) must be of type FTP\Connection, null given in /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php:212
+Stack trace:
+#0 /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php(212): ftp_fput()
+#1 /var/www/html/wp-content/plugins/breeze/inc/cache/config-cache.php(172): WP_Filesystem_FTPext->put_contents()
+#2 /var/www/html/wp-content/plugins/breeze/inc/breeze-admin.php(743): Breeze_ConfigCache->write()
+#3 /var/www/html/wp-includes/class-wp-hook.php(308): Breeze_Admin::plugin_active_hook()
+#4 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#5 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#6 /var/www/html/wp-admin/includes/plugin.php(691): do_action()
+#7 /var/www/html/wp-admin/plugins.php(58): activate_plugin()
+#8 {main}
+  thrown in /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php on line 212
+[02-Jan-2024 07:18:46 UTC] PHP Fatal error:  Uncaught TypeError: ftp_fput(): Argument #1 ($ftp) must be of type FTP\Connection, null given in /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php:212
+Stack trace:
+#0 /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php(212): ftp_fput()
+#1 /var/www/html/wp-content/plugins/breeze/inc/cache/config-cache.php(172): WP_Filesystem_FTPext->put_contents()
+#2 /var/www/html/wp-content/plugins/breeze/inc/breeze-admin.php(743): Breeze_ConfigCache->write()
+#3 /var/www/html/wp-includes/class-wp-hook.php(308): Breeze_Admin::plugin_active_hook()
+#4 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#5 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#6 /var/www/html/wp-admin/plugins.php(194): do_action()
+#7 {main}
+  thrown in /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php on line 212
+[02-Jan-2024 07:18:47 UTC] PHP Fatal error:  Uncaught TypeError: ftp_fput(): Argument #1 ($ftp) must be of type FTP\Connection, null given in /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php:212
+Stack trace:
+#0 /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php(212): ftp_fput()
+#1 /var/www/html/wp-content/plugins/breeze/inc/cache/config-cache.php(172): WP_Filesystem_FTPext->put_contents()
+#2 /var/www/html/wp-content/plugins/breeze/inc/breeze-admin.php(743): Breeze_ConfigCache->write()
+#3 /var/www/html/wp-includes/class-wp-hook.php(308): Breeze_Admin::plugin_active_hook()
+#4 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters()
+#5 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action()
+#6 /var/www/html/wp-admin/plugins.php(194): do_action()
+#7 {main}
+  thrown in /var/www/html/wp-admin/includes/class-wp-filesystem-ftpext.php on line 212
+[02-Jan-2024 10:18:12 UTC] PHP Warning:  Undefined array key "host" in /var/www/html/wp-includes/canonical.php on line 689
+[02-Jan-2024 10:18:12 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /var/www/html/wp-includes/canonical.php on line 689
+[02-Jan-2024 10:18:12 UTC] PHP Warning:  Undefined array key "host" in /var/www/html/wp-includes/canonical.php on line 698
+[02-Jan-2024 10:18:12 UTC] PHP Warning:  Undefined array key "host" in /var/www/html/wp-includes/canonical.php on line 701

@@ -1,6 +1,10 @@
 
-
 <?php
+define("FTP_HOST", "localhost");
+define("FTP_USER", "ftp-user");
+define("FTP_PASS", "ftp-password");
+define('FS_METHOD', 'direct');
+define('FS_METHOD', 'direct');
 /**
  * The base configuration for WordPress
  *
@@ -89,11 +93,9 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
-
-define( 'WP_DEBUG_DISPLAY', false );
-
-define( 'WP_DEBUG_LOG', true );
+if ( ! defined( 'WP_DEBUG' ) ) {
+	define( 'WP_DEBUG', false );
+}
 
 /* That's all, stop editing! Happy publishing. */
 
