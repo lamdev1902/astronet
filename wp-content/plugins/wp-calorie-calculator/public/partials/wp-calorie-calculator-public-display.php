@@ -71,7 +71,7 @@ endif;
 			<div class="wpcc-switch">
 				<div class="wpcc-switch-option selected" data-position="left"><?php esc_attr_e( 'Imperial', 'wp-calorie-calculator' ); ?></div>
 				<div class="wpcc-switch-option not-selected" data-position="right"><?php esc_attr_e( 'Metric', 'wp-calorie-calculator' ); ?></div>
-				<label class="wpcc-switch-toggle">
+				<label class="wpcc-switch-toggle" style="display:none">
 					<input type="checkbox" name="wpcc-metric-system" value="true" <?php checked( 'true', $metric_system ); ?>>
 					<div class="wpcc-switch-toggle-circle"></div>
 					<div class="wpcc-switch-toggle-background wpcc-switch-toggle-background--two-sided"></div>				
