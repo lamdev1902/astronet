@@ -87,7 +87,8 @@ function calculatorImperial($info)
 
     if($activityId === "0")
     {
-        $result[] = [
+        $result['status'] = 200;
+        $result['result'][] = [
             'goal_type' => 0,
             'name' => $activityItem[$activityId]['name'],
             'calorie' => $bmr
