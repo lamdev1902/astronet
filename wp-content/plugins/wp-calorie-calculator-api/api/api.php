@@ -1,7 +1,7 @@
 <?php 
 abstract class API 
 {
-    protected function _response($data, $status, $unit = '')
+    protected function _response($data, $status, $unit = '',$test = '')
     {
         $result = [];
         $result['status'] = $status;
@@ -12,6 +12,7 @@ abstract class API
             $result['unit'] = 1;
         }
         $result['message'] = $this->_status($status);
+        $result['test'] = $test;
 
 
         return rest_ensure_response($result);

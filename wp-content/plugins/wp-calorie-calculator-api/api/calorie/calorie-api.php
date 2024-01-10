@@ -20,7 +20,7 @@ class Calorie_Api extends API
         $validate = $this->validate->validateRequest($request, "calorie");
         if(!$validate['validate'])
         {
-            return $this->_response([] , $validate['status']);
+            return $this->_response([] , $validate['status'],'',$validate['test']);
         }
 
         $helper = new Data();

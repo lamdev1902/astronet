@@ -22,7 +22,6 @@ class Request
         }else {
             if($type === "calorie")
             {
-                
                 if (empty($request['type']))
                 {
                     $validate['validate'] = false;
