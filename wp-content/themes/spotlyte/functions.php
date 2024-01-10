@@ -162,3 +162,191 @@ add_action( 'widgets_init', 'wpb_widgets_init' );
 // 	LIMIT %d OFFSET %d";
 // $data = $wpdb->get_results( $wpdb->prepare($sql, $limit, $offset), ARRAY_A);
 //var_dump($data);
+
+function calorie_calculator($content)
+{
+	$content = '
+		<div id="spinner"></div>
+		<div id="calculator">
+			<div class="container">
+				<div class="wrapper">
+					<div class="wrapper-header">
+						<div class="header-text">
+							<h2 class="title">Calorie Calculator</h2>
+							<p class="sub-title"> Use this calorie calculator to find out how many calories you really need!</p>
+						</div>
+						<div class="header-logo">
+							<img src="" style="width: 100px; height:100px" alt="" class="logo">
+						</div>
+					</div>
+					<div class="wrapper-content">
+						<div class="content-left">
+							<form action="#" class="form">
+								<div class="column">
+									<div class="label-wrapper img">
+										<label for="male" class="label">Gender</label>
+										<img src="" alt="" class="label-img">
+									</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="1" name="gender" id="male">
+											<label for="male" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Male
+											</label>
+										</div>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="gender" id="female">
+											<label for="female" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Female
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="male" class="label">Age</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item">
+											<input type="text" pattern="[0-9]+" class="" value="" name="age" id="age">
+											<div class="place-holder">
+												<span>Years</span>
+											</div>
+										</div>
+										<span style="" class="age-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Weight</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item">
+											<input type="text" pattern="[0-9]+" class="" value="" name="weight" id="weight">
+											<div class="place-holder">
+												<span>lbs</span>
+											</div>
+										</div>
+										<span class="weight-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Height</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="height-ft">
+												<input type="text" pattern="[0-9]+" class="radio-wrapper__btn" value="" name="feet" id="heightFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="height-in">
+												<input type="text" pattern="[0-9]+" class="radio-wrapper__btn" value="" name="inches" id="heightIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="height-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Level of Activity</label>
+									</div>
+									<select name="activity" id="levelofActivity" class="select-wrapper">
+										<option value="1" class="select-wrapper__option">Basal Metabolic Rate (BMR)</option>
+										<option value="2" class="select-wrapper__option">Sedentary: little or no exercise</option>
+										<option value="3" class="select-wrapper__option">Light: exercise 1-3 times/week</option>
+										<option value="4" class="select-wrapper__option">Moderate: exercise 4-5 times/week</option>
+										<option value="5" class="select-wrapper__option">Active: daily exercise or intense exercise 3-4 times/week</option>
+										<option value="6" class="select-wrapper__option">Very Active: intense exercise 6-7 times/week</option>
+										<option value="7" class="select-wrapper__option">Extra Active: very intense exercise daily, or physical job</option>
+									</select>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Result Unit</label>
+									</div>
+									<select name="unit" id="resultUnit" class="select-wrapper">
+										<option value="1" class="select-wrapper__option">Calories</option>
+										<option value="2" class="select-wrapper__option">Kilojoules</option>
+									</select>
+								</div>
+								<div class="column body-fat inactive">
+									<div class="label-wrapper">
+										<label for="" class="label">Body Fat</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item">
+											<input type="text" class="" value="" name="fat" id="bodyFat">
+											<div class="place-holder">
+												<span>%</span>
+											</div>
+										</div>
+										<span class="fat-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">BMR Estimation Formular</label>
+									</div>
+									<select name="receip" id="bmrReceip" class="select-wrapper">
+										<option value="1" class="select-wrapper__option">Mifflin St Jeor</option>
+										<option value="2" class="select-wrapper__option"> Revised Harris-Benedict</option>
+										<option value="3" class="select-wrapper__option"> Katch-McArdle</option>
+									</select>
+								</div>
+								<div class="action">
+									<button id="btnCalculator" class="btn-primary" type="button">
+										Calculate
+									</button>
+									<button id="btnClear" class="btn-secondary" type="button">
+										Clear
+									</button>
+								</div>
+							</form>
+							<div class="disclaimer">
+								This calculator is for informational purposes only. Its not a substitute for professional medical advice, diagnosis or treatment. Calculations are based on the Mifflin-St Jeor equation, the most reliable of four commonly used formulas to estimate calorie needs, according to a review in the
+							</div>
+						</div>
+						<div class="content-right">
+							<div class="result">
+								<div class="result-none ">
+									<img src="" alt="" class="img">
+									<h4 class="">The number of calories a person uses each day depends on sex, age, weight, height and activity level.</h4>
+								</div>
+								<div class="flex-column result-bmr inactive">
+									<p class="title">Your estimated daily calorie needs to maintain your current weight:</p>
+									<p class="value"></p>
+								</div>
+								<div class="flex-column result-loss inactive">
+									<div class="result-type">
+										<p class="">Lose Weight</p>
+									</div>
+									<div class="goals">
+										<p class="no-loss inactive">You probably do not need to lose weight!</p>
+									</div>
+								</div>
+								<div class="flex-column result-gain inactive">
+									<div class="result-type">
+										<p class="">Gain Weight</p>
+									</div>
+									<div class="goals">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	$a = "";
+	return $content;
+}
+add_shortcode('calculator_form','calorie_calculator');

@@ -2248,6 +2248,7 @@ main {
 }
 .privacy-custom .box {
   max-width: 570px;
+  max-width: 920px;
   margin: 0 auto;
 }
 .privacy-custom .box h4 {

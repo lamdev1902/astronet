@@ -9,7 +9,7 @@ class Calorie_Api extends API
     }
 
     public function test_api_register_routes() {
-        register_rest_route('api/v1', '/test/', array(
+        register_rest_route('api/v1', '/calorie/', array(
             'methods' => 'POST',
             'callback' => array($this, 'test_api_endpoint'),
         ));
@@ -20,7 +20,7 @@ class Calorie_Api extends API
         $validate = $this->validate->validateRequest($request, "calorie");
         if(!$validate['validate'])
         {
-            return $this->_response([] , $validate['status'],'',$validate['test']);
+            return $this->_response([] , $validate['status']);
         }
 
         $helper = new Data();
@@ -177,7 +177,7 @@ class Calorie_Api extends API
         if($bmi['bmi']['type'] == 1)
         {
             $goals = array_filter($goals, function ($item){
-                return $item['type'] != 1;
+                return $item['type'] != 2;
             });
         }
     

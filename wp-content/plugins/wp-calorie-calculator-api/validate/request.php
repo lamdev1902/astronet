@@ -30,7 +30,7 @@ class Request
 
                 if($request['receip'] == 3)
                 {
-                    if(empty($request['info']['body-fat']))
+                    if(!empty($request['info']['body-fat']))
                     {
                         $validate['validate'] = false;
                     }
