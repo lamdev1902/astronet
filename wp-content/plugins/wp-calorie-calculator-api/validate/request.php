@@ -17,7 +17,8 @@ class Request
                 empty($request['info']['height']) ||
                 empty($request['info']['height']['feet']))
         ) {
-           $validate['validate'] = false;  
+           $validate['validate'] = false;
+           $validate['test'] = 'ab';
         }else {
             if($type === "calorie")
             {
@@ -25,6 +26,7 @@ class Request
                 if (empty($request['type']))
                 {
                     $validate['validate'] = false;
+                    $validate['test'] = 'bc';
                 }
 
 
@@ -33,12 +35,14 @@ class Request
                     if(empty($request['info']['body-fat']))
                     {
                         $validate['validate'] = false;
+                        $validate['test'] = 'cd';
                     }
                 }
 
                 if(empty($request['info']['activity']))
                 {
                     $validate['validate'] = false;
+                    $validate['test'] = 'de';
                 }
             }
         }
