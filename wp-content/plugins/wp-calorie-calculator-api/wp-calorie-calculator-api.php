@@ -11,6 +11,16 @@
  * Domain Path:       /languages
 */
 
+require_once(plugin_dir_path(__FILE__) . 'validate/request.php');
+require_once(plugin_dir_path(__FILE__) . 'helper/data.php');
+require_once(plugin_dir_path(__FILE__) . 'models/bmi.php');
+require_once(plugin_dir_path(__FILE__) . 'models/bmr.php');
+require_once(plugin_dir_path(__FILE__) . 'models/duedate.php');
+require_once(plugin_dir_path(__FILE__) . 'api/calorie/calorie-api.php');
+require_once(plugin_dir_path(__FILE__) . 'api/bmi/bmi-api.php');
+require_once(plugin_dir_path(__FILE__) . 'api/bmr/bmr-api.php');
+
+
 // Add an endpoint for the API
 add_action('rest_api_init', 'custom_api_register_routes');
 
@@ -45,7 +55,6 @@ function custom_api_get_posts($req = null) {
         $result = unprocessableEntityResponse('type');
     }
     
-    
     return rest_ensure_response($result);
 };
 
@@ -77,9 +86,9 @@ function calculatorImperial($info)
     unset($info['height']['feet']);
     unset($info['height']['inches']);
 
-    $info['height'] = round($cm, 2);
+    $info['height'] = round($cm,1);
 
-    $info['weight'] =  round($info['weight'] * 0.45359237);
+    $info['weight'] =  round($info['weight'] * 0.45359237, 1);
 
     $bmr = calculatorBMR($info);
 
@@ -196,9 +205,9 @@ function result($bmi, $bmr, $unit)
         }
         if($goal['type'] == 1)
         {
-            $calorie = $calorie - $goal['coefficient']*1000;
+            $calorie = $calorie - $goal['coefficient'] * 1000;
         }elseif($goal['type'] == 2){
-            $calorie = $calorie + $goal['coefficient']*1000;
+            $calorie = $calorie + $goal['coefficient'] * 1000;
         };
         $result['result'][] = [
             'goal_type' => $goal['type'],
