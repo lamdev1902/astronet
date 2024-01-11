@@ -92,7 +92,7 @@ jQuery(function($){
 				checkActivity = 1;
 			}
 			// Kiểm tra và gán giá trị vào đối tượng JSON tương ứng
-			if (fieldName === 'gender' || fieldName === 'activity') {
+			if (fieldName === 'gender' ) {
 				jsonData['info'][fieldName] = fieldValue;
 			} else if (fieldName === 'age' || fieldName === 'weight') {
 				jsonData['info'][fieldName] = fieldValue !== '' ? fieldValue : null;
@@ -106,9 +106,11 @@ jQuery(function($){
 				jsonData['info']['body-fat'] = fieldValue;
 			}else if(fieldName === 'receip'){
 				jsonData['receip'] = fieldValue;
-				receipValue = fieldValue;
 			}else if(fieldName === 'unit'){
 				jsonData['unit'] = fieldValue;
+			}else if(fieldName === 'activity'){
+				jsonData['info'][fieldName] = fieldValue;
+				receipValue = fieldValue;
 			}
 		});
 
@@ -139,6 +141,9 @@ jQuery(function($){
 
 					var goalLose = $('<div class="goals"></div>');
 					var goalGain = $('<div class="goals"></div>');
+
+					var noLose = $('<p class="no-loss">You probably do not need to lose weight!</p>')
+
 					for(const key in result){
 						var item = result[key];
 						
@@ -185,7 +190,10 @@ jQuery(function($){
 					}else {
 						if(receipValue != 1){
 							lose.removeClass('inactive');
-							lose.find('.no-loss').removeClass('inactive');
+							goalLose.append(noLose);
+							lose.find('.goals').replaceWith(goalLose);
+						}else {
+							lose.addClass('inactive');
 							lose.find('.goals').empty();
 						}
 					}
@@ -194,6 +202,9 @@ jQuery(function($){
 					{
 						gain.removeClass('inactive');
 						gain.find('.goals').replaceWith(goalGain);
+					}else {
+						gain.addClass('inactive');
+						gain.find('.goals').empty();
 					}
 				}
 				$('#spinner').hide();
