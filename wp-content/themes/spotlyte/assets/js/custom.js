@@ -113,7 +113,7 @@ jQuery(function($){
 		});
 
 		$.ajax({
-			url: 'https://34.163.253.54/wp-json/api/v1/test/',
+			url: 'https://34.163.253.54/wp-json/api/v1/calculator/',
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify(jsonData),
