@@ -359,7 +359,8 @@ function my_register_styles() {
 
 function age_calculator($content)
 {
-	// wp_enqueue_style( 'age' );
+	echo get_template_directory_uri();
+	wp_enqueue_style( 'age' );
 	
 	$content .= '
 		<div id="spinner"></div>
