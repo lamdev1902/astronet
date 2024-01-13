@@ -355,7 +355,6 @@ add_action('init', 'my_register_styles');
 
 function my_register_styles() {
     wp_register_style( 'age', get_template_directory_uri() . '/age.css' );
-	
 }
 
 function age_calculator($content)
@@ -386,7 +385,7 @@ function age_calculator($content)
 									<div class="text-wrapper">
 
 										<div class="text-wrapper__item">
-											<input type="hidden" class="" value="" name="dayOfBirth" id="birth">
+											<input type="hidden" class="" value="" name="dayOfBirth" id="dayOfBirth">
 										</div>
 										<div class="options">
 											<div class="label-wrapper">
@@ -468,5 +467,5 @@ function age_calculator($content)
 		</div>
 	';
 	return $content;
+	ad
 }
-add_shortcode('age_calculate','age_calculator');
