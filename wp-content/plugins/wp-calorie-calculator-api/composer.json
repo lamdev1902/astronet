@@ -1,0 +1,16 @@
+{
+    "name": "calculator/api",
+    "description": "Api for Fitness Calculator",
+    "autoload": {
+        "psr-4": {
+            "Calculator\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "truclam1902",
+            "email": "nguyenhongtruclam1@gmail.com"
+        }
+    ],
+    "require": {}
+}

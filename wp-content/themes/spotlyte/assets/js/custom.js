@@ -125,7 +125,7 @@ jQuery(function($){
 				{
 					var result = response['result'];
 
-					var unit = response['unit'] ? 'kJ/day' : 'Calorie/day';
+					var unit = response['unit'] == 2 ? 'kJ/day' : 'Calorie/day';
 
 					var bmr = $('.result-bmr');
 					var lose = $('.result-loss');

@@ -350,3 +350,123 @@ function calorie_calculator($content)
 	return $content;
 }
 add_shortcode('calculator_form','calorie_calculator');
+
+add_action('init', 'my_register_styles');
+
+function my_register_styles() {
+    wp_register_style( 'age', get_template_directory_uri() . '/age.css' );
+	
+}
+
+function age_calculator($content)
+{
+	wp_enqueue_style( 'age' );
+	?>
+		<script type="text/javascript" src="<?= get_template_directory_uri() . '/age-calculate.js' ?>'"></script>
+	<?php
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculator">
+			<div class="container">
+				<div class="wrapper">
+					<div class="wrapper-content age">
+						<div class="content-top inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="result">
+
+								</div>
+							</div>
+						</div>
+						<div class="content-bottom">
+							<form action="#" class="form age-calculate">
+								<div class="column">
+									<div class="text-wrapper">
+
+										<div class="text-wrapper__item">
+											<input type="hidden" class="" value="" name="dayOfBirth" id="birth">
+										</div>
+										<div class="options">
+											<div class="label-wrapper">
+												<label for="" class="label">Date of Birth</label>
+											</div>
+											<div class="day-option age-option">
+												<select class="dateMonthInput" name="mon-birth">
+													<option value="1">Jan</option>
+													<option value="2">Feb</option>
+													<option value="3">Mar</option>
+													<option value="4">Apr</option>
+													<option value="5">May</option>
+													<option value="6">Jun</option>
+													<option value="7">Jul</option>
+													<option value="8">Aug</option>
+													<option value="9">Sep</option>
+													<option value="10">Oct</option>
+													<option value="11">Nov</option>
+													<option value="12">Dec</option>
+												</select>
+											</div>
+											<div class="mon-option age-option">
+												<select class="dayDateInput" name="date-birth">
+												</select>
+											</div>
+											<div class="year-option age-option">
+												<input type="text" class="" name="year-birth">
+											</div>
+										</div>
+										<span class="birth-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="text-wrapper">
+										<div class="text-wrapper__item">
+											<input type="hidden" class="" value="" name="ageOfTheDate" id="birth">
+										</div>
+										<div class="options">
+											<div class="label-wrapper">
+												<label for="" class="label">Age at the Date</label>
+											</div>
+											<div class="day-option age-option">
+												<select class="ageMonthInput" name="mon-age">
+													<option value="1">Jan</option>
+													<option value="2">Feb</option>
+													<option value="3">Mar</option>
+													<option value="4">Apr</option>
+													<option value="5">May</option>
+													<option value="6">Jun</option>
+													<option value="7">Jul</option>
+													<option value="8">Aug</option>
+													<option value="9">Sep</option>
+													<option value="10">Oct</option>
+													<option value="11">Nov</option>
+													<option value="12">Dec</option>
+												</select>
+											</div>
+											<div class="mon-option age-option">
+												<select class="ageDateInput" name="date-age">
+												</select>
+											</div>
+											<div class="year-option age-option">
+												<input type="text" class="" name="year-age">
+											</div>
+										</div>
+										<span class="ageof-error error"></span>
+									</div>
+								</div>
+								<div class="action">
+									<button id="btnAge" class="btn-primary" type="button">
+										Calculate
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+add_shortcode('age_calculate','age_calculator');
