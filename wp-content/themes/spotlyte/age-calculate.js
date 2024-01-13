@@ -130,7 +130,7 @@ jQuery(function($){
             if(!check)
             {
                 $.ajax({
-                    url: 'http://wp-astronet.local/wp-json/api/v1/age/',
+                    url: 'https://34.163.253.54/wp-json/api/v1/age/',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(jsonData),
