@@ -468,3 +468,4 @@ function age_calculator($content)
 	';
 	return $content;
 }
+add_shortcode('age_calculate','age_calculator');
