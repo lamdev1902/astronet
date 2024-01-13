@@ -467,5 +467,4 @@ function age_calculator($content)
 		</div>
 	';
 	return $content;
-	ad
 }
