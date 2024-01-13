@@ -1,17 +1,13 @@
 <?php 
 abstract class API 
 {
-    protected function _response($data, $status, $unit = '')
+    protected function _response($data, $status, $unit = 1)
     {
         $result = [];
         $result['status'] = $status;
         $result['result'] = $data;
-        $result['unit'] = '';
+        $result['unit'] = $unit;
 
-        if($unit)
-        {
-            $result['unit'] = 1;
-        }
         $result['message'] = $this->_status($status);
 
 

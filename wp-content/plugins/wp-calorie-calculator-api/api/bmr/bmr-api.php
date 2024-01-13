@@ -25,6 +25,9 @@ class Bmr_Api extends API
 
         $due = new Due_Date();
         $this->due = $due;
+
+        $helper = new Data();
+        $this->helper = $helper;
     }
 
     public function bmr_api_register_routes() {
@@ -38,20 +41,21 @@ class Bmr_Api extends API
     {
         $validateRequest = $this->validate->validateRequest($request);
 
-        $data = [
-            'date' => '2023-01-01',
-            'average' => '28'
-        ];
         
-        $date = $this->due->DueDateCalculate($data);
         if(!$validateRequest['validate'])
         {
             return $this->_response([] , $validateRequest['status']);
         }
         
-        $bmrResult = $this->bmr->BMRCalculate($request['info'], $request['receip']);
+        $result = $this->bmr->BMRCalculate($request['info'], $request['receip']);
 
-        return $this->_response($bmrResult, 200);
+        $unit = 1;
+        if($request['unit'] == 2)
+        {
+            $result = $this->helper->kilojoulesConvert($result);
+            $unit = 2;
+        }
+        return $this->_response($result, 200, $unit);
     }
 }
 

@@ -52,12 +52,12 @@ class Calorie_Api extends API
             ];
         }
 
-        $unit = '';
+        $unit = 1;
         
         if($request['unit'] == 2)
         {
             $result = $helper->kilojoulesConvert($result);
-            $unit = 'kilojoules';
+            $unit = 2;
         }
         return $this->_response($result, 200, $unit);
     }
