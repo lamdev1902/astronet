@@ -1,0 +1,121 @@
+.error {
+    position: absolute;
+}
+
+.calculate--wrapper__content {
+    display: flex;
+
+}
+
+.calculate--wrapper__content .content-left {
+    flex-basis: 50%;
+    background-color:#eeeeee;
+    padding: 20px;
+}
+
+.calculate--wrapper__content .content-right {
+    flex-basis: 50%;
+}
+
+.form .column {
+    display:flex;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.form .column > div:nth-child(1) {
+    width:20%;
+}
+
+.form .column > div:nth-child(2)
+{
+    width: 80%;
+}
+
+.column .radio-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form .column .text-wrapper__item.only-one {
+    position:relative;
+}
+.form .column .text-wrapper__item:not(.only-one) > div {
+    position:relative;
+    flex-basis: calc(50% - 10px);
+}
+
+
+.column .input[type=text]
+{
+    width:100%;
+}
+
+.form button {
+    border: 0px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.form button:hover {
+    cursor: pointer;
+}
+
+.form .btn-primary
+{
+    padding: 15px;
+    background-color: #4c7b25;
+    margin-right: 10px;
+}
+
+.form .btn-primary:hover,
+.form .btn-secondary:hover
+{
+    opacity: 0.8;
+}
+
+.form .btn-secondary {
+    padding: 15px 10px;
+    background-color: #ababab;
+}
+
+.content-right .result .item 
+{
+    display: flex;
+    width: 80%;
+    
+}
+
+.result .item p 
+{
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.result .item p.title 
+{
+    flex-basis: 80%;
+}
+
+.result .item p.value
+{
+    flex-basis: 20%;
+}
+
+.result .item.item-2
+{
+    background-color: #eeeeee;
+}
+
+.content-right div.title {
+    padding: 12px 15px;
+    background:#4c7b25;
+    color: #ffff;
+}
+
+.content-right div.title h2{
+    margin: 0;
+}

@@ -45,13 +45,6 @@ class BodyFatModel extends AbstractModel
             'type' => $type
         ];
 
-        $jacksonPollock = $this->jacksonPollockIdeal($data['info']);
-
-        $result['bfp']['jackson']  = [
-            'title' => 'Ideal Body Fat for Given Age (Jackson & Pollock)',
-            'percent' => $jacksonPollock
-        ];
-
         $result['bfp']['mass'] = [
             "title" => "Body Fat Mass",
             "pounds" => round( ($weight * ( $result['bfp']['navy_method']['percent']/100 ) ), 1)
@@ -60,6 +53,13 @@ class BodyFatModel extends AbstractModel
         $result['bfp']['lean'] = [
             "pounds" => round( $weight - $result['bfp']['mass']['pounds'], 1),
             "title" => "Lean Body Mass"
+        ];
+
+        $jacksonPollock = $this->jacksonPollockIdeal($data['info']);
+
+        $result['bfp']['jackson']  = [
+            'title' => 'Ideal Body Fat for Given Age (Jackson & Pollock)',
+            'percent' => $jacksonPollock
         ];
 
         $result['bfp']['bmi_method'] = [
@@ -118,10 +118,13 @@ class BodyFatModel extends AbstractModel
 
     private function bodyFatCategoryFemale($bfp)
     {
-
-        if($bfp < 14 )
+        if($bfp < 10)
         {
-            $text = "Essential";
+            $text = 'Less than Essential Fat';
+        }
+        else if($bfp >= 10 && $bfp < 14 )
+        {
+            $text = "Essential Fat";
 
         }else if($bfp >= 14 && $bfp < 21)
         {
@@ -147,7 +150,11 @@ class BodyFatModel extends AbstractModel
     private function bodyFatCategoryMale($bfp)
     {
         $text = '';
-        if($bfp < 6)
+        if($bfp < 2)
+        {
+            $text = 'Less than Essential Fat';
+        }
+        if($bfp >= 2 && $bfp < 6)
         {
             $text = 'Essential';
         }else if($bfp >= 6 && $bfp < 14)
@@ -204,7 +211,7 @@ class BodyFatModel extends AbstractModel
     {
         $gender = $gender == 1 ? 16.2 : 5.4;
 
-        return  1.20 * $bmi + 0.23 * $age - $gender;
+        return  floor(1.20 * $bmi + 0.23 * $age - $gender);
     }
 
 }
