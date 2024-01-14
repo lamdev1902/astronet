@@ -30,9 +30,19 @@ class BodyFatModel extends AbstractModel
 
         $bmiResult = $this->bmi->calculate($data['info']);
 
+        $type = '';
+
+        if($data['info']['gender'] == 1)
+        {
+            $type =$this->bodyFatCategoryMale($result['bfp']['navy_method']['percent']);
+        }else 
+        {
+            $type =$this->bodyFatCategoryFeMale($result['bfp']['navy_method']['percent']);
+
+        }
         $result['bfp']['category'] = [
             'title' => 'Body Fat Category',
-            'type' => $this->bodyFatCategory($result['bfp']['navy_method']['percent'])
+            'type' => $type
         ];
 
         $jacksonPollock = $this->jacksonPollockIdeal($data['info']);
@@ -106,7 +116,7 @@ class BodyFatModel extends AbstractModel
 
     }
 
-    private function bodyFatCategory($bfp)
+    private function bodyFatCategoryFemale($bfp)
     {
 
         if($bfp < 14 )
@@ -129,6 +139,28 @@ class BodyFatModel extends AbstractModel
         {
             $text = "Obese";
 
+        }
+
+        return $text;
+    }
+
+    private function bodyFatCategoryMale($bfp)
+    {
+        $text = '';
+        if($bfp < 6)
+        {
+            $text = 'Essential';
+        }else if($bfp >= 6 && $bfp < 14)
+        {
+            $text = 'Athletes';
+        }else if($bfp >= 14 && $bfp < 18){
+            $text = 'Fitness';
+        }else if($bfp >= 18 && $bfp < 25)
+        {
+            $text = 'Average';
+        }else if($bfp >= 25)
+        {
+            $text = 'Obese';
         }
 
         return $text;
