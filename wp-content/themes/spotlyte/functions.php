@@ -361,7 +361,7 @@ function age_calculator($content)
 {
 	wp_enqueue_style( 'age' );
 	?>
-		<script type="text/javascript" src="<?= get_template_directory_uri() . '/age-calculate.js' ?>"></script>
+		<script type="text/javascript" src="<?= get_template_directory_uri() . '/age-calculate.js' ?>'"></script>
 	<?php
 	$content .= '
 		<div id="spinner"></div>
