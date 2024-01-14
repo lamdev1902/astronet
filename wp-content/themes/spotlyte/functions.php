@@ -362,7 +362,6 @@ function age_calculator($content)
 {
 	wp_enqueue_style( 'age' );
 	?>
-
 		<script type="text/javascript" src="<?= get_template_directory_uri() . '/age-calculate.js' ?>'"></script>
 	<?php
 	$content .= '
@@ -476,10 +475,7 @@ add_shortcode('age_calculate','age_calculator');
 function body_fat_calculator($content)
 {
 	wp_enqueue_style( 'bodyfat' );
-	?>
 
-		<script type="text/javascript" src="<?= get_template_directory_uri() . '/bodyfat-calculate.js' ?>'"></script>
-	<?php
 	$content .= '
 		<div id="spinner"></div>
 		<div id="calculate">
