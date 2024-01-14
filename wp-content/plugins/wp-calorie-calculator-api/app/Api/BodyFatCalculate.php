@@ -4,7 +4,7 @@ namespace Calculator\Api;
 use Calculator\Models\BodyFatModel;
 use Calculator\Api\AbstractApi;
 
-class AgeCalculate extends AbstractApi 
+class BodyFatCalculate extends AbstractApi 
 {
     /**
      * Body Fat Model
@@ -32,7 +32,7 @@ class AgeCalculate extends AbstractApi
     {
 
         
-        $time = $this->bodyFat->calculate($request['info']);
+        $time = $this->bodyFat->calculate($request);
 
         return $this->_response($time, 200);
     }

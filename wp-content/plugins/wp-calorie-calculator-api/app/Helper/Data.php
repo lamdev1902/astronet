@@ -19,9 +19,8 @@ class Data
      * Convert Pounds to Kg
      * @return int
      */
-    public function kgConvert($data)
+    public function kgConvert($weight)
     {
-        $weight = $data['weight'];
         return round($weight * 0.45359237,1);
     }
 

@@ -3,6 +3,7 @@ namespace Calculator\Models;
 
 use Calculator\Models\AbstractModel;
 use Calculator\Helper\Data;
+use Calculator\Models\BmiModel;
 
 class BodyFatModel extends AbstractModel
 {
@@ -15,15 +16,50 @@ class BodyFatModel extends AbstractModel
     {
         $helper = new Data();
         $this->helper = $helper;
+
+        $bmi = new BmiModel();
+        $this->bmi = $bmi;
     }
 
     public function calculate($data)
     {
-        $data = $this->convert($data);
+        $formatData = $this->convert($data['info']);
+        $weight = $data['info']['weight'];
 
-        $result = $this->bodyfatCalculate($data);
+        $result = $this->bodyfatCalculate($formatData);
 
-        return $data;
+        $bmiResult = $this->bmi->calculate($data['info']);
+
+        $result['bfp']['category'] = [
+            'title' => 'Body Fat Category',
+            'type' => $this->bodyFatCategory($result['bfp']['navy_method']['percent'])
+        ];
+
+        $jacksonPollock = $this->jacksonPollockIdeal($data['info']);
+
+        $result['bfp']['jackson']  = [
+            'title' => 'Ideal Body Fat for Given Age (Jackson & Pollock)',
+            'percent' => $jacksonPollock
+        ];
+
+        $result['bfp']['mass'] = [
+            "title" => "Body Fat Mass",
+            "pounds" => round( ($weight * ( $result['bfp']['navy_method']['percent']/100 ) ), 1)
+        ];
+
+        $result['bfp']['lean'] = [
+            "pounds" => round( $weight - $result['bfp']['mass']['pounds'], 1),
+            "title" => "Lean Body Mass"
+        ];
+
+        $result['bfp']['bmi_method'] = [
+            'title' => 'Body Fat (BMI Method)',
+            'percent' => $this->bodyFatBMICalculate($bmiResult['bmi']['bmi'], $data['info']['gender'], $data['info']['age'])
+        ];
+
+
+
+        return $result;
     }
 
     private function convert($data)
@@ -49,18 +85,94 @@ class BodyFatModel extends AbstractModel
         $neck = $data['neck'];
         $waist = $data['waist'];
 
+        $gender = $data['gender'];
+
         if($gender == 1)
         {
-            $bfp = ( 495/( 1.0324 - ( 0.19077 * log10($waist - $neck) + ( 0.15456 * log10($heigth) ) ) ) ) - 450;
+            $bfp = ( 495/( 1.0324 - ( 0.19077 * log10($waist - $neck) ) + ( 0.15456 * log10($height) ) ) )  - 450;
         }else {
             $hip = $this->helper->cmConvert($data['hip']);
-            $bfp = ( 495/( 1.29579 - ( 0.35004 * log10($waist + $hip - $neck) + ( 0.22100 * log10($heigth) ) ) ) ) - 450;
+            $bfp = ( 495/( 1.29579 - ( 0.35004 * log10($waist + $hip - $neck) ) + ( 0.22100 * log10($height) )  ) ) - 450;
         }
 
         $result = [];
 
-        $result['bmr'][] = $bfp;
+        $result['bfp']['navy_method'] = [
+            'title' => 'Body Fat (U.S. Navy Method)',
+            'percent' => round($bfp,1)
+        ];
 
+        return $result;
+
+    }
+
+    private function bodyFatCategory($bfp)
+    {
+
+        if($bfp < 14 )
+        {
+            $text = "Essential";
+
+        }else if($bfp >= 14 && $bfp < 21)
+        {
+            $text = "Athletes";
+
+        }else if($bfp >= 21 && $bfp < 25)
+        {
+            $text = "Fitness";
+
+        }else if($bfp >= 25 && $bfp < 32)
+        {
+            $text = "Average";
+
+        }else if($bfp >= 32)
+        {
+            $text = "Obese";
+
+        }
+
+        return $text;
+    }
+
+
+    private function jacksonPollockIdeal($data)
+    {
+        $age = $data['age'];
+        $gender = $data['gender'];
+
+        $percent = '';
+        if($age >= 20 && $age < 25)
+        {
+            $percent = ( $gender == 1 ) ? 8.5 : 17.7;
+        }else if($age >= 25 && $age < 30)
+        {
+            $percent = ( $gender == 1 ) ? 10.5 : 18.4;
+        }else if($age >= 30 && $age < 35)
+        {
+            $percent = ( $gender == 1 ) ? 13.7 : 21.5;
+        }else if($age >= 35 && $age < 40)
+        {
+            $percent = ( $gender == 1 ) ? 15.3 : 22.2;
+        }else if($age >= 40 && $age < 45 )
+        {
+            $percent = ( $gender == 1 ) ? 16.4 : 22.9;
+        }
+        else if($age >= 45 && $age < 50)
+        {
+            $percent = ( $gender == 1 ) ? 18.9 : 25.2;
+        }else if($age >= 50 && $age < 55)
+        {
+            $percent = ( $gender == 1 ) ? 20.9 : 26.3;
+        }
+
+        return $percent;
+    }
+
+    private function bodyFatBMICalculate($bmi, $gender, $age)
+    {
+        $gender = $gender == 1 ? 16.2 : 5.4;
+
+        return  1.20 * $bmi + 0.23 * $age - $gender;
     }
 
 }
