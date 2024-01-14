@@ -58,7 +58,8 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-3.5.0.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/slick/slick.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/animate/animate.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/age-calculate.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bodyfat-calculate.js"></script>
 <?php wp_footer();?>
 </body>
 </html>
