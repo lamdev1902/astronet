@@ -488,7 +488,7 @@ function body_fat_calculator($content)
 									</div>
 									<div class="radio-wrapper">
 										<div class="radio-wrapper__item">
-											<input type="radio" class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
 											<label for="male" class="radio-wrapper__label">
 												<span class="radio-visibility"></span>
 												Male
@@ -553,8 +553,74 @@ function body_fat_calculator($content)
 										<span class="height-error error"></span>
 									</div>
 								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Neck</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="neck-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[neck][feet]" id="neckFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="neck-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[neck][inches]" id="neckIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="neck-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Waist</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="waist-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[waist][feet]" id="waistFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="waist-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[waist][inches]" id="waistIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="waist-error error"></span>
+									</div>
+								</div>
+								<div class="column hip inactive">
+									<div class="label-wrapper">
+										<label for="" class="label">Hip</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="hip-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[hip][feet]" id="hipFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="hip-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[hip][inches]" id="hipIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="hip-error error"></span>
+									</div>
+								</div>
 								<div class="action">
-									<button id="btnBodyFat" class="btn-primary" type="button">
+									<button id="btnBodyFat" disabled="disabled" class="btn-primary" type="button">
 										Calculate
 									</button>
 									<button id="btnClear" class="btn-secondary" type="button">
@@ -572,7 +638,6 @@ function body_fat_calculator($content)
 									
 								</div>
 								<div class="result">
-
 								</div>
 							</div>
 						</div>
