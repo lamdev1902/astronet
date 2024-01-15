@@ -4,17 +4,16 @@
 
 .calculate--wrapper__content {
     display: flex;
-
 }
 
 .calculate--wrapper__content .content-left {
-    flex-basis: 50%;
+    flex-basis: 42%;
     background-color:#eeeeee;
     padding: 20px;
 }
 
 .calculate--wrapper__content .content-right {
-    flex-basis: 50%;
+    flex-basis: 58%;
 }
 
 .form .column {
@@ -70,6 +69,17 @@
     margin-right: 10px;
 }
 
+.form .btn-primary:disabled {
+    opacity: 0.6;
+}
+
+.form .btn-primary:disabled:hover 
+{
+    cursor: default;
+    background: #4c7b25;
+    opacity: 0.6;
+}
+
 .form .btn-primary:hover,
 .form .btn-secondary:hover
 {
@@ -86,6 +96,10 @@
     display: flex;
     width: 80%;
     
+}
+
+.result {
+    margin-top: 30px;
 }
 
 .result .item p 
@@ -118,4 +132,11 @@
 
 .content-right div.title h2{
     margin: 0;
+}
+
+.main-result 
+{
+    font-size: 1.875rem;
+    font-weight: 600;
+    padding: 20px 45px;
 }

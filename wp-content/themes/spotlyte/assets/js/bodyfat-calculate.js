@@ -10,6 +10,8 @@ jQuery(function($){
             }else {
                 $('.hip').addClass('inactive')
             }
+
+            validateForm();
         })
 
         $("input[name='info[age]']").change(function () {
@@ -23,6 +25,9 @@ jQuery(function($){
                 $(this).val('');
                 $('.age-error').text('Must input numbers!');
             }
+
+            validateForm();
+
         });
 
         $("input[name='info[weight]']").change(function () {
@@ -36,6 +41,9 @@ jQuery(function($){
                 $(this).val('');
                 $('.weight-error').text('Must input numbers!');
             }
+
+            validateForm();
+
         });
 
         $("input[name='info[height][feet]']").change(function () {
@@ -51,13 +59,26 @@ jQuery(function($){
                 $('.height-error').text('Must input numbers!');
             }
             
+            validateForm();
+
+        });
+
+        $("input[name='info[height][inches]']").change(function () {
+            if(!$(this).val().match(regex)){
+                $(this).val('');
+                $('.height-error').text('Must input numbers!');
+            }else {
+                $('.height-error').text('');
+            }
+            validateForm();
+            
         });
 
         $("input[name='info[neck][feet]']").change(function () {
             if($(this).val().match(regex)){
                 if($(this).val() < 1)
                 {
-                    $('.neck-error').text('Neck value must be between 1');
+                    $('.neck-error').text('Neck value must be between 1.');
                 }else {
                     $('.neck-error').text('');
                 }
@@ -65,6 +86,18 @@ jQuery(function($){
                 $(this).val('');
                 $('.neck-error').text('Must input numbers!');
             }
+            validateForm();
+            
+        });
+
+        $("input[name='info[neck][inches]']").change(function () {
+            if(!$(this).val().match(regex)){
+                $(this).val('');
+                $('.neck-error').text('Must input numbers!');
+            }else {
+                $('.neck-error').text('');
+            }
+            validateForm();
             
         });
 
@@ -80,6 +113,18 @@ jQuery(function($){
                 $(this).val('');
                 $('.waist-error').text('Must input numbers!');
             }
+            validateForm();
+            
+        });
+
+        $("input[name='info[waist][inches]']").change(function () {
+            if(!$(this).val().match(regex)){
+                $(this).val('');
+                $('.waist-error').text('Must input numbers!');
+            }else {
+                $('.waist-error').text('');
+            }
+            validateForm();
             
         });
 
@@ -95,8 +140,33 @@ jQuery(function($){
                 $(this).val('');
                 $('.hip-error').text('Must input numbers!');
             }
+            validateForm();
             
         });
+
+        $("input[name='info[hip][inches]']").change(function () {
+            if(!$(this).val().match(regex)){
+                $(this).val('');
+                $('.hip-error').text('Must input numbers!');
+            }else {
+                $('.hip-error').text('');
+            }
+            validateForm();
+            
+        });
+
+        $("#btnClear").on('click', function(){
+            $("input[name='info[age]").val('');
+            $("input[name='info[weight]").val('');
+            $("input[name='info[height][feet]").val('');
+            $("input[name='info[height][inches]").val('');
+            $("input[name='info[neck][feet]").val('');
+            $("input[name='info[neck][inches]").val('');
+            $("input[name='info[waist][feet]").val('');
+            $("input[name='info[waist][inches]").val('');
+            $("input[name='info[hip][feet]").val('');
+            $("input[name='info[hip][inches]").val('');
+        })
 
         $("#btnBodyFat").on('click', function(){
 
@@ -144,6 +214,10 @@ jQuery(function($){
 
                                 var div = $(`<div class="item ${classDiv}"></div>`);
 
+                                if(key == 'navy_method')
+                                {
+                                    $('.main-result').text('Body Fat: ' + value.percent + ' %');
+                                }
                                 var text = '';
                                 if(value.percent)
                                 {
@@ -176,3 +250,35 @@ jQuery(function($){
     });
 })
 
+function validateForm()
+{
+  var age = $("input[name='info[age]").val();
+  var weight = $("input[name='info[weight]").val();
+  var height = $("input[name='info[height][feet]").val();
+  var neck = $("input[name='info[neck][feet]").val();
+  var waist = $("input[name='info[waist][feet]").val();
+  var hip = $("input[name='info[hip][inches]").val();
+
+  var ageError = $(".age-error").text();
+  var weightError = $(".weight-error").text();
+  var heightError = $(".height-error").text();
+  var neckError = $(".neck-error").text();
+  var waistError = $(".waist-error").text();
+  var hipError = $(".hip-error").text();
+
+    if($('input[name="info[gender]"]').val() == 1){
+        if( (age && weight && height && neck && waist ) && (ageError == "" && weightError == "" && heightError == "" && neckError == "" && waistError == "") )        
+        {
+            $("#btnBodyFat").prop('disabled', false);
+        }else {
+            $("#btnBodyFat").prop('disabled', true);
+        }
+    }else {
+        if( (age && weight && height && neck && waist && hip ) && (ageError == "" &&  weightError == "" && heightError == "" && neckError == "" &&  waistError == "" && hipError == ""))        
+        {
+            $("#btnBodyFat").prop('disabled', false);
+        }else {
+            $("#btnBodyFat").prop('disabled', true);
+        }
+    }
+}
