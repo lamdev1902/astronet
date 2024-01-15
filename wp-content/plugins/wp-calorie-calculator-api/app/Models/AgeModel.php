@@ -8,8 +8,8 @@ class AgeModel
     {
         $result = [];
 
-        $from = new \DateTime($data['from_date']);
-        $to = new \DateTime( $data['to_date']);
+        $from = new \DateTime($data['dayOfBirth']);
+        $to = new \DateTime( $data['ageOfTheDate']);
 
         $time = $to->diff($from);
 

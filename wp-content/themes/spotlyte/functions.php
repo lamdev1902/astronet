@@ -384,7 +384,7 @@ function age_calculator($content)
 									<div class="text-wrapper">
 
 										<div class="text-wrapper__item">
-											<input type="hidden" class="" value="" name="dayOfBirth" id="dayOfBirth">
+											<input type="hidden" class="" value="1990-01-01" name="dayOfBirth" id="dayOfBirth">
 										</div>
 										<div class="options">
 											<div class="label-wrapper">
@@ -392,7 +392,7 @@ function age_calculator($content)
 											</div>
 											<div class="day-option age-option">
 												<select class="dateMonthInput" name="mon-birth">
-													<option value="1">Jan</option>
+													<option value="1" selected>Jan</option>
 													<option value="2">Feb</option>
 													<option value="3">Mar</option>
 													<option value="4">Apr</option>
@@ -411,7 +411,7 @@ function age_calculator($content)
 												</select>
 											</div>
 											<div class="year-option age-option">
-												<input type="text" class="" name="year-birth">
+												<input type="text" value="1990" class="" name="year-birth">
 											</div>
 										</div>
 										<span class="birth-error error"></span>
@@ -473,188 +473,6 @@ add_shortcode('age_calculate','age_calculator');
 function body_fat_calculator($content)
 {
 	wp_enqueue_style( 'bodyfat' );
-	
-	$content .= '
-		<div id="spinner"></div>
-		<div id="calculate">
-			<div class="container">
-				<div class="calculate--wrapper">
-					<div class="calculate--wrapper__content">
-						<div class="content-left">
-							<form action="#" class="form bodyfat-calculate">
-								<div class="column">
-									<div class="label-wrapper img">
-										<label for="male" class="label">Gender</label>
-									</div>
-									<div class="radio-wrapper">
-										<div class="radio-wrapper__item">
-											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
-											<label for="male" class="radio-wrapper__label">
-												<span class="radio-visibility"></span>
-												Male
-											</label>
-										</div>
-										<div class="radio-wrapper__item">
-											<input type="radio" class="radio-wrapper__btn" value="2" name="info[gender]" id="female">
-											<label for="female" class="radio-wrapper__label">
-												<span class="radio-visibility"></span>
-												Female
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="column">
-									<div class="label-wrapper">
-										<label for="male" class="label">Age</label>
-									</div>
-									<div class="text-wrapper">
-											<div class="text-wrapper__item only-one">
-												<input type="text"  class="" value="" name="info[age]" id="age">
-												<div class="place-holder">
-													<span>Years</span>
-												</div>
-											</div>
-											<span style="" class="age-error error"></span>
-										</div>
-								</div>
-								<div class="column">
-									<div class="label-wrapper">
-										<label for="male" class="label">Weight</label>
-									</div>
-									<div class="text-wrapper">
-											<div class="text-wrapper__item only-one">
-												<input type="text"  class="" value="" name="info[weight]" id="weight">
-												<div class="place-holder">
-													<span>Pounds</span>
-												</div>
-											</div>
-											<span style="" class="weight-error error"></span>
-										</div>
-								</div>
-								<div class="column">
-									<div class="label-wrapper">
-										<label for="" class="label">Height</label>
-									</div>
-									<div class="text-wrapper">
-										<div class="text-wrapper__item us">
-											<div class="height-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
-												<div class="place-holder">
-													<span>ft</span>
-												</div>
-											</div>
-											<div class="height-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
-												<div class="place-holder">
-													<span>in</span>
-												</div>
-											</div>
-										</div>
-										<span class="height-error error"></span>
-									</div>
-								</div>
-								<div class="column">
-									<div class="label-wrapper">
-										<label for="" class="label">Neck</label>
-									</div>
-									<div class="text-wrapper">
-										<div class="text-wrapper__item us">
-											<div class="neck-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[neck][feet]" id="neckFt">
-												<div class="place-holder">
-													<span>ft</span>
-												</div>
-											</div>
-											<div class="neck-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[neck][inches]" id="neckIn">
-												<div class="place-holder">
-													<span>in</span>
-												</div>
-											</div>
-										</div>
-										<span class="neck-error error"></span>
-									</div>
-								</div>
-								<div class="column">
-									<div class="label-wrapper">
-										<label for="" class="label">Waist</label>
-									</div>
-									<div class="text-wrapper">
-										<div class="text-wrapper__item us">
-											<div class="waist-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[waist][feet]" id="waistFt">
-												<div class="place-holder">
-													<span>ft</span>
-												</div>
-											</div>
-											<div class="waist-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[waist][inches]" id="waistIn">
-												<div class="place-holder">
-													<span>in</span>
-												</div>
-											</div>
-										</div>
-										<span class="waist-error error"></span>
-									</div>
-								</div>
-								<div class="column hip inactive">
-									<div class="label-wrapper">
-										<label for="" class="label">Hip</label>
-									</div>
-									<div class="text-wrapper">
-										<div class="text-wrapper__item us">
-											<div class="hip-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[hip][feet]" id="hipFt">
-												<div class="place-holder">
-													<span>ft</span>
-												</div>
-											</div>
-											<div class="hip-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[hip][inches]" id="hipIn">
-												<div class="place-holder">
-													<span>in</span>
-												</div>
-											</div>
-										</div>
-										<span class="hip-error error"></span>
-									</div>
-								</div>
-								<div class="action">
-									<button id="btnBodyFat" disabled="disabled" class="btn-primary" type="button">
-										Calculate
-									</button>
-									<button id="btnClear" class="btn-secondary" type="button">
-										Clear
-									</button>
-								</div>
-							</form>
-						</div>
-						<div class="content-right inactive">
-							<div class="">
-								<div class="title">
-									<h2>Result</h2>
-								</div>
-								<div class="main-result">
-									
-								</div>
-								<div class="result">
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	';
-	return $content;
-}
-
-add_shortcode('body_fat','body_fat_calculator');
-
-function bmi_calculator($content)
-{
-	wp_enqueue_style( 'body' );
 	
 	$content .= '
 		<div id="spinner"></div>
@@ -735,70 +553,120 @@ function bmi_calculator($content)
 										<span class="height-error error"></span>
 									</div>
 								</div>
+								<div class="action">
+									<button id="btnBodyFat" class="btn-primary" type="button">
+										Calculate
+									</button>
+									<button id="btnClear" class="btn-secondary" type="button">
+										Clear
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="content-right inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="main-result">
+									
+								</div>
+								<div class="result">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+
+add_shortcode('body_fat','body_fat_calculator');
+
+function bmi_calculator($content)
+{
+	wp_enqueue_style( 'bodyfat' );
+	
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculate">
+			<div class="container">
+				<div class="calculate--wrapper">
+					<div class="calculate--wrapper__content">
+						<div class="content-left">
+							<form action="#" class="form bodyfat-calculate">
 								<div class="column">
-									<div class="label-wrapper">
-										<label for="" class="label">Neck</label>
+									<div class="label-wrapper img">
+										<label for="male" class="label">Gender</label>
 									</div>
-									<div class="text-wrapper">
-										<div class="text-wrapper__item us">
-											<div class="neck-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[neck][feet]" id="neckFt">
-												<div class="place-holder">
-													<span>ft</span>
-												</div>
-											</div>
-											<div class="neck-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[neck][inches]" id="neckIn">
-												<div class="place-holder">
-													<span>in</span>
-												</div>
-											</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
+											<label for="male" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Male
+											</label>
 										</div>
-										<span class="neck-error error"></span>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[gender]" id="female">
+											<label for="female" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Female
+											</label>
+										</div>
 									</div>
 								</div>
 								<div class="column">
 									<div class="label-wrapper">
-										<label for="" class="label">Waist</label>
+										<label for="male" class="label">Age</label>
 									</div>
 									<div class="text-wrapper">
-										<div class="text-wrapper__item us">
-											<div class="waist-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[waist][feet]" id="waistFt">
+											<div class="text-wrapper__item only-one">
+												<input type="text"  class="" value="" name="info[age]" id="age">
 												<div class="place-holder">
-													<span>ft</span>
+													<span>Years</span>
 												</div>
 											</div>
-											<div class="waist-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[waist][inches]" id="waistIn">
-												<div class="place-holder">
-													<span>in</span>
-												</div>
-											</div>
+											<span style="" class="age-error error"></span>
 										</div>
-										<span class="waist-error error"></span>
-									</div>
 								</div>
-								<div class="column hip inactive">
+								<div class="column">
 									<div class="label-wrapper">
-										<label for="" class="label">Hip</label>
+										<label for="male" class="label">Weight</label>
+									</div>
+									<div class="text-wrapper">
+											<div class="text-wrapper__item only-one">
+												<input type="text"  class="" value="" name="info[weight]" id="weight">
+												<div class="place-holder">
+													<span>Pounds</span>
+												</div>
+											</div>
+											<span style="" class="weight-error error"></span>
+										</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Height</label>
 									</div>
 									<div class="text-wrapper">
 										<div class="text-wrapper__item us">
-											<div class="hip-ft">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[hip][feet]" id="hipFt">
+											<div class="height-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
 												<div class="place-holder">
 													<span>ft</span>
 												</div>
 											</div>
-											<div class="hip-in">
-												<input type="text" class="radio-wrapper__btn" value="" name="info[hip][inches]" id="hipIn">
+											<div class="height-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
 												<div class="place-holder">
 													<span>in</span>
 												</div>
 											</div>
 										</div>
-										<span class="hip-error error"></span>
+										<span class="height-error error"></span>
 									</div>
 								</div>
 								<div class="action">
@@ -833,3 +701,112 @@ function bmi_calculator($content)
 }
 
 add_shortcode('bmi_calculate','bmi_calculator');
+
+function gender_calculator($content)
+{
+	wp_enqueue_style( 'age' );
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculator">
+			<div class="container">
+				<div class="wrapper">
+					<div class="wrapper-content age">
+						<div class="content-top inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="result">
+
+								</div>
+							</div>
+						</div>
+						<div class="content-bottom">
+							<form action="#" class="form age-calculate">
+								<div class="column">
+									<div class="text-wrapper">
+										<div class="text-wrapper__item">
+											<input type="hidden" class="" value="" name="ageOfTheDate" id="birth">
+										</div>
+										<div class="options">
+											<div class="label-wrapper">
+												<label for="" class="label">Your Due Date</label>
+											</div>
+											<div class="day-option age-option">
+												<select class="ageMonthInput" name="mon-age">
+													<option value="1">Jan</option>
+													<option value="2">Feb</option>
+													<option value="3">Mar</option>
+													<option value="4">Apr</option>
+													<option value="5">May</option>
+													<option value="6">Jun</option>
+													<option value="7">Jul</option>
+													<option value="8">Aug</option>
+													<option value="9">Sep</option>
+													<option value="10">Oct</option>
+													<option value="11">Nov</option>
+													<option value="12">Dec</option>
+												</select>
+											</div>
+											<div class="mon-option age-option">
+												<select class="ageDateInput" name="date-age">
+												</select>
+											</div>
+											<div class="year-option age-option">
+												<input type="text" class="" name="year-age">
+											</div>
+										</div>
+										<span class="ageof-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="text-wrapper">
+										<div class="text-wrapper__item">
+											<input type="hidden" class="" value="2024-01-01" name="dayOfBirth" id="dayOfBirth">
+										</div>
+										<div class="options">
+											<div class="label-wrapper">
+												<label for="" class="label">Your Birth Date</label>
+											</div>
+											<div class="day-option age-option">
+												<select class="dateMonthInput" name="mon-birth">
+													<option value="1" selected>Jan</option>
+													<option value="2">Feb</option>
+													<option value="3">Mar</option>
+													<option value="4">Apr</option>
+													<option value="5">May</option>
+													<option value="6">Jun</option>
+													<option value="7">Jul</option>
+													<option value="8">Aug</option>
+													<option value="9">Sep</option>
+													<option value="10">Oct</option>
+													<option value="11">Nov</option>
+													<option value="12">Dec</option>
+												</select>
+											</div>
+											<div class="mon-option age-option">
+												<select class="dayDateInput" name="date-birth">
+												</select>
+											</div>
+											<div class="year-option age-option">
+												<input type="text" value="1990" class="" name="year-birth">
+											</div>
+										</div>
+										<span class="birth-error error"></span>
+									</div>
+								</div>
+								<div class="action">
+									<button id="btnAge" class="btn-primary" type="button">
+										Calculate
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+add_shortcode('gender_calculate','gender_calculator');

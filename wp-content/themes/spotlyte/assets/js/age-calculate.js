@@ -13,11 +13,11 @@ jQuery(function($){
 
         var today = year + "-" + month + "-" + day;   
 
-        $("[name=dayOfBirth]").attr("value", today);
+        $("[name=dayOfBirth]").attr("value", '1990-01-01');
         $("[name=ageOfTheDate]").attr("value", today);
 
 
-        var optionMonDate = '.dateMonthInput option:eq(' + (month - 1) + ')';
+        var optionMonDate = '.dateMonthInput option:eq(0)';
         var optionMonAge = '.ageMonthInput option:eq(' + (month - 1) + ')';
         $(optionMonDate).attr('selected', 'selected');
         $(optionMonAge).attr('selected', 'selected');
@@ -41,12 +41,11 @@ jQuery(function($){
             $('.ageDateInput').append(optionAge);
             
         }
-        var optionDayDate = '.dayDateInput option:eq(' + (day - 1) + ')';
+        var optionDayDate = '.dayDateInput option:eq(0)';
         var optionDayAge = '.ageDateInput option:eq(' + (day - 1) + ')';
         $(optionDayDate).attr('selected', 'selected');
         $(optionDayAge).attr('selected', 'selected');
 
-        $("[name=year-birth]").val(year);
         $("[name=year-age]").val(year);
 
         $('[name=date-birth]').change(function(){
@@ -92,77 +91,82 @@ jQuery(function($){
 
             var formDataArray = $('.form.age-calculate').serializeArray();
     
-            var jsonData = {
-                    'from_date': null,
-                    'to_date': null
-            };
-            var dateValue = '';
+            var jsonData = handleData(formDataArray);
+            
+            var date1 = new Date(jsonData['dayOfBirth']);
+            var date2 = new Date(jsonData['ageOfTheDate']);
 
-            var check = 0;
-            formDataArray.forEach(function(e) {
-                var fieldName = e.name;
-                var fieldValue = e.value;
-    
-    
-                if (fieldName === 'dayOfBirth' ) {
-                    jsonData['from_date'] = fieldValue;
-                    dateValue = e.value;
-                } else if (fieldName === 'ageOfTheDate') {
-                    jsonData['to_date'] = fieldValue;
+            if (date1 >= date2) {
+                $('#spinner').hide();
 
-                    var date1 = new Date(dateValue);
-                    var date2 = new Date(e.value);
-
-                    // So sánh các đối tượng Date
-                    if (date1 >= date2) {
-                        $('#spinner').hide();
-
-                        var paragraph = $("<p style='color:red'>").text('Date of birth needs to be earlier than the age at date.');
-                        
-                        $(".content-top").removeClass('inactive');
-                        $(".content-top .result").empty();
-                        $(".content-top .result").append(paragraph);
-                        check++
-                    }
-                }
-            });
-    
-            if(!check)
-            {
-                $.ajax({
-                    url: 'https://34.163.253.54/wp-json/api/v1/age/',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(jsonData),
-                    success: function(response) {
-                        // Xử lý phản hồi từ server nếu cần
-                        if(response['status'] === 200)
-                        {
-                            var result = response['result']['age'];
-    
-    
-                            $('.content-top').removeClass('inactive');
-                            $(".content-top .result").empty();
-                            $.each(result, function (key, value) {
-                                // Tạo thẻ <p> với văn bản tương ứng
-                                var paragraph = $("<p>").text(key + ": " + value);
-                        
-                                // Thêm thẻ <p> vào container
-                                $(".content-top .result").append(paragraph);
-                            });
-                        }
-                        $('#spinner').hide();
-                    },
-                    error: function(error) {
-                        // Xử lý lỗi nếu có
-                        console.error('Error:', error);
-                    }
-                });
+                var paragraph = $("<p style='color:red'>").text('Date of birth needs to be earlier than the age at date.');
+                
+                $(".content-top").removeClass('inactive');
+                $(".content-top .result").empty();
+                $(".content-top .result").append(paragraph);
+            }else {
+                ajaxHandle('age','https://34.163.253.54/wp-json/api/v1/age/', jsonData);
             }
         });
 
     });
 })
+
+function ajaxHandle(type, url, data)
+{
+    $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
+            // Xử lý phản hồi từ server nếu cần
+            if(response['status'] === 200)
+            {
+                var result = response['result'][type];
+
+
+                $('.content-top').removeClass('inactive');
+                $(".content-top .result").empty();
+                $.each(result, function (key, value) {
+                    // Tạo thẻ <p> với văn bản tương ứng
+                    var paragraph = $("<p>").text(key + ": " + value);
+            
+                    // Thêm thẻ <p> vào container
+                    $(".content-top .result").append(paragraph);
+                });
+            }
+            $('#spinner').hide();
+        },
+        error: function(error) {
+            // Xử lý lỗi nếu có
+            console.error('Error:', error);
+        }
+    });
+}
+
+function handleData($form)
+{
+    var jsonData = {};
+
+    $.each($form, function(i, field) {
+        var parts = field.name.split('[');
+        var currentObj = jsonData;
+
+        for (var j = 0; j < parts.length; j++) {
+            var key = parts[j].replace(']', '');
+
+            if (j === parts.length - 1) {
+                currentObj[key] = field.value;
+            } else {
+                currentObj[key] = currentObj[key] || {};
+                currentObj = currentObj[key];
+            }
+        }
+    });
+
+    return jsonData;
+}
 
 function changeTime(time, element)
 {

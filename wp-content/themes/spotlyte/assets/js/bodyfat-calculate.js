@@ -16,8 +16,8 @@ jQuery(function($){
 
         $("input[name='info[age]']").change(function () {
             if($(this).val().match(regex)){
-                if($(this).val() < 25 || $(this).val() > 80){
-                    $('.age-error').text('Please enter a weight between 25 and 80 pounds.');
+                if($(this).val() < 1){
+                    $('.age-error').text('Positive numbers only');
                 }else {
                     $('.age-error').text('');
                 }
@@ -32,8 +32,8 @@ jQuery(function($){
 
         $("input[name='info[weight]']").change(function () {
             if($(this).val().match(regex)){
-                if($(this).val() < 40 || $(this).val() > 600){
-                    $('.weight-error').text('Please enter a weight between 40 and 600 pounds.');
+                if($(this).val() < 1){
+                    $('.weight-error').text('Positive numbers only');
                 }else {
                     $('.weight-error').text('');
                 }
@@ -48,9 +48,9 @@ jQuery(function($){
 
         $("input[name='info[height][feet]']").change(function () {
             if($(this).val().match(regex)){
-                if($(this).val() < 4 || $(this).val() > 8)
+                if($(this).val() < 1)
                 {
-                    $('.height-error').text('Height value must be between 4 and 8 feet.');
+                    $('.height-error').text('Positive numbers only');
                 }else {
                     $('.height-error').text('');
                 }
@@ -78,7 +78,7 @@ jQuery(function($){
             if($(this).val().match(regex)){
                 if($(this).val() < 1)
                 {
-                    $('.neck-error').text('Neck value must be between 1.');
+                    $('.neck-error').text('Positive numbers only');
                 }else {
                     $('.neck-error').text('');
                 }
@@ -105,7 +105,7 @@ jQuery(function($){
             if($(this).val().match(regex)){
                 if($(this).val() < 1)
                 {
-                    $('.waist-error').text('Height value must be between 1.');
+                    $('.waist-error').text('Positive numbers only');
                 }else {
                     $('.waist-error').text('');
                 }
@@ -141,7 +141,7 @@ jQuery(function($){
                 $('.hip-error').text('Must input numbers!');
             }
             validateForm();
-            
+
         });
 
         $("input[name='info[hip][inches]']").change(function () {
