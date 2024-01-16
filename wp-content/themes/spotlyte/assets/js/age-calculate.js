@@ -121,6 +121,7 @@ jQuery(function($){
 
         $('#dueDatepicker').datepicker({
             dateFormat: 'MM d, yy',
+            changeYear: true,
             defaultDate: new Date(),
             minDate: new Date()
         })
@@ -134,6 +135,7 @@ jQuery(function($){
         });
         $('#dobDatepicker').datepicker({
             dateFormat: 'MM d, yy',
+            changeYear: true,
             minDate: new Date('1990-01-01')
         })
 
