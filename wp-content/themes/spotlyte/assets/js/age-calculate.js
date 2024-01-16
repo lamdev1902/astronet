@@ -165,7 +165,7 @@ jQuery(function($){
                 $(".content-top .result").empty();
                 $(".content-top .result").append(paragraph);
             }else {
-                ajaxHandle('gender','http://wp-astronet.local/wp-json/api/v1/chinese-gender/', jsonData);
+                ajaxHandle('gender','https://34.163.253.54//wp-json/api/v1/chinese-gender/', jsonData);
             }
         });
     });
