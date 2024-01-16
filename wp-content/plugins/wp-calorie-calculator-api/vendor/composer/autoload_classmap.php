@@ -6,10 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Calculator\\Api\\AbstractApi' => $baseDir . '/app/Api/AbstractApi.php',
-    'Calculator\\Api\\AgeCalculate' => $baseDir . '/app/Api/AgeCalculate.php',
-    'Calculator\\Api\\Data\\AgeInterface' => $baseDir . '/app/Api/Data/AgeInterface.php',
-    'Calculator\\Models\\AbstractModel' => $baseDir . '/app/Models/AbstractModel.php',
-    'Calculator\\Models\\AgeModel' => $baseDir . '/app/Models/AgeModel.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Crlt_\\LunarCalendar\\Utils' => $vendorDir . '/crlt/lunar-calendar/common/Utils.php',
 );

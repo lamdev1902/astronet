@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Crlt_\\LunarCalendar\\' => array($vendorDir . '/crlt/lunar-calendar/src'),
     'Calculator\\' => array($baseDir . '/app'),
 );

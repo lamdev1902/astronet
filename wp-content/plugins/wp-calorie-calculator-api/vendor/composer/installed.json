@@ -1,5 +1,49 @@
 {
-    "packages": [],
+    "packages": [
+        {
+            "name": "crlt/lunar-calendar",
+            "version": "0.2.0",
+            "version_normalized": "0.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NearXdu/lunar-calendar.git",
+                "reference": "4b326cd6760c2943154d4a70a73d073d6636a946"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NearXdu/lunar-calendar/zipball/4b326cd6760c2943154d4a70a73d073d6636a946",
+                "reference": "4b326cd6760c2943154d4a70a73d073d6636a946",
+                "shasum": ""
+            },
+            "time": "2018-01-14T11:53:18+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Crlt_\\LunarCalendar\\": "src"
+                },
+                "classmap": [
+                    "common"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Crlt Zhang",
+                    "email": "nealse.zh@gmail.com"
+                }
+            ],
+            "description": "The Gregorian calendar to Lunar calendar",
+            "support": {
+                "issues": "https://github.com/NearXdu/lunar-calendar/issues",
+                "source": "https://github.com/NearXdu/lunar-calendar/tree/0.2"
+            },
+            "install-path": "../crlt/lunar-calendar"
+        }
+    ],
     "dev": true,
     "dev-package-names": []
 }

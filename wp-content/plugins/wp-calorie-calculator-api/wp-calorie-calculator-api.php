@@ -26,3 +26,4 @@ require_once(plugin_dir_path(__FILE__) . 'api/bmr/bmr-api.php');
 
 $testApi = new \Calculator\Api\AgeCalculate();
 $bodyFatApi = new \Calculator\Api\BodyFatCalculate();
+$chineseGenderApi = new \Calculator\Api\ChineseGenderCalculate();

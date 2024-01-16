@@ -893,3 +893,97 @@ body .box {
         font-size: 22px;
     }
 }
+
+.wrapper-content.gender
+{
+    flex-direction: column !important;
+    text-align: center;
+}
+
+.wrapper-content.gender .content-top {
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.wrapper-content.gender .content-top .title {
+    background:#4c7b25;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.wrapper-content.gender .content-top .title h2 {
+    margin: 0;
+    padding: 10px;
+    color: #fff;
+}
+
+.wrapper-content.gender .content-top .result {
+    text-align: center;
+}
+.wrapper-content.gender .content-top p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.wrapper-content.gender .content-top p.label {
+    font-size: 1.375rem;
+    font-weight: 700;
+}
+.wrapper-content.gender .content-top,
+.wrapper-content.gender .content-bottom {
+    padding: 1rem 0;
+}
+
+.wrapper-content.gender .content-bottom {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.content-bottom .form.gender-calculate {
+    width: 40%;
+    margin: 0 auto;
+    padding: 30px 25px;
+}
+
+.content-bottom .form-row {
+    margin-bottom: 20px;
+}
+
+.content-bottom .form-row .label {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.content-bottom .form-row .date input {
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #dadada;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    width: 100%;
+    background-color: rgb(255 255 255/1);
+    font-weight: 500;
+    color: #334155;
+    padding-left: 80px;
+    padding-right: 53px;
+}
+
+.content-bottom .form-row .date input:hover {
+    cursor: pointer;
+}
+
+.content-bottom .action button {
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    background-color: #4c7b25;
+    color: #FFF;
+    border-radius: 5px;
+    margin-right: 10px;
+}

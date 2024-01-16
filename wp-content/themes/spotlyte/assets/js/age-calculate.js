@@ -82,7 +82,7 @@ jQuery(function($){
             var result = getTime(2);
     
             changeTime(result, "ageOfTheDate");
-            
+
         })
 
         $("#btnAge").on('click', function(){
@@ -95,6 +95,7 @@ jQuery(function($){
             
             var date1 = new Date(jsonData['dayOfBirth']);
             var date2 = new Date(jsonData['ageOfTheDate']);
+
 
             if (date1 >= date2) {
                 $('#spinner').hide();
@@ -109,6 +110,64 @@ jQuery(function($){
             }
         });
 
+
+        // Handle Chinese Gender 
+
+        var today  = date.toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+
+        $('#dueDatepicker').datepicker({
+            dateFormat: 'MM d, yy',
+            defaultDate: new Date(),
+            minDate: new Date()
+        })
+
+        $('#dueDatepicker').val(today);
+
+        var minAge = new Date('1990-01-01').toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+        $('#dobDatepicker').datepicker({
+            dateFormat: 'MM d, yy',
+            minDate: new Date('1990-01-01')
+        })
+
+        $('#dobDatepicker').val(minAge);
+
+        $("#btnGender").on('click', function(){
+
+            $('#spinner').show();
+
+            var formDataArray = $('.form.gender-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+            
+            var currentDate = new Date();
+
+            var dob = new Date(jsonData['dob']);
+
+            var ageInMilliseconds = currentDate - dob;
+            var ageInYears = Math.floor(ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000));
+
+            if (ageInYears < 18) {
+                $('#spinner').hide();
+
+                var paragraph = $("<p style='color:red'>").text(
+                    'Something went wrong for your birth day, Chinese Gender only works when your age starts from 18'
+                );
+                
+                $(".content-top").removeClass('inactive');
+                $(".content-top .result").empty();
+                $(".content-top .result").append(paragraph);
+            }else {
+                ajaxHandle('gender','http://wp-astronet.local/wp-json/api/v1/chinese-gender/', jsonData);
+            }
+        });
     });
 })
 
@@ -129,11 +188,17 @@ function ajaxHandle(type, url, data)
                 $('.content-top').removeClass('inactive');
                 $(".content-top .result").empty();
                 $.each(result, function (key, value) {
-                    // Tạo thẻ <p> với văn bản tương ứng
-                    var paragraph = $("<p>").text(key + ": " + value);
+                    if(type == 'gender'){
+                        var paragraph = $("<p class='label'>").text(`It's a ${value}`);
+                        var content = $("<p>").text(`Congratulations! According to the legendary Chinese Gender Chart, you're having a ${value}`)
+                        $(".content-top .result").append(paragraph,content);
+                    }else {
+                        var paragraph = $("<p>").text(key + ": " + value);
+                        $(".content-top .result").append(paragraph);
+                    }
+
             
                     // Thêm thẻ <p> vào container
-                    $(".content-top .result").append(paragraph);
                 });
             }
             $('#spinner').hide();

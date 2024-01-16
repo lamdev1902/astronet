@@ -12,5 +12,7 @@
             "email": "nguyenhongtruclam1@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "crlt/lunar-calendar": "^0.2.0"
+    }
 }

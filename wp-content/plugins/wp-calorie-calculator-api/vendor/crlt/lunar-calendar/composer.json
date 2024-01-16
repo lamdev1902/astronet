@@ -1,0 +1,19 @@
+{
+	"name": "crlt/lunar-calendar",
+	"description": "The Gregorian calendar to Lunar calendar",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Crlt Zhang",
+			"email": "nealse.zh@gmail.com"
+		}
+	],
+	"autoload":{
+		"classmap":["common"],
+		"psr-4" : {
+			"Crlt_\\LunarCalendar\\" : "src"
+		}
+	},
+	"require": {}
+}

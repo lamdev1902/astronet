@@ -9,11 +9,16 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
+            'Crlt_\\LunarCalendar\\' => 20,
             'Calculator\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Crlt_\\LunarCalendar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/crlt/lunar-calendar/src',
+        ),
         'Calculator\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -21,12 +26,8 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
     );
 
     public static $classMap = array (
-        'Calculator\\Api\\AbstractApi' => __DIR__ . '/../..' . '/app/Api/AbstractApi.php',
-        'Calculator\\Api\\AgeCalculate' => __DIR__ . '/../..' . '/app/Api/AgeCalculate.php',
-        'Calculator\\Api\\Data\\AgeInterface' => __DIR__ . '/../..' . '/app/Api/Data/AgeInterface.php',
-        'Calculator\\Models\\AbstractModel' => __DIR__ . '/../..' . '/app/Models/AbstractModel.php',
-        'Calculator\\Models\\AgeModel' => __DIR__ . '/../..' . '/app/Models/AgeModel.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Crlt_\\LunarCalendar\\Utils' => __DIR__ . '/..' . '/crlt/lunar-calendar/common/Utils.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

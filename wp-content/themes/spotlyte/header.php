@@ -21,7 +21,8 @@
 		?>
 	</title>
 	
-	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo get_field('favicon','option'); ?>" />
 </head>

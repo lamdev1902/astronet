@@ -4,7 +4,7 @@ namespace Calculator\Api;
 use Calculator\Models\ChineseGenderModel;
 use Calculator\Api\AbstractApi;
 
-class AgeCalculate extends AbstractApi{
+class ChineseGenderCalculate extends AbstractApi{
 
     /**
      * Chinese Gender Model
