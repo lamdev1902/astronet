@@ -336,7 +336,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'http://wp-astronet.local/wp-json/api/v1/bmi-calculate/',
+                url: 'https://34.163.253.54/wp-json/api/v1/bmi-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
