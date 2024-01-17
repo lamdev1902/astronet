@@ -41,7 +41,16 @@ class BmiModel extends AbstractModel
 
         $idealWeight = $this->idealWeight($height);
 
-        $bmi['bmi']['ideal_weight'] = $idealWeight;
+        $bmi['bmi']['ideal_weight'] = "Healthy weight for the height: " . $idealWeight[0] . ' lbs' . ' - ' . $idealWeight[1] . ' lbs';
+        $bmi['bmi']['propose'] = '';
+        if($bmi['bmi']['type'] < 4)
+        {
+            $gain = $idealWeight[0] - (int)$info['weight'];
+            $bmi['bmi']['propose'] = 'Gain ' . $gain . ' lbs to reach a BMI of 18.5 kg/m2.';
+        }elseif ($bmi['bmi']['type'] > 4){
+            $lose = (int)$info['weight'] - $idealWeight[1];
+            $bmi['bmi']['propose'] = 'Lose '  . $lose . ' lbs to reach a BMI of 18.5 kg/m2.';
+        }
         $bmi['bmi']['ponderal'] = $ponderalIndex;
         $bmi['bmi']['healthy_range'] = 'Healthy BMI range: 18.5 kg/m2 - 25 kg/m2';
 
@@ -58,9 +67,10 @@ class BmiModel extends AbstractModel
         $range18Cv = round($range18 / 0.45359237, 1);
         $range25Cv = round($range25 / 0.45359237, 1);
 
-        $result = "Healthy weight for the height: " . $range18Cv . 'lbs' . ' - ' . $range25Cv . 'lbs';
 
-        return $result;
+        return $result = [
+            $range18Cv, $range25Cv
+        ];
     }
 
     private function bmiResult($data)
@@ -74,21 +84,27 @@ class BmiModel extends AbstractModel
     {
         $result = [];
 
-
-        if($bmi < 18.5)
+        if($bmi < 16)
         {
             $result['bmi']['type'] = 1;
-            $result['bmi']['description'] = "Underweight";
+            $result['bmi']['description'] = "Severe Thinness";
+        }elseif($bmi < 17){
+            $result['bmi']['type'] = 2;
+            $result['bmi']['description'] = "Moderate Thinness";
+        }elseif($bmi < 18.5)
+        {
+            $result['bmi']['type'] = 3;
+            $result['bmi']['description'] = "Mild Thinness";
         }else if($bmi >= 18.5 && $bmi < 25)
         {
-            $result['bmi']['type'] = 2;
+            $result['bmi']['type'] = 4;
             $result['bmi']['description'] = "Normal";
         }
         else if($bmi >= 25 && $bmi < 30){
-            $result['bmi']['type'] = 3;
+            $result['bmi']['type'] = 5;
             $result['bmi']['description'] = "Overweight";
         }else if($bmi >= 30){
-            $result['bmi']['type'] = 4;
+            $result['bmi']['type'] = 6;
             $result['bmi']['description'] = "Obesity";
         }
 
@@ -116,7 +132,7 @@ class BmiModel extends AbstractModel
         $pi = [];
 
         $pi['type'] = $data['type'];
-        $pi['pi'] = round($data['weight'] / pow($data['height'],3));
+        $pi['pi'] = round($data['weight'] / pow($data['height'],3),1);
 
         return $pi;
     }

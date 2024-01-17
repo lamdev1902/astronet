@@ -336,7 +336,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/bmi-calculate/',
+                url: 'http://wp-astronet.local/wp-json/api/v1/bmi-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -362,8 +362,12 @@ jQuery(function($){
 
                         var liPonderal = $('<li>').text("Ponderal Index: " + result.ponderal.pi + ' kg/m3');
 
-                        ul.append(liRange, liIdeal ,liPrime, liPonderal);
-
+                        if(result.type != 2){
+                            var liPropose = $('<li>').text(result.propose);
+                            ul.append(liRange, liIdeal, liPropose ,liPrime, liPonderal);
+                        }else {
+                            ul.append(liRange, liIdeal ,liPrime, liPonderal);
+                        }
 
                         $(".content-right .result").append(ul);
                     }
