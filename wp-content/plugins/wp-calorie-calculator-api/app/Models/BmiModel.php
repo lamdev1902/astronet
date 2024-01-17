@@ -57,7 +57,7 @@ class BmiModel extends AbstractModel
         return $bmi;
     }
 
-    private function idealWeight($height)
+    public function idealWeight($height)
     {
         $result = '';
         

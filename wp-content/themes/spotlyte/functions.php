@@ -975,3 +975,103 @@ function bmr_calculator($content)
 
 add_shortcode('bmr_calculate','bmr_calculator');
 
+function ideal_weight_calculator($content)
+{
+	wp_enqueue_style( 'bodyfat' );
+	
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculate">
+			<div class="container">
+				<div class="calculate--wrapper">
+					<div class="calculate--wrapper__content">
+						<div class="content-left">
+							<form action="#" class="form ideal-weight-calculate">
+								<div class="column">
+									<div class="label-wrapper img">
+										<label for="male" class="label">Gender</label>
+									</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
+											<label for="male" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Male
+											</label>
+										</div>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[gender]" id="female">
+											<label for="female" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Female
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="male" class="label">Age</label>
+									</div>
+									<div class="text-wrapper">
+											<div class="text-wrapper__item only-one">
+												<input type="text"  class="" value="" name="info[age]" id="age">
+												<div class="place-holder">
+													<span>Years</span>
+												</div>
+											</div>
+											<span style="" class="age-error error"></span>
+										</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Height</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="height-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="height-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="height-error error"></span>
+									</div>
+								</div>
+								<div class="action">
+									<button id="btnIdealWeight" disabled="disabled" class="btn-primary" type="button">
+										Calculate
+									</button>
+									<button id="btnClear" class="btn-secondary" type="button">
+										Clear
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="content-right inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="main-result">
+									
+								</div>
+								<div class="result">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+
+add_shortcode('ideal_weight_calculate','ideal_weight_calculator');

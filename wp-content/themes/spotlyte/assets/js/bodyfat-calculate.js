@@ -21,6 +21,9 @@ jQuery(function($){
             }else if(form.hasClass('bmi-calculate'))
             {
                 type = 'bmi'
+            }else if(form.hasClass('ideal-weight-calculate'))
+            {
+                type = 'ideal-weight';
             }
 
             validateForm(type);
@@ -46,6 +49,9 @@ jQuery(function($){
             }else if(form.hasClass('bmi-calculate'))
             {
                 type = 'bmi'
+            }else if(form.hasClass('ideal-weight-calculate'))
+            {
+                type = 'ideal-weight';
             }
 
             
@@ -104,6 +110,9 @@ jQuery(function($){
             }else if(form.hasClass('bmi-calculate'))
             {
                 type = 'bmi'
+            }else if(form.hasClass('ideal-weight-calculate'))
+            {
+                type = 'ideal-weight';
             }
 
             
@@ -128,6 +137,9 @@ jQuery(function($){
             }else if(form.hasClass('bmi-calculate'))
             {
                 type = 'bmi'
+            }else if(form.hasClass('ideal-weight-calculate'))
+            {
+                type = 'ideal-weight';
             }
 
             
@@ -379,6 +391,55 @@ jQuery(function($){
                 }
             });
         })
+
+        $('#btnIdealWeight').on('click', function(){
+            $('#spinner').show();
+
+            var formDataArray = $('.form.ideal-weight-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+
+            $.ajax({
+                url: 'https://34.163.253.54/wp-json/api/v1/ideal-weight/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result']['ideal_weight'];
+
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+                        var div = $(`<div class="item"></div>`);
+                        var pTitle = $("<p class='title' style='font-weight:600; background:#336699;border: 1px solid #114477;color: #fff;'>").text('Formula');
+                        var pValue = $("<p class='value' style='font-weight:600; background:#336699;border: 1px solid #114477;color: #fff;'>").text('Ideal Weight');
+                        div.append(pTitle,pValue);
+
+                        // Thêm thẻ <p> vào container
+                        $(".content-right .result").append(div);
+                        var check = 0;
+                        $.each(result, function (key, value) {
+
+                            var div = $(`<div class="item"></div>`);
+                            var pTitle = $("<p class='title'>").text(value.title);
+                            var pValue = $("<p class='value'>").text(value.pounds+' lbs');
+                            div.append(pTitle,pValue);
+
+                            // Thêm thẻ <p> vào container
+                            $(".content-right .result").append(div);
+                            
+                        });
+                    }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error.responseJSON.message);
+                }
+            });
+        })
     });
 });
 
@@ -436,7 +497,16 @@ function validateForm(type = '')
         }else {
             $("#btnBmi").prop('disabled', true);
         }
-    }else {
+    }else if(type === 'ideal-weight')
+    {
+        if( (age && height ) && (ageError == "" && heightError == "") )        
+        {
+            $("#btnIdealWeight").prop('disabled', false);
+        }else {
+            $("#btnIdealWeight").prop('disabled', true);
+        }
+    }
+    else {
         if($('input[name="info[gender]"]').val() == 1){
             if( (age && weight && height && neck && waist ) && (ageError == "" && weightError == "" && heightError == "" && neckError == "" && waistError == "") )        
             {
