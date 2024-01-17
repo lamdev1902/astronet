@@ -29,3 +29,4 @@ $bodyFatApi = new \Calculator\Api\BodyFatCalculate();
 $chineseGenderApi = new \Calculator\Api\ChineseGenderCalculate();
 $bmrApi = new \Calculator\Api\BmrCalculate();
 $bmiApi = new \Calculator\Api\BmiCalculate();
+$idealWeightApi = new \Calculator\Api\IdealWeightCalculate();
