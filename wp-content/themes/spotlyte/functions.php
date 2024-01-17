@@ -815,3 +815,163 @@ function gender_calculator($content)
 
 }
 add_shortcode('gender_calculate','gender_calculator');
+
+function bmr_calculator($content)
+{
+	wp_enqueue_style( 'bodyfat' );
+	
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculate">
+			<div class="container">
+				<div class="calculate--wrapper">
+					<div class="calculate--wrapper__content">
+						<div class="content-left">
+							<form action="#" class="form bmr-calculate">
+								<div class="column">
+									<div class="label-wrapper img">
+										<label for="male" class="label">Gender</label>
+									</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
+											<label for="male" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Male
+											</label>
+										</div>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[gender]" id="female">
+											<label for="female" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Female
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="male" class="label">Age</label>
+									</div>
+									<div class="text-wrapper">
+											<div class="text-wrapper__item only-one">
+												<input type="text"  class="" value="" name="info[age]" id="age">
+												<div class="place-holder">
+													<span>Years</span>
+												</div>
+											</div>
+											<span style="" class="age-error error"></span>
+										</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="male" class="label">Weight</label>
+									</div>
+									<div class="text-wrapper">
+											<div class="text-wrapper__item only-one">
+												<input type="text"  class="" value="" name="info[weight]" id="weight">
+												<div class="place-holder">
+													<span>Pounds</span>
+												</div>
+											</div>
+											<span style="" class="weight-error error"></span>
+										</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Height</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="height-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="height-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="height-error error"></span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper img">
+										<label for="male" class="label">Result Unit</label>
+									</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[unit]" id="calo">
+											<label for="calo" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Calorie
+											</label>
+										</div>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[unit]" id="kilo">
+											<label for="kilo" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Kilojoules
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="column body-fat inactive">
+									<div class="label-wrapper">
+										<label for="" class="label">Body Fat</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item only-one">
+											<input type="text" class="" value="" name="fat" id="bodyFat">
+											<div class="place-holder">
+												<span>%</span>
+											</div>
+										</div>
+										<span class="fat-error error"></span>
+									</div>
+								</div>
+								<div class="column flex-column">
+									<div class="label-wrapper">
+										<label for="" class="label">BMR Estimation Formular</label>
+									</div>
+									<select name="receip" id="bmrReceip" class="select-wrapper">
+										<option value="1" class="select-wrapper__option">Mifflin St Jeor</option>
+										<option value="2" class="select-wrapper__option"> Revised Harris-Benedict</option>
+										<option value="3" class="select-wrapper__option"> Katch-McArdle</option>
+									</select>
+								</div>
+								<div class="action">
+									<button id="btnBmr" disabled="disabled" class="btn-primary" type="button">
+										Calculate
+									</button>
+									<button id="btnClear" class="btn-secondary" type="button">
+										Clear
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="content-right inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="main-result">
+									
+								</div>
+								<div class="result">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+
+add_shortcode('bmr_calculate','bmr_calculator');

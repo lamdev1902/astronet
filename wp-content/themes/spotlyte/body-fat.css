@@ -23,12 +23,12 @@
 }
 
 .form .column > div:nth-child(1) {
-    width:20%;
+    width:30%;
 }
 
 .form .column > div:nth-child(2)
 {
-    width: 80%;
+    width: 70%;
 }
 
 .column .radio-wrapper {
@@ -44,6 +44,15 @@
     flex-basis: calc(50% - 10px);
 }
 
+.flex-column {
+    flex-direction: column !important;
+}
+
+.flex-column .label-wrapper {
+    width: 100% !important;
+    text-align: left;
+    margin-bottom: 10px;
+}
 
 .column .input[type=text]
 {

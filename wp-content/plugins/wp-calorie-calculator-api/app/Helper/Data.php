@@ -9,8 +9,8 @@ class Data
      */
     public function cmConvert($data)
     {
-        $feet = $data['feet'];
-        $inches = $data['inches'];
+        $feet = (int)$data['feet'];
+        $inches = (int)$data['inches'];
 
         return round(( $feet * 30.48 ) + ($inches * 2.54 ),1);
     }

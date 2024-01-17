@@ -3,12 +3,11 @@ namespace Calculator\Api;
 
 abstract class AbstractApi
 {
-    protected function _response($data, $status, $unit = 1)
+    protected function _response($data, $status)
     {
         $result = [];
         $result['status'] = $status;
         $result['result'] = $data;
-        $result['unit'] = $unit;
 
         $result['message'] = $this->_status($status);
 

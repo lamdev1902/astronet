@@ -11,7 +11,11 @@ jQuery(function($){
                 $('.hip').addClass('inactive')
             }
 
-            validateForm();
+            var form = $(this).parents('form');
+
+            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+
+            validateForm(type);
         })
 
         $("input[name='info[age]']").change(function () {
@@ -26,7 +30,12 @@ jQuery(function($){
                 $('.age-error').text('Must input numbers!');
             }
 
-            validateForm();
+            var form = $(this).parents('form');
+
+            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+
+            
+            validateForm(type);
 
         });
 
@@ -42,7 +51,12 @@ jQuery(function($){
                 $('.weight-error').text('Must input numbers!');
             }
 
-            validateForm();
+            var form = $(this).parents('form');
+
+            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+
+            
+            validateForm(type);
 
         });
 
@@ -59,7 +73,12 @@ jQuery(function($){
                 $('.height-error').text('Must input numbers!');
             }
             
-            validateForm();
+            var form = $(this).parents('form');
+
+            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+
+            
+            validateForm(type);
 
         });
 
@@ -70,7 +89,12 @@ jQuery(function($){
             }else {
                 $('.height-error').text('');
             }
-            validateForm();
+            var form = $(this).parents('form');
+
+            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+
+            
+            validateForm(type);
             
         });
 
@@ -151,6 +175,7 @@ jQuery(function($){
             }else {
                 $('.hip-error').text('');
             }
+
             validateForm();
             
         });
@@ -174,83 +199,125 @@ jQuery(function($){
 
             var formDataArray = $('.form.bodyfat-calculate').serializeArray();
     
-            var jsonData = {}
-            var dateValue = '';
+            var jsonData = handleData(formDataArray);
 
-            $.each(formDataArray, function(i, field) {
-                var parts = field.name.split('[');
-                var currentObj = jsonData;
-    
-                for (var j = 0; j < parts.length; j++) {
-                    var key = parts[j].replace(']', '');
-    
-                    if (j === parts.length - 1) {
-                        currentObj[key] = field.value;
-                    } else {
-                        currentObj[key] = currentObj[key] || {};
-                        currentObj = currentObj[key];
+            $.ajax({
+                url: 'https://34.163.253.54/wp-json/api/v1/body-fat/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result']['bfp'];
+
+
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+                        var item = 1;
+                        $.each(result, function (key, value) {
+                            
+                            var classDiv = (item % 2 == 0) ? 'item-1' : 'item-2';
+
+                            var div = $(`<div class="item ${classDiv}"></div>`);
+
+                            if(key == 'navy_method')
+                            {
+                                $('.main-result').text('Body Fat: ' + value.percent + ' %');
+                            }
+                            var text = '';
+                            if(value.percent)
+                            {
+                                text = value.percent + ' %';
+                            }else if(value.pounds)
+                            {
+                                text = value.pounds + ' lbs' 
+                            }else 
+                            {
+                                text = value.type;
+                            }
+                            var pTitle = $("<p class='title'>").text(value.title);
+                            var pValue = $("<p class='value'>").text(text);
+                            div.append(pTitle,pValue);
+
+                            // Thêm thẻ <p> vào container
+                            $(".content-right .result").append(div);
+                            item++;
+                        });
                     }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error);
                 }
             });
-
-                $.ajax({
-                    url: 'https://34.163.253.54/wp-json/api/v1/body-fat/',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(jsonData),
-                    success: function(response) {
-                        // Xử lý phản hồi từ server nếu cần
-                        if(response['status'] === 200)
-                        {
-                            var result = response['result']['bfp'];
-    
-    
-                            $('.content-right').removeClass('inactive');
-                            $(".content-right .result").empty();
-                            var item = 1;
-                            $.each(result, function (key, value) {
-                                
-                                var classDiv = (item % 2 == 0) ? 'item-1' : 'item-2';
-
-                                var div = $(`<div class="item ${classDiv}"></div>`);
-
-                                if(key == 'navy_method')
-                                {
-                                    $('.main-result').text('Body Fat: ' + value.percent + ' %');
-                                }
-                                var text = '';
-                                if(value.percent)
-                                {
-                                    text = value.percent + ' %';
-                                }else if(value.pounds)
-                                {
-                                    text = value.pounds + ' lbs' 
-                                }else 
-                                {
-                                    text = value.type;
-                                }
-                                var pTitle = $("<p class='title'>").text(value.title);
-                                var pValue = $("<p class='value'>").text(text);
-                                div.append(pTitle,pValue);
-
-                                // Thêm thẻ <p> vào container
-                                $(".content-right .result").append(div);
-                                item++;
-                            });
-                        }
-                        $('#spinner').hide();
-                    },
-                    error: function(error) {
-                        // Xử lý lỗi nếu có
-                        console.error('Error:', error);
-                    }
-                });
         });
 
-    });
-})
+        $('#btnBmr').on('click', function(){
+            $('#spinner').show();
 
-function validateForm()
+            var formDataArray = $('.form.bmr-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+
+            $.ajax({
+                url: 'https://34.163.253.54/wp-json/api/v1/bmr-calculate/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result']['bmr'];
+
+
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+                        $.each(result, function (key, value) {
+                            
+                            $('.main-result').text('BMR: ' + value + ' Calories/day');
+                            
+                        });
+                    }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error.responseJSON.message);
+                }
+            });
+        })
+
+    });
+});
+
+function handleData($form)
+{
+    var jsonData = {};
+
+    $.each($form, function(i, field) {
+        var parts = field.name.split('[');
+        var currentObj = jsonData;
+
+        for (var j = 0; j < parts.length; j++) {
+            var key = parts[j].replace(']', '');
+
+            if (j === parts.length - 1) {
+                currentObj[key] = field.value;
+            } else {
+                currentObj[key] = currentObj[key] || {};
+                currentObj = currentObj[key];
+            }
+        }
+    });
+
+    return jsonData;
+}
+
+function validateForm(type = 0)
 {
   var age = $("input[name='info[age]").val();
   var weight = $("input[name='info[weight]").val();
@@ -266,19 +333,29 @@ function validateForm()
   var waistError = $(".waist-error").text();
   var hipError = $(".hip-error").text();
 
-    if($('input[name="info[gender]"]').val() == 1){
-        if( (age && weight && height && neck && waist ) && (ageError == "" && weightError == "" && heightError == "" && neckError == "" && waistError == "") )        
+    if( type == 1)
+    {
+        if( (age && weight && height ) && (ageError == "" && weightError == "" && heightError == "") )        
         {
-            $("#btnBodyFat").prop('disabled', false);
+            $("#btnBmr").prop('disabled', false);
         }else {
-            $("#btnBodyFat").prop('disabled', true);
+            $("#btnBmr").prop('disabled', true);
         }
     }else {
-        if( (age && weight && height && neck && waist && hip ) && (ageError == "" &&  weightError == "" && heightError == "" && neckError == "" &&  waistError == "" && hipError == ""))        
-        {
-            $("#btnBodyFat").prop('disabled', false);
+        if($('input[name="info[gender]"]').val() == 1){
+            if( (age && weight && height && neck && waist ) && (ageError == "" && weightError == "" && heightError == "" && neckError == "" && waistError == "") )        
+            {
+                $("#btnBodyFat").prop('disabled', false);
+            }else {
+                $("#btnBodyFat").prop('disabled', true);
+            }
         }else {
-            $("#btnBodyFat").prop('disabled', true);
+            if( (age && weight && height && neck && waist && hip ) && (ageError == "" &&  weightError == "" && heightError == "" && neckError == "" &&  waistError == "" && hipError == ""))        
+            {
+                $("#btnBodyFat").prop('disabled', false);
+            }else {
+                $("#btnBodyFat").prop('disabled', true);
+            }
         }
     }
 }

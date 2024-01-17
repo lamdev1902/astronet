@@ -26,7 +26,21 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
     );
 
     public static $classMap = array (
+        'Calculator\\Api\\AbstractApi' => __DIR__ . '/../..' . '/app/Api/AbstractApi.php',
+        'Calculator\\Api\\AgeCalculate' => __DIR__ . '/../..' . '/app/Api/AgeCalculate.php',
+        'Calculator\\Api\\BmrCalculate' => __DIR__ . '/../..' . '/app/Api/BmrCalculate.php',
+        'Calculator\\Api\\BodyFatCalculate' => __DIR__ . '/../..' . '/app/Api/BodyFatCalculate.php',
+        'Calculator\\Api\\ChineseGenderCalculate' => __DIR__ . '/../..' . '/app/Api/ChineseGenderCalculate.php',
+        'Calculator\\Api\\Data\\AgeInterface' => __DIR__ . '/../..' . '/app/Api/Data/AgeInterface.php',
+        'Calculator\\Helper\\Data' => __DIR__ . '/../..' . '/app/Helper/Data.php',
+        'Calculator\\Models\\AbstractModel' => __DIR__ . '/../..' . '/app/Models/AbstractModel.php',
+        'Calculator\\Models\\AgeModel' => __DIR__ . '/../..' . '/app/Models/AgeModel.php',
+        'Calculator\\Models\\BmiModel' => __DIR__ . '/../..' . '/app/Models/BmiModel.php',
+        'Calculator\\Models\\BmrModel' => __DIR__ . '/../..' . '/app/Models/BmrModel.php',
+        'Calculator\\Models\\BodyFatModel' => __DIR__ . '/../..' . '/app/Models/BodyFatModel.php',
+        'Calculator\\Models\\ChineseGenderModel' => __DIR__ . '/../..' . '/app/Models/ChineseGenderModel.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Crlt_\\LunarCalendar\\LunarCalendar' => __DIR__ . '/..' . '/crlt/lunar-calendar/src/LunarCalendar.php',
         'Crlt_\\LunarCalendar\\Utils' => __DIR__ . '/..' . '/crlt/lunar-calendar/common/Utils.php',
     );
 
