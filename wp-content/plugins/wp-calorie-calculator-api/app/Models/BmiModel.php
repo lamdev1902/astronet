@@ -21,7 +21,7 @@ class BmiModel extends AbstractModel
         $height = $this->helper->cmConvert($info['height']);
         $weight = $this->helper->kgConvert($info['weight']);
 
-        $height = round($height / 100,2);
+        $height = $height / 100;
 
         $data['weight'] = $weight;
         $data['height'] = $height;
@@ -38,10 +38,29 @@ class BmiModel extends AbstractModel
 
         $ponderalIndex = $this->ponderalIndexCalculate($data);
 
+
+        $idealWeight = $this->idealWeight($height);
+
+        $bmi['bmi']['ideal_weight'] = $idealWeight;
         $bmi['bmi']['ponderal'] = $ponderalIndex;
         $bmi['bmi']['healthy_range'] = 'Healthy BMI range: 18.5 kg/m2 - 25 kg/m2';
 
         return $bmi;
+    }
+
+    private function idealWeight($height)
+    {
+        $result = '';
+        
+        $range18 = 18.5 * ($height * $height);
+        $range25 = 25 * ($height * $height);
+
+        $range18Cv = round($range18 / 0.45359237, 1);
+        $range25Cv = round($range25 / 0.45359237, 1);
+
+        $result = "Healthy weight for the height: " . $range18Cv . 'lbs' . ' - ' . $range25Cv . 'lbs';
+
+        return $result;
     }
 
     private function bmiResult($data)

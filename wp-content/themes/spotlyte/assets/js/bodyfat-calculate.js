@@ -356,6 +356,8 @@ jQuery(function($){
 
                         var liRange = $('<li>').text(result.healthy_range);
 
+                        var liIdeal = $('<li>').text(result.ideal_weight);
+
                         var liPrime = $('<li>').text("BMI Prime: " + result.prime);
 
                         var liPonderal = $('<li>').text("Ponderal Index: " + result.ponderal.pi + ' kg/m3');
