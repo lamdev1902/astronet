@@ -362,7 +362,7 @@ jQuery(function($){
 
                         var liPonderal = $('<li>').text("Ponderal Index: " + result.ponderal.pi + ' kg/m3');
 
-                        if(result.type != 2){
+                        if(result.type != 4){
                             var liPropose = $('<li>').text(result.propose);
                             ul.append(liRange, liIdeal, liPropose ,liPrime, liPonderal);
                         }else {
