@@ -354,7 +354,7 @@ jQuery(function($){
 
                         var ul = $('<ul></ul');
 
-                        var liRange = $('<li>').text("Healthy BMI range: " + result.healthy_range);
+                        var liRange = $('<li>').text(result.healthy_range);
 
                         var liPrime = $('<li>').text("BMI Prime: " + result.prime);
 
