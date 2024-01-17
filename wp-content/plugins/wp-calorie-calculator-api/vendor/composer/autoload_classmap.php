@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Calculator\\Api\\AbstractApi' => $baseDir . '/app/Api/AbstractApi.php',
     'Calculator\\Api\\AgeCalculate' => $baseDir . '/app/Api/AgeCalculate.php',
+    'Calculator\\Api\\BmiCalculate' => $baseDir . '/app/Api/BmiCalculate.php',
     'Calculator\\Api\\BmrCalculate' => $baseDir . '/app/Api/BmrCalculate.php',
     'Calculator\\Api\\BodyFatCalculate' => $baseDir . '/app/Api/BodyFatCalculate.php',
     'Calculator\\Api\\ChineseGenderCalculate' => $baseDir . '/app/Api/ChineseGenderCalculate.php',

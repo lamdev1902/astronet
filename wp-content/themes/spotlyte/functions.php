@@ -662,14 +662,14 @@ function bmi_calculator($content)
 				<div class="calculate--wrapper">
 					<div class="calculate--wrapper__content">
 						<div class="content-left">
-							<form action="#" class="form bodyfat-calculate">
+							<form action="#" class="form bmi-calculate">
 								<div class="column">
 									<div class="label-wrapper img">
 										<label for="male" class="label">Gender</label>
 									</div>
 									<div class="radio-wrapper">
 										<div class="radio-wrapper__item">
-											<input type="radio" class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
 											<label for="male" class="radio-wrapper__label">
 												<span class="radio-visibility"></span>
 												Male
@@ -735,7 +735,7 @@ function bmi_calculator($content)
 									</div>
 								</div>
 								<div class="action">
-									<button id="btnBodyFat" class="btn-primary" type="button">
+									<button id="btnBmi" disabled="disabled" class="btn-primary" type="button">
 										Calculate
 									</button>
 									<button id="btnClear" class="btn-secondary" type="button">
@@ -753,7 +753,6 @@ function bmi_calculator($content)
 									
 								</div>
 								<div class="result">
-
 								</div>
 							</div>
 						</div>
@@ -975,3 +974,4 @@ function bmr_calculator($content)
 }
 
 add_shortcode('bmr_calculate','bmr_calculator');
+

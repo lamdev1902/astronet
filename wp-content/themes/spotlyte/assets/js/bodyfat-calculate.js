@@ -4,6 +4,8 @@ jQuery(function($){
 
         var regex = /^[0-9]+$/;
 
+        var type = '';
+
         $('input[name="info[gender]"]').change(function(){
             if($(this).val() == 2) {
                 $('.hip').removeClass('inactive')
@@ -13,7 +15,13 @@ jQuery(function($){
 
             var form = $(this).parents('form');
 
-            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+            if(form.hasClass('bmr-calculate'))
+            {
+                type = 'bmr';
+            }else if(form.hasClass('bmi-calculate'))
+            {
+                type = 'bmi'
+            }
 
             validateForm(type);
         })
@@ -32,7 +40,13 @@ jQuery(function($){
 
             var form = $(this).parents('form');
 
-            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+            if(form.hasClass('bmr-calculate'))
+            {
+                type = 'bmr';
+            }else if(form.hasClass('bmi-calculate'))
+            {
+                type = 'bmi'
+            }
 
             
             validateForm(type);
@@ -53,7 +67,14 @@ jQuery(function($){
 
             var form = $(this).parents('form');
 
-            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+            
+            if(form.hasClass('bmr-calculate'))
+            {
+                type = 'bmr';
+            }else if(form.hasClass('bmi-calculate'))
+            {
+                type = 'bmi'
+            }
 
             
             validateForm(type);
@@ -75,7 +96,15 @@ jQuery(function($){
             
             var form = $(this).parents('form');
 
-            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+            var type = '';
+
+            if(form.hasClass('bmr-calculate'))
+            {
+                type = 'bmr';
+            }else if(form.hasClass('bmi-calculate'))
+            {
+                type = 'bmi'
+            }
 
             
             validateForm(type);
@@ -91,7 +120,15 @@ jQuery(function($){
             }
             var form = $(this).parents('form');
 
-            var type = form.hasClass('bmr-calculate') ? 1 : 0;
+            var type = '';
+
+            if(form.hasClass('bmr-calculate'))
+            {
+                type = 'bmr';
+            }else if(form.hasClass('bmi-calculate'))
+            {
+                type = 'bmi'
+            }
 
             
             validateForm(type);
@@ -291,6 +328,51 @@ jQuery(function($){
             });
         })
 
+        $('#btnBmi').on('click', function(){
+            $('#spinner').show();
+
+            var formDataArray = $('.form.bmi-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+
+            $.ajax({
+                url: 'https://34.163.253.54/wp-json/api/v1/bmi-calculate/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result']['bmi'];
+
+
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+                        
+                        $('.main-result').text('BMI: ' + result.bmi + ' kg/m2 ' + '( ' + result.description + ' ) ');
+
+                        var ul = $('<ul></ul');
+
+                        var liRange = $('<li>').text("Healthy BMI range: " + result.healthy_range);
+
+                        var liPrime = $('<li>').text("BMI Prime: " + result.prime);
+
+                        var liPonderal = $('<li>').text("Ponderal Index: " + result.ponderal.pi + ' kg/m3');
+
+                        ul.append(liRange, liPrime, liPonderal);
+
+
+                        $(".content-right .result").append(ul);
+                    }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error.responseJSON.message);
+                }
+            });
+        })
     });
 });
 
@@ -317,7 +399,7 @@ function handleData($form)
     return jsonData;
 }
 
-function validateForm(type = 0)
+function validateForm(type = '')
 {
   var age = $("input[name='info[age]").val();
   var weight = $("input[name='info[weight]").val();
@@ -333,13 +415,20 @@ function validateForm(type = 0)
   var waistError = $(".waist-error").text();
   var hipError = $(".hip-error").text();
 
-    if( type == 1)
+    if( type === 'bmr')
     {
         if( (age && weight && height ) && (ageError == "" && weightError == "" && heightError == "") )        
         {
             $("#btnBmr").prop('disabled', false);
         }else {
             $("#btnBmr").prop('disabled', true);
+        }
+    }else if(type === 'bmi') {
+        if( (age && weight && height ) && (ageError == "" && weightError == "" && heightError == "") )        
+        {
+            $("#btnBmi").prop('disabled', false);
+        }else {
+            $("#btnBmi").prop('disabled', true);
         }
     }else {
         if($('input[name="info[gender]"]').val() == 1){
