@@ -113,6 +113,9 @@ jQuery(function($){
             }else if(form.hasClass('ideal-weight-calculate'))
             {
                 type = 'ideal-weight';
+            }else if(form.hasClass('healthy-weight-calculate'))
+            {
+                type = 'healthy-weight';
             }
 
             
@@ -440,6 +443,40 @@ jQuery(function($){
                 }
             });
         })
+
+        $('#btnHealthyWeight').on('click', function(){
+            $('#spinner').show();
+
+            var formDataArray = $('.form.healthy-weight-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+
+            $.ajax({
+                url: 'https://34.163.253.54/wp-json/api/v1/healthy-weight/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result']['healthy_weight'];
+
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+                        var pTitle = $("<p class='title'>").text(result);
+
+                        // Thêm thẻ <p> vào container
+                        $(".content-right .result").append(pTitle);
+                    }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error.responseJSON.message);
+                }
+            });
+        })
     });
 });
 
@@ -504,6 +541,14 @@ function validateForm(type = '')
             $("#btnIdealWeight").prop('disabled', false);
         }else {
             $("#btnIdealWeight").prop('disabled', true);
+        }
+    }else if(type === 'healthy-weight')
+    {
+        if( (height ) && (heightError == "") )        
+        {
+            $("#btnHealthyWeight").prop('disabled', false);
+        }else {
+            $("#btnHealthyWeight").prop('disabled', true);
         }
     }
     else {

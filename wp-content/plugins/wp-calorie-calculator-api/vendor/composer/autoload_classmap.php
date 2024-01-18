@@ -13,6 +13,7 @@ return array(
     'Calculator\\Api\\BodyFatCalculate' => $baseDir . '/app/Api/BodyFatCalculate.php',
     'Calculator\\Api\\ChineseGenderCalculate' => $baseDir . '/app/Api/ChineseGenderCalculate.php',
     'Calculator\\Api\\Data\\AgeInterface' => $baseDir . '/app/Api/Data/AgeInterface.php',
+    'Calculator\\Api\\HealthyWeightCalculate' => $baseDir . '/app/Api/HealthyWeightCalculate.php',
     'Calculator\\Api\\IdealWeightCalculate' => $baseDir . '/app/Api/IdealWeightCalculate.php',
     'Calculator\\Helper\\Data' => $baseDir . '/app/Helper/Data.php',
     'Calculator\\Models\\AbstractModel' => $baseDir . '/app/Models/AbstractModel.php',

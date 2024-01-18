@@ -33,6 +33,7 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
         'Calculator\\Api\\BodyFatCalculate' => __DIR__ . '/../..' . '/app/Api/BodyFatCalculate.php',
         'Calculator\\Api\\ChineseGenderCalculate' => __DIR__ . '/../..' . '/app/Api/ChineseGenderCalculate.php',
         'Calculator\\Api\\Data\\AgeInterface' => __DIR__ . '/../..' . '/app/Api/Data/AgeInterface.php',
+        'Calculator\\Api\\HealthyWeightCalculate' => __DIR__ . '/../..' . '/app/Api/HealthyWeightCalculate.php',
         'Calculator\\Api\\IdealWeightCalculate' => __DIR__ . '/../..' . '/app/Api/IdealWeightCalculate.php',
         'Calculator\\Helper\\Data' => __DIR__ . '/../..' . '/app/Helper/Data.php',
         'Calculator\\Models\\AbstractModel' => __DIR__ . '/../..' . '/app/Models/AbstractModel.php',
