@@ -45,23 +45,159 @@ class Calorie_Api extends API
             $bmrResult = $bmrResult['bmr']['calorie'] * $activityItem['coefficient'];
             $result = $this->result($bmiResult, round($bmrResult), 'lb');
         }else {
-            $result[] = [
+            $result['calorie'][] = [
                 'goal_type' => 1,
                 'name' => $activityItem['name'],
                 'calorie' => $bmrResult['bmr']['calorie']
             ];
         }
 
+        
+
+        if($request['info']['activity'] != 1 && $bmiResult['bmi']['type'] != 1)
+        {
+            $result['zigzag_schedule_1'] = $this->zigZag1Calculate($result);
+            $result['zigzag_schedule_2'] = $this->zigZag2Calculate($result);
+        }
+
         $unit = 1;
         
         if($request['unit'] == 2)
         {
-            $result = $helper->kilojoulesConvert($result);
+            $result['calorie'] = $helper->kilojoulesConvert($result['calorie']);
             $unit = 2;
         }
         return $this->_response($result, 200, $unit);
     }
 
+    private function zigZag1Calculate($result)
+    {
+        $data = [];
+        $mainWeight = $result['calorie'][0]['calorie'];
+
+        $week = $this->weekFormat();
+
+        if(isset($result['calorie'][1]))
+        {
+            $mildWeight = $result['calorie'][1]['calorie'];
+            $weightLoss = $result['calorie'][2]['calorie'];
+
+
+
+            $zigzagMildWeight = round(($mildWeight * 7 - $mainWeight * 2) / 5);
+            $zigzagWeightLoss = round(($weightLoss * 7 - $mainWeight * 2) / 5);;
+            $zigzagMainWeight = round(($weightLoss * 7 - 1500 * 5)/2);
+            for($i = 0; $i <= 6; $i++)
+            {
+                if($i == 5  || $i == 6)
+                {
+                    $data['mild_weight'][$i] = [
+                        'title' => $week[$i],
+                        'calorie' => $mainWeight
+                    ];
+
+                    if($weightLoss >= 1500)
+                    {
+                        $data['weight_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => ($zigzagMainWeight < $mainWeight) ? $zigzagMainWeight : $mainWeight
+                        ];
+                    }
+                }else {
+                    $data['mild_weight'][$i] = [
+                        'title' => $week[$i],
+                        'calorie' => $zigzagMildWeight > 1500 ? $zigzagMildWeight : 1500
+                    ];
+
+                    if($weightLoss >= 1500)
+                    {
+                        $data['weight_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => $zigzagWeightLoss > 1500 ? $zigzagWeightLoss : 1500
+                        ];
+                    }
+                }
+            }   
+            
+        }
+
+        return $data;
+        
+    }
+
+    private function zigZag2Calculate($result)
+    {
+        $data = [];
+
+        $mainWeight = $result['calorie'][0]['calorie'];
+        $mildWeight = $result['calorie'][1]['calorie'];
+        $weightLoss = $result['calorie'][2]['calorie'];
+        
+        $extreme = $result['calorie'][3]['calorie'] >= 1500 ? $result['calorie'][3]['calorie'] : 1500;
+
+        $totalMildWeight = $result['calorie'][1]['calorie'] * 7;
+        $totalWeightLoss = $result['calorie'][2]['calorie'] * 7;
+
+        $ambMildWeight = round(($totalMildWeight - ( $weightLoss * 7 ))/10.5);
+        $ambWeightLoss = round(($totalWeightLoss - ( $extreme * 7 ))/10.5);
+
+        $week = $this->weekFormat();
+
+        $a = 0;
+        $b = 0;
+        for($i = 0; $i <= 6; $i++)
+            {   
+                if($a == 3)
+                {
+                    $b -= 0.5;
+                    $a++;
+                }else if($a > 3)
+                {
+                    $b -= 1;
+                }
+                else{
+                    $a++;
+                    $b++;
+                }
+                if($i == 6)
+                {
+                    $data['mild_weight'][$i] = [
+                        'title' => $week[$i],
+                        'calorie' => $weightLoss
+                    ];
+
+                    if($weightLoss >= 1500)
+                    {
+                        $data['weight_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => $extreme
+                        ];
+                    }
+                }else {
+                    $data['mild_weight'][$i] = [
+                        'title' => $week[$i],
+                        'calorie' => round($weightLoss + $b*$ambMildWeight)
+                    ];
+
+                    if($weightLoss >= 1500)
+                    {
+                        $data['weight_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => round($extreme + $b*$ambWeightLoss)
+                        ];
+                    }
+                }
+            }  
+
+        return $data;
+    }
+
+    private function weekFormat()
+    {
+        return [
+            'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+        ];
+    }
     /**
      * Level of activity
      * 
@@ -201,10 +337,10 @@ class Calorie_Api extends API
                 $calorie = $calorie + $goal['coefficient'] * 1000;
             };
             
-            $result[] = [
+            $result['calorie'][] = [
                 'goal_type' => $goal['type'],
                 'name' => $goal['name'],
-                'calorie' => round($calorie),
+                'calorie' => floor($calorie),
                 'description' => $description
             ];
     

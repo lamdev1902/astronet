@@ -6,7 +6,7 @@ abstract class API
         $result = [];
         $result['status'] = $status;
         $result['result'] = $data;
-        $result['unit'] = $unit;
+        $result['result']['unit'] = $unit;
 
         $result['message'] = $this->_status($status);
 
