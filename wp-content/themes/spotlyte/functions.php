@@ -346,11 +346,6 @@ function calorie_calculator($content)
 									</div>
 									<div class="goals">
 										<table class="zigzag">
-											<thead>
-												<tr>
-													<th>Days</th>
-												</tr>
-											</thead>
 											<tbody>
 											</tbody>
 										</table>
@@ -362,11 +357,6 @@ function calorie_calculator($content)
 									</div>
 									<div class="goals">
 									<table class="zigzag">
-										<thead>
-											<tr>
-												<th>Days</th>
-											</tr>
-										</thead>
 										<tbody>
 										</tbody>
 									</table>

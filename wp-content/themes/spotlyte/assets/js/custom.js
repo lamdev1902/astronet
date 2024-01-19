@@ -220,23 +220,25 @@ jQuery(function($){
 						divZigZag1.removeClass('inactive');
 						divZigZag2.removeClass('inactive');
 
-						$('.zigzag thead tr').empty();
+						$('.zigzag tbody').empty();
 						tbody.empty();
 						tbody2.empty();
 
-						$('.zigzag thead tr').append('<th>Days</th>');
+						var newRow = $('<tr>');
+						newRow.append('<td>Days</td>');
 						if(zigzag1['mild_weight'])
 						{
-							$('.zigzag thead tr').append('<th>Mild Weight Loss</th>');
+							newRow.append('<td>Mild Weight Loss</td>');
 						}
 						if(zigzag1['weight_loss'])
 						{
-							$('.zigzag thead tr').append('<th>Weight Loss</th>');
+							newRow.append('<td>Weight Loss</td>');
 						}
 						if(zigzag1['extreme_loss'])
 						{
-							$('.zigzag thead tr').append('<th>Extreme Loss</th>');
+							newRow.append('<td>Extreme Loss</td>');
 						}
+						$('.zigzag tbody').append(newRow);
 						$.each(zigzag1["mild_weight"], function (index, item) {
 							var row1 = $('<tr>');
 							var row2 = $('<tr>');
