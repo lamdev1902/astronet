@@ -206,23 +206,25 @@ jQuery(function($){
 						gain.find('.goals').empty();
 					}
 
-					if(result[1] && result[1]['calorie'] >= 1500)
-					{
-						var zigzag1 = response['result']['zigzag_schedule_1'];
-						var zigzag2 = response['result']['zigzag_schedule_2'];
-
-						var divZigZag1 = $('.zigzag1');
+					var divZigZag1 = $('.zigzag1');
 						var divZigZag2 = $('.zigzag2')
 
 						var tbody = divZigZag1.find('.zigzag tbody');
 						var tbody2 = divZigZag2.find('.zigzag tbody');
 
-						divZigZag1.removeClass('inactive');
-						divZigZag2.removeClass('inactive');
+						divZigZag1.addClass('inactive');
+						divZigZag2.addClass('inactive');
 
 						$('.zigzag tbody').empty();
 						tbody.empty();
 						tbody2.empty();
+					if(result[1] && result[1]['calorie'] >= 1500)
+					{
+						var zigzag1 = response['result']['zigzag_schedule_1'];
+						var zigzag2 = response['result']['zigzag_schedule_2'];
+
+						divZigZag1.removeClass('inactive');
+						divZigZag2.removeClass('inactive');
 
 						var newRow = $('<tr>');
 						newRow.append('<td>Days</td>');
