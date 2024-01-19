@@ -218,7 +218,7 @@ jQuery(function($){
 						$('.zigzag tbody').empty();
 						tbody.empty();
 						tbody2.empty();
-					if(result[1] && result[1]['calorie'] >= 1500)
+					if(result[1] && result[1]['goal_type'] == 2 && result[1]['calorie'] >= 1500)
 					{
 						var zigzag1 = response['result']['zigzag_schedule_1'];
 						var zigzag2 = response['result']['zigzag_schedule_2'];
