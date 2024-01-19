@@ -206,7 +206,7 @@ jQuery(function($){
 						gain.find('.goals').empty();
 					}
 
-					if(result[1]['calorie'] && result[1]['calorie'] >= 1500)
+					if(result[1] && result[1]['calorie'] >= 1500)
 					{
 						var zigzag1 = response['result']['zigzag_schedule_1'];
 						var zigzag2 = response['result']['zigzag_schedule_2'];
