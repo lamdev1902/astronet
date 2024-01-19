@@ -339,6 +339,39 @@ function calorie_calculator($content)
 									<div class="goals">
 									</div>
 								</div>
+
+								<div class="flex-column zigzag1 inactive">
+									<div class="result-type">
+										<p class="">ZigZag Schedule 1</p>
+									</div>
+									<div class="goals">
+										<table class="zigzag">
+											<thead>
+												<tr>
+													<th>Days</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="flex-column zigzag2 inactive">
+									<div class="result-type">
+										<p class="">ZigZag Schedule 2</p>
+									</div>
+									<div class="goals">
+									<table class="zigzag">
+										<thead>
+											<tr>
+												<th>Days</th>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

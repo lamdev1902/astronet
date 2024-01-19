@@ -123,7 +123,7 @@ jQuery(function($){
 				// Xử lý phản hồi từ server nếu cần
 				if(response['status'] === 200)
 				{
-					var result = response['result'];
+					var result = response['result']['calorie'];
 
 					var unit = response['unit'] == 2 ? 'kJ/day' : 'Calorie/day';
 
@@ -141,7 +141,6 @@ jQuery(function($){
 
 					var goalLose = $('<div class="goals"></div>');
 					var goalGain = $('<div class="goals"></div>');
-
 					var noLose = $('<p class="no-loss">You probably do not need to lose weight!</p>')
 
 					for(const key in result){
@@ -206,6 +205,66 @@ jQuery(function($){
 						gain.addClass('inactive');
 						gain.find('.goals').empty();
 					}
+
+					if(result[1]['calorie'] && result[1]['calorie'] >= 1500)
+					{
+						var zigzag1 = response['result']['zigzag_schedule_1'];
+						var zigzag2 = response['result']['zigzag_schedule_2'];
+
+						var divZigZag1 = $('.zigzag1');
+						var divZigZag2 = $('.zigzag2')
+
+						var tbody = divZigZag1.find('.zigzag tbody');
+						var tbody2 = divZigZag2.find('.zigzag tbody');
+
+						divZigZag1.removeClass('inactive');
+						divZigZag2.removeClass('inactive');
+
+						$('.zigzag thead tr').empty();
+						tbody.empty();
+						tbody2.empty();
+
+						$('.zigzag thead tr').append('<th>Days</th>');
+						if(zigzag1['mild_weight'])
+						{
+							$('.zigzag thead tr').append('<th>Mild Weight Loss</th>');
+						}
+						if(zigzag1['weight_loss'])
+						{
+							$('.zigzag thead tr').append('<th>Weight Loss</th>');
+						}
+						if(zigzag1['extreme_loss'])
+						{
+							$('.zigzag thead tr').append('<th>Extreme Loss</th>');
+						}
+						$.each(zigzag1["mild_weight"], function (index, item) {
+							var row1 = $('<tr>');
+							var row2 = $('<tr>');
+
+							row1.append('<td>' + item.title + '</td>');
+							row1.append('<td>' + item.calorie + ' Calories</td>');
+
+							row2.append('<td>' + zigzag2['mild_weight'][index].title + '</td>');
+							row2.append('<td>' + zigzag2['mild_weight'][index].calorie + ' Calories</td>');
+							if(result[2].calorie >= 1500){
+								row1.append('<td>' + zigzag1["weight_loss"][index].calorie + ' Calories</td>');
+								row2.append('<td>' + zigzag2["weight_loss"][index].calorie + ' Calories</td>');
+							}
+							if(result[3].calorie >= 1500)
+							{
+								row1.append('<td>' + zigzag1["extreme_loss"][index].calorie + ' Calories</td>');
+								row2.append('<td>' + zigzag2["extreme_loss"][index].calorie + ' Calories</td>');
+							}
+							tbody.append(row1);
+							tbody2.append(row2);
+						});
+					}
+
+
+
+
+
+					
 				}
 				$('#spinner').hide();
 			},

@@ -765,7 +765,10 @@ body .box {
 }
 
 .content-right .result .result-loss,
-.content-right .result .result-gain {
+.content-right .result .result-gain,
+.content-right .result .zigzag1,
+.content-right .result .zigzag2
+ {
     padding-top: 1.5rem;
 }
 
@@ -986,4 +989,11 @@ body .box {
     color: #FFF;
     border-radius: 5px;
     margin-right: 10px;
+}
+
+
+table th,
+table td {
+    padding: 5px 10px;
+    text-align: left;
 }

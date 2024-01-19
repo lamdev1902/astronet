@@ -81,15 +81,18 @@ class Calorie_Api extends API
         {
             $mildWeight = $result['calorie'][1]['calorie'];
             $weightLoss = $result['calorie'][2]['calorie'];
-
-
+            $extremeLoss =  $result['calorie'][3]['calorie'];
 
             $zigzagMildWeight = round(($mildWeight * 7 - $mainWeight * 2) / 5);
-            $zigzagWeightLoss = round(($weightLoss * 7 - $mainWeight * 2) / 5);;
-            $zigzagMainWeight = round(($weightLoss * 7 - 1500 * 5)/2);
+            $zigzagWeightLoss = round(($weightLoss * 7 - $mainWeight * 2) / 5);
+            $zigzagExtremeLoss = round(($extremeLoss * 7 - $mainWeight * 2) / 5);
+
+            $zigzagWeightLossSun = round(($weightLoss * 7 - 1500 * 5)/2);
+            $zigzagExtremeLossSun = round(($extremeLoss * 7 - 1500 * 5)/2);
+
             for($i = 0; $i <= 6; $i++)
             {
-                if($i == 5  || $i == 6)
+                if($i == 0  || $i == 6)
                 {
                     $data['mild_weight'][$i] = [
                         'title' => $week[$i],
@@ -100,7 +103,14 @@ class Calorie_Api extends API
                     {
                         $data['weight_loss'][$i] = [
                             'title' => $week[$i],
-                            'calorie' => ($zigzagMainWeight < $mainWeight) ? $zigzagMainWeight : $mainWeight
+                            'calorie' => ($zigzagWeightLossSun < $mainWeight) ? $zigzagWeightLossSun : $mainWeight
+                        ];
+                    }
+                    if($extremeLoss >= 1500)
+                    {
+                        $data['extreme_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => ($zigzagExtremeLossSun < $mainWeight) ? $zigzagExtremeLossSun : $mainWeight
                         ];
                     }
                 }else {
@@ -114,6 +124,14 @@ class Calorie_Api extends API
                         $data['weight_loss'][$i] = [
                             'title' => $week[$i],
                             'calorie' => $zigzagWeightLoss > 1500 ? $zigzagWeightLoss : 1500
+                        ];
+                    }
+
+                    if($extremeLoss >= 1500)
+                    {
+                        $data['extreme_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => $zigzagExtremeLoss > 1500 ? $zigzagExtremeLoss : 1500
                         ];
                     }
                 }
@@ -133,21 +151,20 @@ class Calorie_Api extends API
         $mildWeight = $result['calorie'][1]['calorie'];
         $weightLoss = $result['calorie'][2]['calorie'];
         
-        $extreme = $result['calorie'][3]['calorie'] >= 1500 ? $result['calorie'][3]['calorie'] : 1500;
+        $extreme = $result['calorie'][3]['calorie'];
 
-        $totalMildWeight = $result['calorie'][1]['calorie'] * 7;
-        $totalWeightLoss = $result['calorie'][2]['calorie'] * 7;
+        $totalMildWeight = $mildWeight * 7;
+        $totalWeightLoss = $weightLoss * 7;
+        $totalExtreme = $extreme * 7;
 
-        $ambMildWeight = round(($totalMildWeight - ( $weightLoss * 7 ))/10.5);
-        $ambWeightLoss = round(($totalWeightLoss - ( $extreme * 7 ))/10.5);
 
         $week = $this->weekFormat();
 
         $a = 0;
-        $b = 0;
+        $b = -1;
         for($i = 0; $i <= 6; $i++)
             {   
-                if($a == 3)
+                if($a == 4)
                 {
                     $b -= 0.5;
                     $a++;
@@ -159,7 +176,7 @@ class Calorie_Api extends API
                     $a++;
                     $b++;
                 }
-                if($i == 6)
+                if($i == 0)
                 {
                     $data['mild_weight'][$i] = [
                         'title' => $week[$i],
@@ -170,10 +187,20 @@ class Calorie_Api extends API
                     {
                         $data['weight_loss'][$i] = [
                             'title' => $week[$i],
-                            'calorie' => $extreme
+                            'calorie' => ($extreme >= 1500) ? $extreme : 1500
+                        ];
+                    }
+
+                    if($extreme >= 1500)
+                    {
+                        $data['extreme_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => (((2 * $extreme - $mainWeight)) >= 1500) ? (2 * $extreme - $mainWeight) : 1500
                         ];
                     }
                 }else {
+                    $ambMildWeight = round(($totalMildWeight - ( $data['mild_weight'][0]['calorie'] * 7 ))/10.5);
+
                     $data['mild_weight'][$i] = [
                         'title' => $week[$i],
                         'calorie' => round($weightLoss + $b*$ambMildWeight)
@@ -181,9 +208,19 @@ class Calorie_Api extends API
 
                     if($weightLoss >= 1500)
                     {
+                        $ambWeightLoss = round(($totalWeightLoss - ( $data['weight_loss'][0]['calorie'] * 7 ))/10.5);
                         $data['weight_loss'][$i] = [
                             'title' => $week[$i],
-                            'calorie' => round($extreme + $b*$ambWeightLoss)
+                            'calorie' => round($data['weight_loss'][0]['calorie'] + $b*$ambWeightLoss)
+                        ];
+                    }
+
+                    if($extreme >= 1500)
+                    {
+                        $ambExtremeLoss = round(($totalExtreme - ( $data['extreme_loss'][0]['calorie'] * 7 ))/10.5);
+                        $data['extreme_loss'][$i] = [
+                            'title' => $week[$i],
+                            'calorie' => round($data['extreme_loss'][0]['calorie'] + $b*$ambExtremeLoss)
                         ];
                     }
                 }
@@ -195,7 +232,7 @@ class Calorie_Api extends API
     private function weekFormat()
     {
         return [
-            'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+            'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
         ];
     }
     /**
