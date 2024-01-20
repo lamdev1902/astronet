@@ -375,7 +375,7 @@ jQuery(function($){
 
                         var liPrime = $('<li>').text("BMI Prime: " + result.prime);
 
-                        var liPonderal = $('<li>').text("Ponderal Index: " + result.ponderal.pi + ' kg/m3');
+                        var liPonderal = $('<li>').text("Ponderal Index: " + result.ponderal + ' kg/m3');
 
                         if(result.type != 4){
                             var liPropose = $('<li>').text(result.propose);
@@ -385,6 +385,12 @@ jQuery(function($){
                         }
 
                         $(".content-right .result").append(ul);
+                    }else {
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+
+                        var paragraph = $('<p>').text(response['message']);
+                        $(".content-right .result").append(paragraph);
                     }
                     $('#spinner').hide();
                 },
@@ -434,6 +440,12 @@ jQuery(function($){
                             $(".content-right .result").append(div);
                             
                         });
+                    }else {
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+
+                        var paragraph = $('<p>').text(response['message']);
+                        $(".content-right .result").append(paragraph);
                     }
                     $('#spinner').hide();
                 },
@@ -468,6 +480,52 @@ jQuery(function($){
 
                         // Thêm thẻ <p> vào container
                         $(".content-right .result").append(pTitle);
+                    }else {
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+
+                        var paragraph = $('<p>').text(response['message']);
+                        $(".content-right .result").append(paragraph);
+                    }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error.responseJSON.message);
+                }
+            });
+        })
+
+        $('#btnArmyBodyFat').on('click', function(){
+            $('#spinner').show();
+
+            var formDataArray = $('.form.army-body-fat-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+
+            $.ajax({
+                url: 'https://34.163.253.54/wp-json/api/v1/army-bodyfat/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result']['army_bodyfat'];
+
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+                        var pTitle = $("<p class='title'>").text(result);
+
+                        // Thêm thẻ <p> vào container
+                        $(".content-right .result").append(pTitle);
+                    }else {
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+
+                        var paragraph = $('<p>').text(response['message']);
+                        $(".content-right .result").append(paragraph);
                     }
                     $('#spinner').hide();
                 },

@@ -202,6 +202,12 @@ function ajaxHandle(type, url, data)
             
                     // Thêm thẻ <p> vào container
                 });
+            }else {
+                $('.content-top').removeClass('inactive');
+                $(".content-top .result").empty();
+
+                var content = $("<p>").text(response['message']);
+                $(".content-top .result").append(content);
             }
             $('#spinner').hide();
         },

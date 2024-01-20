@@ -263,12 +263,12 @@ jQuery(function($){
 							tbody2.append(row2);
 						});
 					}
+				}else {
+					$('.content-right').removeClass('inactive');
+					$(".content-right .result-none").empty();
 
-
-
-
-
-					
+					var paragraph = $('<p>').text(response['message']);
+					$(".content-right .result .result-none").append(paragraph);
 				}
 				$('#spinner').hide();
 			},

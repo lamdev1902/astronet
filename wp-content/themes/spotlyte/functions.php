@@ -1164,3 +1164,69 @@ function healthy_weight_calculator($content)
 }
 
 add_shortcode('healthy_weight_calculate','healthy_weight_calculator');
+
+function army_body_fat_calculator($content)
+{
+	wp_enqueue_style( 'bodyfat' );
+	
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculate">
+			<div class="container">
+				<div class="calculate--wrapper">
+					<div class="calculate--wrapper__content">
+						<div class="content-left">
+							<form action="#" class="form army-body-calculate">
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Height</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="height-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="height-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="height-error error"></span>
+									</div>
+								</div>
+								<div class="action">
+									<button id="btnArmyBodyFat" disabled="disabled" class="btn-primary" type="button">
+										Calculate
+									</button>
+									<button id="btnClear" class="btn-secondary" type="button">
+										Clear
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="content-right inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="main-result">
+									
+								</div>
+								<div class="result">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+
+add_shortcode('army_body_fat_calculate','army_body_fat_calculator');
