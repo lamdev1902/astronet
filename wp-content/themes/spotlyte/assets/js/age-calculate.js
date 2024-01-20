@@ -189,19 +189,18 @@ function ajaxHandle(type, url, data)
 
                 $('.content-top').removeClass('inactive');
                 $(".content-top .result").empty();
-                $.each(result, function (key, value) {
-                    if(type == 'gender'){
-                        var paragraph = $("<p class='label'>").text(`It's a ${value}`);
-                        var content = $("<p>").text(`Congratulations! According to the legendary Chinese Gender Chart, you're having a ${value}`)
-                        $(".content-top .result").append(paragraph,content);
-                    }else {
+               if( type == 'gender')
+               {
+                    var paragraph = $("<p class='label'>").text(`It's a ${result}`);
+                    var content = $("<p>").text(`Congratulations! According to the legendary Chinese Gender Chart, you're having a ${result}`)
+                    $(".content-top .result").append(paragraph,content);
+               }else {
+                    $.each(result, function (key, value) {
                         var paragraph = $("<p>").text(key + ": " + value);
                         $(".content-top .result").append(paragraph);
-                    }
-
-            
-                    // Thêm thẻ <p> vào container
-                });
+                        // Thêm thẻ <p> vào container
+                    });
+               }
             }else {
                 $('.content-top').removeClass('inactive');
                 $(".content-top .result").empty();

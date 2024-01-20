@@ -243,6 +243,8 @@ jQuery(function($){
             $("input[name='info[waist][inches]").val('');
             $("input[name='info[hip][feet]").val('');
             $("input[name='info[hip][inches]").val('');
+
+            $('.btn-primary').attr('disabled', 'disabled');
         })
 
         $("#btnBodyFat").on('click', function(){
@@ -333,6 +335,12 @@ jQuery(function($){
                             $('.main-result').text('BMR: ' + value + ' Calories/day');
                             
                         });
+                    }else {
+                        $('.content-right').removeClass('inactive');
+                        $(".content-right .result").empty();
+
+                        var paragraph = $('<p>').text(response['message']);
+                        $(".content-right .result").append(paragraph);
                     }
                     $('#spinner').hide();
                 },
@@ -550,7 +558,10 @@ function handleData($form)
             var key = parts[j].replace(']', '');
 
             if (j === parts.length - 1) {
+               if(field.value)
+               {
                 currentObj[key] = field.value;
+               }
             } else {
                 currentObj[key] = currentObj[key] || {};
                 currentObj = currentObj[key];
