@@ -12,12 +12,14 @@ class ChineseGenderCalculate extends AbstractApi{
      */
     protected $chineseGender;
 
+
     public function __construct(
         
     ){
         add_action('rest_api_init', array($this, 'chinese_gender_calculate_api_register_routes'));
         $chineseGender = new ChineseGenderModel();
         $this->chineseGender = $chineseGender;
+
     }
 
 
@@ -30,7 +32,32 @@ class ChineseGenderCalculate extends AbstractApi{
 
     public function chinese_gender_calculate_api_endpoint($request)
     {
+        if($request->get_params())
+        {
+            $checkDd = $this->dateValidate($request['dd']);
+            $checkDob = $this->dateValidate($request['dob']);
 
+            
+            if($checkDd && $checkDob)
+            {
+                $currentDate = date('Y-m-d');
+
+                $dd = date($request['dd']);
+                $dob = date($request['dob']);
+
+                if($dd < $currentDate)
+                {
+                    return $this->_response([], 400);
+                }
+
+                if($dd < $dob)
+                {
+                    return $this->_response([], 400);
+                }
+            }else {
+                return $this->_response([], 400);
+            }
+        }
         
         $time = $this->chineseGender->calculate($request);
 

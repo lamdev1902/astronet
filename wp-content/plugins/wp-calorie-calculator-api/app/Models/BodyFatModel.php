@@ -88,7 +88,7 @@ class BodyFatModel extends AbstractModel
         return $data;
     }
 
-    private function bodyfatCalculate($data)
+    public  function bodyfatCalculate($data)
     {
         $height = $data['height'];
         $weight = $data['weight'];

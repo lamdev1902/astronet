@@ -1,14 +1,19 @@
 <?php 
 namespace Calculator\Api;
 
-abstract class AbstractApi
+use Calculator\Api\RequestValidate;
+
+abstract class AbstractApi extends RequestValidate
 {
-    protected function _response($data, $status)
+    protected function _response($data, $status, $unit = '')
     {
         $result = [];
         $result['status'] = $status;
         $result['result'] = $data;
 
+        if($unit) {
+            $result['result']['unit'] = $unit;
+        }
         $result['message'] = $this->_status($status);
 
 
@@ -28,4 +33,18 @@ abstract class AbstractApi
         return $status[$code] ? $status[$code] : $status[500];
     }
 
+    protected function validate($request)
+    {
+        if($request->get_params())
+        {
+            if(!$this->infoValidate($request->get_params()))
+            {
+                return $this->_response([], 400);
+            }
+        }else {
+            return $this->_response([], 400);
+        }
+
+        return true;
+    }
 }

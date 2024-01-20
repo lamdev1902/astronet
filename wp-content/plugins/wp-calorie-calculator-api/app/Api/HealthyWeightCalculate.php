@@ -14,6 +14,7 @@ class HealthyWeightCalculate extends AbstractApi {
      */
     protected $bmi;
 
+
     public function __construct(
         
     ){
@@ -23,6 +24,7 @@ class HealthyWeightCalculate extends AbstractApi {
 
         $helper = new Data();
         $this->helper = $helper;
+
     }
 
 
@@ -35,6 +37,12 @@ class HealthyWeightCalculate extends AbstractApi {
 
     public function healthy_weight_calculate_api_endpoint($request)
     {
+        $requestValidate = $this->validate($request);
+
+        if($requestValidate !== true)
+        {
+            return $requestValidate;
+        }
 
         $height = $this->helper->cmConvert($request['info']['height']);
 

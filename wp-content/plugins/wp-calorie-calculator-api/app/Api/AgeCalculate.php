@@ -19,6 +19,7 @@ class AgeCalculate extends AbstractApi{
         add_action('rest_api_init', array($this, 'age_calculate_api_register_routes'));
         $age = new AgeModel();
         $this->age = $age;
+
     }
 
 
@@ -32,10 +33,25 @@ class AgeCalculate extends AbstractApi{
     public function age_calculate_api_endpoint($request)
     {
 
-        
+        $checkAgeOfTheDate = $this->dateValidate($request['ageOfTheDateday']);
+        $checkDob = $this->dateValidate($request['dayOfBirth']);
+
+        if($checkAgeOfTheDate && $checkDob){
+            $ageOfTheDate = new Date($request['ageOfTheDateday']);
+            $dob = new Date($request['dayOfBirth']);
+
+            if($ageOfTheDate > $dob)
+            {
+                return $this->_response([], 400);
+            }else {
+                return $this->_response([], 400);
+            }
+        }
+
         $time = $this->age->calculate($request);
 
 
         return $this->_response($time, 200);
     }
+
 }

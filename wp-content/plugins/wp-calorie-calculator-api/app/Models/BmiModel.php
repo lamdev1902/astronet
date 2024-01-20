@@ -103,9 +103,15 @@ class BmiModel extends AbstractModel
         else if($bmi >= 25 && $bmi < 30){
             $result['bmi']['type'] = 5;
             $result['bmi']['description'] = "Overweight";
-        }else if($bmi >= 30){
+        }else if($bmi >= 30 && $bmi < 35){
             $result['bmi']['type'] = 6;
-            $result['bmi']['description'] = "Obesity";
+            $result['bmi']['description'] = "Obesity Class 1";
+        }else if($bmi >= 35 && $bmi < 40){
+            $result['bmi']['type'] = 6;
+            $result['bmi']['description'] = "Obesity Class 2";
+        }else if($bmi >= 40){
+            $result['bmi']['type'] = 6;
+            $result['bmi']['description'] = "Obesity Class 3";
         }
 
         $prime = $this->primebmiCalculate($bmi);
@@ -129,10 +135,8 @@ class BmiModel extends AbstractModel
 
     private function ponderalIndexCalculate($data)
     {
-        $pi = [];
 
-        $pi['type'] = $data['type'];
-        $pi['pi'] = round($data['weight'] / pow($data['height'],3),1);
+        $pi = round($data['weight'] / pow($data['height'],3),1);
 
         return $pi;
     }

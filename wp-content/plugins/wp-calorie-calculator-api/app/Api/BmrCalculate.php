@@ -12,11 +12,13 @@ class BmrCalculate extends AbstractApi
      */
     protected $bmr;
 
+
     public function __construct(){
         add_action('rest_api_init', array($this, 'bmr_calculate_api_register_routes'));
         
         $bmr = new BmrModel();
         $this->bmr = $bmr;
+
     }
 
     public function bmr_calculate_api_register_routes() {
@@ -28,7 +30,13 @@ class BmrCalculate extends AbstractApi
 
     public function bmr_calculate_api_endpoint($request)
     {
-        
+        $requestValidate = $this->validate($request);
+
+        if($requestValidate !== true)
+        {
+            return $requestValidate;
+        }
+
         $result = $this->bmr->calculate($request);
 
 

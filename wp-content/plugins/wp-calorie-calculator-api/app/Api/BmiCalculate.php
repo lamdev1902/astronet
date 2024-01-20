@@ -18,6 +18,7 @@ class BmiCalculate extends AbstractApi
         
         $bmi = new BmiModel();
         $this->bmi = $bmi;
+
     }
 
     public function bmi_calculate_api_register_routes() {
@@ -29,9 +30,14 @@ class BmiCalculate extends AbstractApi
 
     public function bmi_calculate_api_endpoint($request)
     {
+        $validate  = $this->validate($request);
         
+        if($validate !== true)
+        {
+            return $validate;
+        }
         $bmiResult = $this->bmi->calculate($request['info']);
 
-        return $this->_response($bmiResult, 200);
+        return $this->_response($bmiResult, 200, $request['unit']);
     }
 }

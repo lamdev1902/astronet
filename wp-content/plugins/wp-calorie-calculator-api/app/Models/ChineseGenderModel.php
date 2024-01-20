@@ -44,7 +44,7 @@ class ChineseGenderModel extends AbstractModel
 
         $chart = $this->chineseGenderChart();
 
-        $result['gender'][] = $chart[$age][$monthDueLunar-1];
+        $result['gender'] = $chart[$age][$monthDueLunar-1];
 
         return $result;
     }
