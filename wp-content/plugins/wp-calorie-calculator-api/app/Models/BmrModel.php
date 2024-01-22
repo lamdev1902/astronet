@@ -30,6 +30,9 @@ class BmrModel extends AbstractModel
         }else if ($request['receip'] == 2) {
             $bmr =  $this->BMRHarrisBenedict($info);
         }else if($request['receip'] == 3) {
+            if(!isset($info['body-fat'])){
+                return false;
+            }
             $bmr =  $this->BMRKatchMcArdle($info);
         }
 

@@ -39,6 +39,9 @@ class BmrCalculate extends AbstractApi
 
         $result = $this->bmr->calculate($request);
 
+        if(!$result){
+            return $this->_response([], 400);
+        }
 
         return $this->_response($result, 200);
     }
