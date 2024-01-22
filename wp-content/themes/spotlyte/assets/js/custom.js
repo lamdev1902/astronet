@@ -297,6 +297,23 @@ jQuery(function($){
 
         });
 
+		$("input[name='info[body-fat]']").change(function () {
+            if($(this).val().match(regex)){
+                if($(this).val() < 1){
+                    $('.fat-error').text('Positive numbers only');
+                }else {
+                    $('.fat-error').text('');
+                }
+            }else {
+                $(this).val('');
+                $('.fat-error').text('Must input numbers!');
+            }
+
+			var receip = $("input[name='info[height][feet]']").val();
+
+            validateCalculator(receip);
+
+        });
         $("input[name='info[height][feet]']").change(function () {
             if($(this).val().match(regex)){
                 if($(this).val() < 1)
