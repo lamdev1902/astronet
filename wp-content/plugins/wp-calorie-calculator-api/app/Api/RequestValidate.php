@@ -17,27 +17,33 @@ class RequestValidate
                 foreach($value as $item)
                 {
                     if(is_array($item)){
-                        foreach($item as $i)
+                        foreach($item as $key => $i)
                         {
-                            if(!is_numeric($i))
-                            {
-                                return false;
+                            if($key != 'inches'){
+                                if(!is_numeric($i) || $i == 0)
+                                {
+                                    return false;
+                                }
+                            }else {
+                                if(!is_numeric($i))
+                                {
+                                    return false;
+                                }
                             }
                         }
                     }else {
-                        if(!is_numeric($item))
+                        if(!is_numeric($item) || $item == 0)
                         {
                             return false;
                         }
                     }
                 }
             }else {
-                if(!is_numeric($value)){
+                if(!is_numeric($value) || $value == 0){
                     return false;
                 }
             }
 
-            
         }
 
         return true;
