@@ -189,14 +189,14 @@ function calorie_calculator($content)
 									</div>
 									<div class="radio-wrapper">
 										<div class="radio-wrapper__item">
-											<input type="radio" class="radio-wrapper__btn" value="1" name="gender" id="male">
+											<input type="radio" class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
 											<label for="male" class="radio-wrapper__label">
 												<span class="radio-visibility"></span>
 												Male
 											</label>
 										</div>
 										<div class="radio-wrapper__item">
-											<input type="radio" class="radio-wrapper__btn" value="2" name="gender" id="female">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[gender]" id="female">
 											<label for="female" class="radio-wrapper__label">
 												<span class="radio-visibility"></span>
 												Female
@@ -210,7 +210,7 @@ function calorie_calculator($content)
 									</div>
 									<div class="text-wrapper">
 										<div class="text-wrapper__item">
-											<input type="text" pattern="[0-9]+" class="" value="" name="age" id="age">
+											<input type="text" pattern="[0-9]+" class="" value="" name="info[age]" id="age">
 											<div class="place-holder">
 												<span>Years</span>
 											</div>
@@ -224,7 +224,7 @@ function calorie_calculator($content)
 									</div>
 									<div class="text-wrapper">
 										<div class="text-wrapper__item">
-											<input type="text" pattern="[0-9]+" class="" value="" name="weight" id="weight">
+											<input type="text" pattern="[0-9]+" class="" value="" name="info[weight]" id="weight">
 											<div class="place-holder">
 												<span>lbs</span>
 											</div>
@@ -239,13 +239,13 @@ function calorie_calculator($content)
 									<div class="text-wrapper">
 										<div class="text-wrapper__item us">
 											<div class="height-ft">
-												<input type="text" pattern="[0-9]+" class="radio-wrapper__btn" value="" name="feet" id="heightFt">
+												<input type="text" pattern="[0-9]+" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
 												<div class="place-holder">
 													<span>ft</span>
 												</div>
 											</div>
 											<div class="height-in">
-												<input type="text" pattern="[0-9]+" class="radio-wrapper__btn" value="" name="inches" id="heightIn">
+												<input type="text" pattern="[0-9]+" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
 												<div class="place-holder">
 													<span>in</span>
 												</div>
@@ -258,7 +258,7 @@ function calorie_calculator($content)
 									<div class="label-wrapper">
 										<label for="" class="label">Level of Activity</label>
 									</div>
-									<select name="activity" id="levelofActivity" class="select-wrapper">
+									<select name="info[activity]" id="levelofActivity" class="select-wrapper">
 										<option value="1" class="select-wrapper__option">Basal Metabolic Rate (BMR)</option>
 										<option value="2" class="select-wrapper__option">Sedentary: little or no exercise</option>
 										<option value="3" class="select-wrapper__option">Light: exercise 1-3 times/week</option>
@@ -283,7 +283,7 @@ function calorie_calculator($content)
 									</div>
 									<div class="text-wrapper">
 										<div class="text-wrapper__item">
-											<input type="text" class="" value="" name="fat" id="bodyFat">
+											<input type="text" class="" value="" name="info[body-fat]" id="bodyFat">
 											<div class="place-holder">
 												<span>%</span>
 											</div>
@@ -302,7 +302,7 @@ function calorie_calculator($content)
 									</select>
 								</div>
 								<div class="action">
-									<button id="btnCalculator" class="btn-primary" type="button">
+									<button id="btnCalculator" disabled="disabled" class="btn-primary" type="button">
 										Calculate
 									</button>
 									<button id="btnClear" class="btn-secondary" type="button">

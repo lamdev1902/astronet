@@ -1,4 +1,6 @@
 jQuery(function($){
+	var regex = /^[0-9]+$/;
+
 	$('.hd-box').hover(function(){
 		$('#header .hd-box .menu-main li ul, .provider-disclaimer, #header .hd-bg').addClass('active');
 	},function(){
@@ -60,8 +62,6 @@ jQuery(function($){
 	$("#btnCalculator").on('click', function(){
 		$('#spinner').show();
 
-
-
 		var formDataArray = $('.form.calorie-calculate').serializeArray();
     
 		var jsonData = handleData(formDataArray);
@@ -71,7 +71,7 @@ jQuery(function($){
 		var receipValue = 0;
 
 		$.ajax({
-			url: 'https://34.163.253.54/wp-json/api/v1/calorie-calculate/',
+			url: 'https://34.163.253.54///wp-json/api/v1/calorie-calculate/',
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify(jsonData),
@@ -143,7 +143,7 @@ jQuery(function($){
 						lose.removeClass('inactive');
 						lose.find('.goals').replaceWith(goalLose);
 					}else {
-						if(receipValue != 1){
+						if(receipValue > 1){
 							lose.removeClass('inactive');
 							goalLose.append(noLose);
 							lose.find('.goals').replaceWith(goalLose);
@@ -235,65 +235,99 @@ jQuery(function($){
 		});
 	});
 
-	$('#btnClear').on('click', function() {
-		$("[name=age]").val('');
-		$("[name=weight]").val('');
-		$("[name=feet]").val('');
-		$("[name=inches]").val('');
+	$("#btnClear").on('click', function(){
+		$("input[name='info[age]").val('');
+		$("input[name='info[weight]").val('');
+		$("input[name='info[height][feet]").val('');
+		$("input[name='info[height][inches]").val('');
+		$('.btn-primary').attr('disabled', 'disabled');
 	})
 
-	$("[name=age]").change(function () {
-		if($(this).val() < 18){
-			$('.age-error').text('The minimum age that can be used in this calculator is 18. Please enter age again.');
-		}else {
-			$('.age-error').text('');
-		}
-		
-	});
 
-	$("[name=receip]").change(function () {
+	$('[name=receip]').change(function () {
 		if($(this).val() == 3){
 			$(".body-fat").removeClass('inactive');
 		}else {
 			$(".body-fat").addClass('inactive');
 		}
+
+		validateCalculator($(this).val());
 		
 	});
 
-	$("[name=weight]").change(function () {
-		if($(this).val() < 40 || $(this).val() > 600){
-			$('.weight-error').text('Please enter a weight between 40 and 600 pounds.');
-		}else {
-			$('.weight-error').text('');
-		}
+		$('input[name="info[gender]"]').change(function(){
 
-	});
+			var receip = $("input[name='info[height][feet]']").val();
 
-	$("[name=fat]").change(function () {
-		if($(this).val() < 3){
-			$('.fat-error').text('Please provide a reasonable body fat percentage..');
-		}else {
-			$('.weight-error').text('');
-		}
+            validateCalculator(receip);
+        })
 
-	});
+        $("input[name='info[age]']").change(function () {
+            if($(this).val().match(regex)){
+                if($(this).val() < 1){
+                    $('.age-error').text('Positive numbers only');
+                }else {
+                    $('.age-error').text('');
+                }
+            }else {
+                $(this).val('');
+                $('.age-error').text('Must input numbers!');
+            }
+			var receip = $("input[name='info[height][feet]']").val();
+			
+            validateCalculator(receip);
 
-	$("[name=feet]").change(function () {
-		if($(this).val() < 4 || $(this).val() > 8)
-		{
-			$('.height-error').text('Height value must be between 4 and 8 feet.');
-		}else {
-			$('.height-error').text('');
-		}
-	});
+        });
 
-	$("[name=inches]").change(function () {
-		if(!$("[name=feet]").val()){
-			$('.height-error').text('Height value must be between 4 and 8 feet.');
-		}else {
-			$('.height-error').text('');
-		}
-	});
+        $("input[name='info[weight]']").change(function () {
+            if($(this).val().match(regex)){
+                if($(this).val() < 1){
+                    $('.weight-error').text('Positive numbers only');
+                }else {
+                    $('.weight-error').text('');
+                }
+            }else {
+                $(this).val('');
+                $('.weight-error').text('Must input numbers!');
+            }
+
+			var receip = $("input[name='info[height][feet]']").val();
+
+            validateCalculator(receip);
+
+        });
+
+        $("input[name='info[height][feet]']").change(function () {
+            if($(this).val().match(regex)){
+                if($(this).val() < 1)
+                {
+                    $('.height-error').text('Positive numbers only');
+                }else {
+                    $('.height-error').text('');
+                }
+            }else {
+                $(this).val('');
+                $('.height-error').text('Must input numbers!');
+            }
+
+			var receip = $("input[name='info[height][feet]']").val();
+            
+            validateCalculator(receip);
+
+        });
+
+        $("input[name='info[height][inches]']").change(function () {
+            if(!$(this).val().match(regex)){
+                $(this).val('');
+                $('.height-error').text('Must input numbers!');
+            }else {
+                $('.height-error').text('');
+            }            
+			var receip = $("input[name='info[height][feet]']").val();
+
+            validateCalculator(receip);
+            
+        });
 })
 
 function handleData($form)
@@ -322,19 +356,34 @@ function handleData($form)
     return jsonData;
 }
 
-function validateCalculator()
-{
-	var age = $("[name=age]").val();
-	var weight = $("[name=weight]").val();
-	var height = $("[name=feet]").val();
-	var heightError = $('height-error').text();
-	var weightError = $('weight-error').text();
-	var ageError = $('age-error').text();
 
-	if(age && weight && height) {
-		if(height === '' && weight === '' && age === ''){
-			console.log('successs');
+function validateCalculator(receip)
+{
+  var age = $("input[name='info[age]").val();
+  var weight = $("input[name='info[weight]").val();
+  var height = $("input[name='info[height][feet]").val();
+  var bodyFat = $("input[name='info[body-fat]").text();
+
+  var ageError = $(".age-error").text();
+  var weightError = $(".weight-error").text();
+  var heightError = $(".height-error").text();
+  var bodyFatError = $(".fat-error").text();
+
+	if(receip == 3)
+	{
+		if( (age && weight && height && bodyFat ) && (ageError == "" && weightError == "" && heightError == "" && bodyFatError == "") )        
+		{
+			$("#btnCalculator").prop('disabled', false);
+		}else {
+			$("#btnCalculator").prop('disabled', true);
+		}
+
+	}else {
+		if( (age && weight && height ) && (ageError == "" && weightError == "" && heightError == "") )        
+		{
+			$("#btnCalculator").prop('disabled', false);
+		}else {
+			$("#btnCalculator").prop('disabled', true);
 		}
 	}
 }
-

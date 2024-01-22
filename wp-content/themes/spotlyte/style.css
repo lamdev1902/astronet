@@ -1000,3 +1000,14 @@ table td {
     padding: 5px 7px;
     text-align: left;
 }
+
+.form .btn-primary:disabled {
+    opacity: 0.6;
+}
+
+.form .btn-primary:disabled:hover 
+{
+    cursor: default;
+    background: #4c7b25;
+    opacity: 0.6;
+}
