@@ -61,58 +61,14 @@ jQuery(function($){
 		$('#spinner').show();
 
 
-		var formDataArray = $('.form').serializeArray();
 
-		var jsonData = {
-				'type': "1",
-				'info': {
-					'age': null,
-					'gender': null,
-					'weight': null,
-					'height': {
-						'feet': null,
-						'inches': null
-					},
-					'activity': null,
-					'body-fat': null
-				},
-				'unit': null,
-				'receip': null
-		};
+		var formDataArray = $('.form.calorie-calculate').serializeArray();
+    
+		var jsonData = handleData(formDataArray);
+
 		var checkActivity = 0;
 
 		var receipValue = 0;
-		// Lặp qua các trường form và gán giá trị vào đối tượng JSON
-		formDataArray.forEach(function(e) {
-			var fieldName = e.name;
-			var fieldValue = e.value;
-
-
-			if(fieldName === 'activity' && fieldValue > 0){
-				checkActivity = 1;
-			}
-			// Kiểm tra và gán giá trị vào đối tượng JSON tương ứng
-			if (fieldName === 'gender' ) {
-				jsonData['info'][fieldName] = fieldValue;
-			} else if (fieldName === 'age' || fieldName === 'weight') {
-				jsonData['info'][fieldName] = fieldValue !== '' ? fieldValue : null;
-			} else if (fieldName === 'type') {
-				jsonData[fieldName] = parseInt(fieldValue);
-			}else if (fieldName === 'feet') {
-				jsonData['info']['height']['feet'] = fieldValue !== '' ? fieldValue : null;
-			} else if (fieldName === 'inches') {
-				jsonData['info']['height']['inches'] = fieldValue !== '' ? fieldValue : null;
-			}else if(fieldName === 'fat'){
-				jsonData['info']['body-fat'] = fieldValue;
-			}else if(fieldName === 'receip'){
-				jsonData['receip'] = fieldValue;
-			}else if(fieldName === 'unit'){
-				jsonData['unit'] = fieldValue;
-			}else if(fieldName === 'activity'){
-				jsonData['info'][fieldName] = fieldValue;
-				receipValue = fieldValue;
-			}
-		});
 
 		$.ajax({
 			url: 'https://34.163.253.54/wp-json/api/v1/calorie-calculate/',
@@ -339,6 +295,32 @@ jQuery(function($){
 		}
 	});
 })
+
+function handleData($form)
+{
+    var jsonData = {};
+
+    $.each($form, function(i, field) {
+        var parts = field.name.split('[');
+        var currentObj = jsonData;
+
+        for (var j = 0; j < parts.length; j++) {
+            var key = parts[j].replace(']', '');
+
+            if (j === parts.length - 1) {
+               if(field.value)
+               {
+                currentObj[key] = field.value;
+               }
+            } else {
+                currentObj[key] = currentObj[key] || {};
+                currentObj = currentObj[key];
+            }
+        }
+    });
+
+    return jsonData;
+}
 
 function validateCalculator()
 {

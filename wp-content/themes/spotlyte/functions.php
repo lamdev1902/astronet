@@ -181,7 +181,7 @@ function calorie_calculator($content)
 					</div>
 					<div class="wrapper-content">
 						<div class="content-left">
-							<form action="#" class="form">
+							<form action="#" class="form calorie-calculate">
 								<div class="column">
 									<div class="label-wrapper img">
 										<label for="male" class="label">Gender</label>
