@@ -257,7 +257,7 @@ jQuery(function($){
 
 		$('input[name="info[gender]"]').change(function(){
 
-			var receip = $("input[name='info[height][feet]']").val();
+			var receip = $('[name=receip]').val();
 
             validateCalculator(receip);
         })
@@ -273,7 +273,7 @@ jQuery(function($){
                 $(this).val('');
                 $('.age-error').text('Must input numbers!');
             }
-			var receip = $("input[name='info[height][feet]']").val();
+			var receip = $('[name=receip]').val();
 			
             validateCalculator(receip);
 
@@ -291,7 +291,7 @@ jQuery(function($){
                 $('.weight-error').text('Must input numbers!');
             }
 
-			var receip = $("input[name='info[height][feet]']").val();
+			var receip = $('[name=receip]').val();
 
             validateCalculator(receip);
 
@@ -309,7 +309,7 @@ jQuery(function($){
                 $('.fat-error').text('Must input numbers!');
             }
 
-			var receip = $("input[name='info[height][feet]']").val();
+			var receip = $('[name=receip]').val();
 
             validateCalculator(receip);
 
@@ -327,7 +327,7 @@ jQuery(function($){
                 $('.height-error').text('Must input numbers!');
             }
 
-			var receip = $("input[name='info[height][feet]']").val();
+			var receip = $('[name=receip]').val();
             
             validateCalculator(receip);
 
@@ -340,7 +340,7 @@ jQuery(function($){
             }else {
                 $('.height-error').text('');
             }            
-			var receip = $("input[name='info[height][feet]']").val();
+			var receip = $('[name=receip]').val();
 
             validateCalculator(receip);
             
@@ -379,7 +379,7 @@ function validateCalculator(receip)
   var age = $("input[name='info[age]").val();
   var weight = $("input[name='info[weight]").val();
   var height = $("input[name='info[height][feet]").val();
-  var bodyFat = $("input[name='info[body-fat]").text();
+  var bodyFat = $("input[name='info[body-fat]']").val();
 
   var ageError = $(".age-error").text();
   var weightError = $(".weight-error").text();
