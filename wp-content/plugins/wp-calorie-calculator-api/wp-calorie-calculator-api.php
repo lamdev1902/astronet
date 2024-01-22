@@ -14,16 +14,6 @@ namespace Calculator;
 
 require __DIR__ . '/vendor/autoload.php';
 
-require_once(plugin_dir_path(__FILE__) . 'validate/request.php');
-require_once(plugin_dir_path(__FILE__) . 'helper/data.php');
-require_once(plugin_dir_path(__FILE__) . 'models/bmi.php');
-require_once(plugin_dir_path(__FILE__) . 'models/bmr.php');
-require_once(plugin_dir_path(__FILE__) . 'models/age.php');
-require_once(plugin_dir_path(__FILE__) . 'models/duedate.php');
-require_once(plugin_dir_path(__FILE__) . 'api/calorie/calorie-api.php');
-require_once(plugin_dir_path(__FILE__) . 'api/bmi/bmi-api.php');
-require_once(plugin_dir_path(__FILE__) . 'api/bmr/bmr-api.php');
-
 $testApi = new \Calculator\Api\AgeCalculate();
 $bodyFatApi = new \Calculator\Api\BodyFatCalculate();
 $chineseGenderApi = new \Calculator\Api\ChineseGenderCalculate();
@@ -31,3 +21,4 @@ $bmrApi = new \Calculator\Api\BmrCalculate();
 $bmiApi = new \Calculator\Api\BmiCalculate();
 $idealWeightApi = new \Calculator\Api\IdealWeightCalculate();
 $healthyWeightApi = new \Calculator\Api\HealthyWeightCalculate();
+$calorieApi = new \Calculator\Api\CalorieCalculate();

@@ -115,7 +115,7 @@ jQuery(function($){
 		});
 
 		$.ajax({
-			url: 'https://34.163.253.54/wp-json/api/v1/calorie/',
+			url: 'https://34.163.253.54/wp-json/api/v1/calorie-calculator/',
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify(jsonData),

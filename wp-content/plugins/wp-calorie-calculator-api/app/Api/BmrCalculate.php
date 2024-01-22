@@ -43,6 +43,6 @@ class BmrCalculate extends AbstractApi
             return $this->_response([], 400);
         }
 
-        return $this->_response($result, 200);
+        return $this->_response($result, 200, $request['unit']);
     }
 }
