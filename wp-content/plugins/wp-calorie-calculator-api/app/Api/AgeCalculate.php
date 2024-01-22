@@ -33,19 +33,19 @@ class AgeCalculate extends AbstractApi{
     public function age_calculate_api_endpoint($request)
     {
 
-        $checkAgeOfTheDate = $this->dateValidate($request['ageOfTheDateday']);
-        $checkDob = $this->dateValidate($request['dayOfBirth']);
+        $checkAgeOfTheDate = $this->dateValidate($request['ageat']);
+        $checkDob = $this->dateValidate($request['dob']);
 
         if($checkAgeOfTheDate && $checkDob){
-            $ageOfTheDate = new Date($request['ageOfTheDateday']);
-            $dob = new Date($request['dayOfBirth']);
+            $ageOfTheDate = new \DateTime($request['ageat']);
+            $dob = new \DateTime($request['dob']);
 
-            if($ageOfTheDate > $dob)
+            if($ageOfTheDate < $dob)
             {
                 return $this->_response([], 400);
-            }else {
-                return $this->_response([], 400);
             }
+        }else {
+            return $this->_response([], 400);
         }
 
         $time = $this->age->calculate($request);

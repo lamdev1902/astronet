@@ -8,8 +8,8 @@ class AgeModel
     {
         $result = [];
 
-        $from = new \DateTime($data['dayOfBirth']);
-        $to = new \DateTime( $data['ageOfTheDate']);
+        $from = new \DateTime($data['dob']);
+        $to = new \DateTime( $data['ageat']);
 
         $time = $to->diff($from);
 
@@ -35,8 +35,8 @@ class AgeModel
         $result['age']['weekday'] = $weekDay;
         $result['age']['day'] = number_format($fullDay);
         $result['age']['hours'] = number_format($hours);
-        $result['age']['min'] = number_format($mins);
-        $result['age']['second'] = number_format($seconds);
+        $result['age']['minutes'] = number_format($mins);
+        $result['age']['seconds'] = number_format($seconds);
 
         return $result;
     }

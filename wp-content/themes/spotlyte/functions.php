@@ -407,7 +407,7 @@ function age_calculator($content)
 									<div class="text-wrapper">
 
 										<div class="text-wrapper__item">
-											<input type="hidden" class="" value="1990-01-01" name="dayOfBirth" id="dayOfBirth">
+											<input type="hidden" class="" value="1990-01-01" name="dob" id="dayOfBirth">
 										</div>
 										<div class="options">
 											<div class="label-wrapper">
@@ -443,7 +443,7 @@ function age_calculator($content)
 								<div class="column">
 									<div class="text-wrapper">
 										<div class="text-wrapper__item">
-											<input type="hidden" class="" value="" name="ageOfTheDate" id="birth">
+											<input type="hidden" class="" value="" name="ageat" id="birth">
 										</div>
 										<div class="options">
 											<div class="label-wrapper">

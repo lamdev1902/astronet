@@ -93,8 +93,8 @@ jQuery(function($){
     
             var jsonData = handleData(formDataArray);
             
-            var date1 = new Date(jsonData['dayOfBirth']);
-            var date2 = new Date(jsonData['ageOfTheDate']);
+            var date1 = new Date(jsonData['dob']);
+            var date2 = new Date(jsonData['ageat']);
 
 
             if (date1 >= date2) {
