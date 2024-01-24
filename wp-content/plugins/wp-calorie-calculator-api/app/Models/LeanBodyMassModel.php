@@ -99,19 +99,13 @@ class LeanBodyMassModel extends AbstractModel
     private function childrendFomular($info)
     {
         $result = [];
-        $index = 0.6469 * pow($info['height'], 0.7236);
-        $index = 45.5;
 
-        $leanbody = 0.0215 * pow(73,$index);
+        $eECV = 0.0215 * pow($info['weight'], 0.6469) * pow($info['height'],0.7236);
 
-        if($gender == 2)
-        {
-            $leanbody = 3.8 * $leanbody;
-        }
-
+        $leanbody = $eECV * 3.8;
         $leanbody = $this->helper->poundsConvert($leanbody);
 
-        $result['title'] = 'Childrend';
+        $result['title'] = 'Peters (for Children)';
         $result['lean_body'] = $leanbody;
         return $result;
 
