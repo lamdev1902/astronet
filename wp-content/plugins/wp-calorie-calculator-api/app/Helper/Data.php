@@ -25,6 +25,11 @@ class Data
     }
 
 
+    public function poundsConvert($number)
+    {
+        return round($number / 0.45359237,1);
+    }
+
     /**
      * Convert Calorie to Kilojoules
      * 

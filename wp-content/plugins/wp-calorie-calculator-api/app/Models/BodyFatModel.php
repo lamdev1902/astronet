@@ -207,7 +207,7 @@ class BodyFatModel extends AbstractModel
         return $percent;
     }
 
-    private function bodyFatBMICalculate($bmi, $gender, $age)
+    public function bodyFatBMICalculate($bmi, $gender, $age)
     {
         $gender = $gender == 1 ? 16.2 : 5.4;
 

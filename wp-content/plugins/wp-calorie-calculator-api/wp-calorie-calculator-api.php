@@ -22,3 +22,5 @@ $bmiApi = new \Calculator\Api\BmiCalculate();
 $idealWeightApi = new \Calculator\Api\IdealWeightCalculate();
 $healthyWeightApi = new \Calculator\Api\HealthyWeightCalculate();
 $calorieApi = new \Calculator\Api\CalorieCalculate();
+$leanBodyApi = new \Calculator\Api\LeanBodyMassCalculate();
+$waistToHeightRatioApi = new \Calculator\Api\WaistToHeightRatioCalculate();
