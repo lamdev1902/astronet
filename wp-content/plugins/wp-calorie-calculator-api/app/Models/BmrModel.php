@@ -50,22 +50,22 @@ class BmrModel extends AbstractModel
     {
         $genderNumber = $data['gender'] == 1 ? 5 : -161;
 
-       return round( (10 * $data['weight']) + ( 6.25 * $data['height'] ) - ( 5 * $data['age'] ) + $genderNumber );
+       return floor( (10 * $data['weight']) + ( 6.25 * $data['height'] ) - ( 5 * $data['age'] ) + $genderNumber );
     }
 
     private function BMRHarrisBenedict($data)
     {
         if($data['gender'] === "1")
         {
-            return round( (13.397 * $data['weight']) + ( 4.799 * $data['height'] ) - ( 5.677 * $data['age'] ) + 88.362 );
+            return floor( (13.397 * $data['weight']) + ( 4.799 * $data['height'] ) - ( 5.677 * $data['age'] ) + 88.362 );
         }
 
-        return round( (9.247 * $data['weight']) + ( 3.098 * $data['height'] ) - ( 4.330 * $data['age'] ) + 447.593 );
+        return floor( (9.247 * $data['weight']) + ( 3.098 * $data['height'] ) - ( 4.330 * $data['age'] ) + 447.593 );
     }
 
     private function BMRKatchMcArdle($data)
     {
-        return round( 370 + ( 21.6 * ( 1 - ( $data['body-fat'] / 100 ) ) * $data['weight'] ) );
+        return floor( 370 + ( 21.6 * ( 1 - ( $data['body-fat'] / 100 ) ) * $data['weight'] ) );
     }
 
 }

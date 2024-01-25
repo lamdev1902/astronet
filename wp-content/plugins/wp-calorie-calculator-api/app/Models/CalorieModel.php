@@ -40,9 +40,8 @@ class CalorieModel extends AbstractModel
         $activityItem = reset($activity);
         if($request['info']['activity'] != 1)
         {
-            
             $bmrResult = $bmrResult['bmr']['calorie'] * $activityItem['coefficient'];
-            $result = $this->result($bmiResult, round($bmrResult), 'lb');
+            $result = $this->result($bmiResult, round($bmrResult), 'lb', $request['unit']);
         }else {
             $result['calorie'][] = [
                 'goal_type' => 1,
@@ -58,15 +57,6 @@ class CalorieModel extends AbstractModel
             $result['zigzag_schedule_1'] = $this->zigZag1Calculate($result);
             $result['zigzag_schedule_2'] = $this->zigZag2Calculate($result);
         }
-
-        $unit = 1;
-        
-        if($request['unit'] == 2)
-        {
-            $result['calorie'] = $helper->kilojoulesConvert($result['calorie']);
-            $unit = 2;
-        }
-
         return $result;
     }
 
@@ -342,7 +332,7 @@ class CalorieModel extends AbstractModel
         return $goals;
     }
 
-    private function result($bmi, $bmr, $unit)
+    private function result($bmi, $bmr, $unit, $unitCalorie)
     {
         $goals = $this->get_calculator_default_goals();
     
@@ -361,6 +351,8 @@ class CalorieModel extends AbstractModel
             $param = 1;
         }
         
+        $unitCalorie =  ( $unitCalorie == 1 ) ? 1 : 4.1836;
+
         foreach($goals as $key => $goal){
             $calorie = $bmr;
             $description = "";
@@ -369,15 +361,15 @@ class CalorieModel extends AbstractModel
             }
             if($goal['type'] == 2)
             {
-                $calorie = $calorie - $goal['coefficient'] * 1000;
+                $calorie = $calorie - $goal['coefficient'] * 1000 * $unitCalorie;
             }elseif($goal['type'] == 3){
-                $calorie = $calorie + $goal['coefficient'] * 1000;
+                $calorie = $calorie + $goal['coefficient'] * 1000 * $unitCalorie;
             };
             
             $result['calorie'][] = [
                 'goal_type' => $goal['type'],
                 'name' => $goal['name'],
-                'calorie' => floor($calorie),
+                'calorie' => round($calorie),
                 'description' => $description
             ];
     

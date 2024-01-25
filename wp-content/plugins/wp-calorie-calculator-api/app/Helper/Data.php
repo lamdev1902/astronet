@@ -38,7 +38,7 @@ class Data
     {
         foreach($data as $key => $item)
         {
-            $kilojoules = floor($item['calorie']*4.1868);
+            $kilojoules = round($item['calorie']*4.1868);
             $data[$key]['calorie'] = $kilojoules;
         }
 
