@@ -43,6 +43,7 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
         'Calculator\\Helper\\Data' => __DIR__ . '/../..' . '/app/Helper/Data.php',
         'Calculator\\Models\\AbstractModel' => __DIR__ . '/../..' . '/app/Models/AbstractModel.php',
         'Calculator\\Models\\AgeModel' => __DIR__ . '/../..' . '/app/Models/AgeModel.php',
+        'Calculator\\Models\\ArmyBodyFatModel' => __DIR__ . '/../..' . '/app/Models/ArmyBodyFatModel.php',
         'Calculator\\Models\\BmiModel' => __DIR__ . '/../..' . '/app/Models/BmiModel.php',
         'Calculator\\Models\\BmrModel' => __DIR__ . '/../..' . '/app/Models/BmrModel.php',
         'Calculator\\Models\\BodyFatModel' => __DIR__ . '/../..' . '/app/Models/BodyFatModel.php',

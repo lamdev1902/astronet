@@ -1,23 +1,23 @@
 <?php 
 namespace Calculator\Api;
 
-use Calculator\Models\BodyFatModel;
+use Calculator\Models\ArmyBodyFatModel;
 use Calculator\Api\AbstractApi;
 
 class ArmyBodyFatCalculate extends AbstractApi 
 {
     /**
-     * Body Fat Model
-     * @var BodyFatModel
+     * Army Body Fat Model
+     * @var ArmyBodyFatModel
      */
-    protected $bodyFat;
+    protected $armyBodyFat;
 
     public function __construct(
         
     ){
         add_action('rest_api_init', array($this, 'army_body_fat_calculate_api_register_routes'));
-        $bodyFat = new BodyFatModel();
-        $this->bodyFat = $bodyFat;
+        $armyBodyFat = new ArmyBodyFatModel();
+        $this->armyBodyFat = $armyBodyFat;
     }
 
 
@@ -37,8 +37,8 @@ class ArmyBodyFatCalculate extends AbstractApi
             return $requestValidate;
         }
 
-        $time = $this->bodyFat->bodyfatCalculate($request);
+        $result = $this->armyBodyFat->calculate($request['info']);
 
-        return $this->_response($time, 200);
+        return $this->_response($result, 200);
     }
 }

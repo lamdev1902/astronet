@@ -24,6 +24,9 @@ jQuery(function($){
             }else if(form.hasClass('ideal-weight-calculate'))
             {
                 type = 'ideal-weight';
+            }else if(form.hasClass('lean-body-calculate'))
+            {
+                type= 'lean-body';
             }
 
             validateForm(type);
@@ -52,6 +55,9 @@ jQuery(function($){
             }else if(form.hasClass('ideal-weight-calculate'))
             {
                 type = 'ideal-weight';
+            }else if(form.hasClass('lean-body-calculate'))
+            {
+                type= 'lean-body';
             }
 
             
@@ -80,6 +86,9 @@ jQuery(function($){
             }else if(form.hasClass('bmi-calculate'))
             {
                 type = 'bmi'
+            }else if(form.hasClass('lean-body-calculate'))
+            {
+                type= 'lean-body';
             }
 
             
@@ -116,6 +125,9 @@ jQuery(function($){
             }else if(form.hasClass('healthy-weight-calculate'))
             {
                 type = 'healthy-weight';
+            }else if(form.hasClass('lean-body-calculate'))
+            {
+                type= 'lean-body';
             }
 
             
@@ -143,6 +155,9 @@ jQuery(function($){
             }else if(form.hasClass('ideal-weight-calculate'))
             {
                 type = 'ideal-weight';
+            }else if(form.hasClass('lean-body-calculate'))
+            {
+                type= 'lean-body';
             }
 
             
@@ -256,7 +271,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/body-fat/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/body-fat/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -317,7 +332,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/bmr-calculate/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/bmr-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -359,7 +374,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/bmi-calculate/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/bmi-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -417,7 +432,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/ideal-weight/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/ideal-weight/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -472,7 +487,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/healthy-weight/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/healthy-weight/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -503,6 +518,62 @@ jQuery(function($){
                 }
             });
         })
+        $('#btnLeanBody').on('click', function(){
+            $('#spinner').show();
+
+            var formDataArray = $('.form.lean-body-calculate').serializeArray();
+    
+            var jsonData = handleData(formDataArray);
+
+            $.ajax({
+                url: 'https://dev.ehproject.org//wp-json/api/v1/lean-body/',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    var div = $('.lean-body-table');
+                    var tbody = div.find('.lean-body tbody');
+                    // Xử lý phản hồi từ server nếu cần
+                    if(response['status'] === 200)
+                    {
+                        var result = response['result'];
+
+                        div.removeClass('inactive');
+                        $('.content-right').removeClass('inactive');
+                        
+						tbody.empty();
+
+                        var newRow = $('<tr>');
+						newRow.append('<td>Formular</td>');
+						newRow.append('<td>Lean Body</td>');
+						newRow.append('<td>Body Fat</td>');
+                        tbody.append(newRow);
+
+                        $.each(result, function (index, item) {
+							var row1 = $('<tr>');
+
+							row1.append('<td>' + item.title + '</td>');
+							row1.append('<td>' + item.lean_body + ' ( ' + item.percent +'% )' + '</td>');
+							row1.append('<td>' + item.body_fat + ' %</td>');
+
+							tbody.append(row1);
+						});
+
+                    }else {
+                        $('.content-right').removeClass('inactive');
+                        tbody.empty();
+
+                        var paragraph = $('<p>').text(response['message']);
+                        $(".content-right .result").append(paragraph);
+                    }
+                    $('#spinner').hide();
+                },
+                error: function(error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error:', error.responseJSON.message);
+                }
+            });
+        })
 
         $('#btnArmyBodyFat').on('click', function(){
             $('#spinner').show();
@@ -512,7 +583,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://34.163.253.54/wp-json/api/v1/army-bodyfat/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/army-bodyfat/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -618,6 +689,14 @@ function validateForm(type = '')
             $("#btnHealthyWeight").prop('disabled', false);
         }else {
             $("#btnHealthyWeight").prop('disabled', true);
+        }
+    }else if(type === 'lean-body')
+    {
+        if( (weight && height) && (weightError == "" && heightError == "") )        
+        {
+            $("#btnLeanBody").prop('disabled', false);
+        }else {
+            $("#btnLeanBody").prop('disabled', true);
         }
     }
     else {

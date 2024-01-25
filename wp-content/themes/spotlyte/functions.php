@@ -369,7 +369,6 @@ function calorie_calculator($content)
 			</div>
 		</div>
 	';
-	$a = "";
 	return $content;
 }
 add_shortcode('calculator_form','calorie_calculator');
@@ -1230,3 +1229,130 @@ function army_body_fat_calculator($content)
 }
 
 add_shortcode('army_body_fat_calculate','army_body_fat_calculator');
+
+function lean_body_mass_calculator($content)
+{
+	wp_enqueue_style( 'bodyfat' );
+	
+	$content .= '
+		<div id="spinner"></div>
+		<div id="calculate">
+			<div class="container">
+				<div class="calculate--wrapper">
+					<div class="calculate--wrapper__content">
+						<div class="content-left">
+							<form action="#" class="form lean-body-calculate">
+								<div class="column">
+									<div class="label-wrapper img">
+										<label for="male" class="label">Gender</label>
+									</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[gender]" id="male">
+											<label for="male" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Male
+											</label>
+										</div>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[gender]" id="female">
+											<label for="female" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Female
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper img">
+										<label for="male" class="label">Age 14 or younger</label>
+									</div>
+									<div class="radio-wrapper">
+										<div class="radio-wrapper__item">
+											<input type="radio" checked class="radio-wrapper__btn" value="1" name="info[age]" id="age1">
+											<label for="age1" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												Yes
+											</label>
+										</div>
+										<div class="radio-wrapper__item">
+											<input type="radio" class="radio-wrapper__btn" value="2" name="info[age]" id="age2">
+											<label for="age2" class="radio-wrapper__label">
+												<span class="radio-visibility"></span>
+												No
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="male" class="label">Weight</label>
+									</div>
+									<div class="text-wrapper">
+											<div class="text-wrapper__item only-one">
+												<input type="text"  class="" value="" name="info[weight]" id="weight">
+												<div class="place-holder">
+													<span>Pounds</span>
+												</div>
+											</div>
+											<span style="" class="weight-error error"></span>
+										</div>
+								</div>
+								<div class="column">
+									<div class="label-wrapper">
+										<label for="" class="label">Height</label>
+									</div>
+									<div class="text-wrapper">
+										<div class="text-wrapper__item us">
+											<div class="height-ft">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][feet]" id="heightFt">
+												<div class="place-holder">
+													<span>ft</span>
+												</div>
+											</div>
+											<div class="height-in">
+												<input type="text" class="radio-wrapper__btn" value="" name="info[height][inches]" id="heightIn">
+												<div class="place-holder">
+													<span>in</span>
+												</div>
+											</div>
+										</div>
+										<span class="height-error error"></span>
+									</div>
+								</div>
+								<div class="action">
+									<button id="btnLeanBody" disabled="disabled" class="btn-primary" type="button">
+										Calculate
+									</button>
+									<button id="btnClear" class="btn-secondary" type="button">
+										Clear
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="content-right inactive">
+							<div class="">
+								<div class="title">
+									<h2>Result</h2>
+								</div>
+								<div class="result">
+									<div class="flex-column lean-body-table inactive">
+										<div class="goals">
+											<table class="lean-body">
+												<tbody>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	';
+	return $content;
+}
+
+add_shortcode('lean_body_mass_calculate','lean_body_mass_calculator');

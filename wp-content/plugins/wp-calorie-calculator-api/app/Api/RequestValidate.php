@@ -20,7 +20,7 @@ class RequestValidate
                         foreach($item as $key => $i)
                         {
                             if($key != 'inches'){
-                                if(!is_numeric($i) || $i == 0)
+                                if(!is_numeric($i) || $i <= 0)
                                 {
                                     return false;
                                 }
@@ -29,17 +29,22 @@ class RequestValidate
                                 {
                                     return false;
                                 }
+
+                                if($i < 0)
+                                {
+                                    return false;
+                                }
                             }
                         }
                     }else {
-                        if(!is_numeric($item) || $item == 0)
+                        if(!is_numeric($item) || $item <= 0)
                         {
                             return false;
                         }
                     }
                 }
             }else {
-                if(!is_numeric($value) || $value == 0){
+                if(!is_numeric($value) || $value <= 0){
                     return false;
                 }
             }

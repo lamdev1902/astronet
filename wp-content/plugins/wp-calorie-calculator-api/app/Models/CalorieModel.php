@@ -57,6 +57,17 @@ class CalorieModel extends AbstractModel
             $result['zigzag_schedule_1'] = $this->zigZag1Calculate($result);
             $result['zigzag_schedule_2'] = $this->zigZag2Calculate($result);
         }
+
+        foreach($result['calorie'] as $key => $item)
+        {
+            if($item['goal_type'] == 3)
+            {
+                $result['calorie']['gain'][] = $item;
+            }else {
+                $result['calorie']['loss'][] = $item;
+            }
+            unset($result['calorie'][$key]);
+        }
         return $result;
     }
 

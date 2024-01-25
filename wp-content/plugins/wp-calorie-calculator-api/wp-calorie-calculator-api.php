@@ -24,3 +24,4 @@ $healthyWeightApi = new \Calculator\Api\HealthyWeightCalculate();
 $calorieApi = new \Calculator\Api\CalorieCalculate();
 $leanBodyApi = new \Calculator\Api\LeanBodyMassCalculate();
 $waistToHeightRatioApi = new \Calculator\Api\WaistToHeightRatioCalculate();
+$armyBodyFat = new \Calculator\Api\ArmyBodyFatCalculate();

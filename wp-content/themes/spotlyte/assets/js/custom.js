@@ -162,7 +162,7 @@ jQuery(function($){
 						gain.find('.goals').empty();
 					}
 
-					var divZigZag1 = $('.zigzag1');
+						var divZigZag1 = $('.zigzag1');
 						var divZigZag2 = $('.zigzag2')
 
 						var tbody = divZigZag1.find('.zigzag tbody');

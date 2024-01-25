@@ -23,6 +23,7 @@ return array(
     'Calculator\\Helper\\Data' => $baseDir . '/app/Helper/Data.php',
     'Calculator\\Models\\AbstractModel' => $baseDir . '/app/Models/AbstractModel.php',
     'Calculator\\Models\\AgeModel' => $baseDir . '/app/Models/AgeModel.php',
+    'Calculator\\Models\\ArmyBodyFatModel' => $baseDir . '/app/Models/ArmyBodyFatModel.php',
     'Calculator\\Models\\BmiModel' => $baseDir . '/app/Models/BmiModel.php',
     'Calculator\\Models\\BmrModel' => $baseDir . '/app/Models/BmrModel.php',
     'Calculator\\Models\\BodyFatModel' => $baseDir . '/app/Models/BodyFatModel.php',

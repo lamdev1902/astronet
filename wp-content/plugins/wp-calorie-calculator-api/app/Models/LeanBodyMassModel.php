@@ -27,7 +27,7 @@ class LeanBodyMassModel extends AbstractModel
         $info['height'] = $this->helper->cmConvert($info['height']);
         $info['weight'] = $this->helper->kgConvert($info['weight']);
 
-        if($info['age'] < 14)
+        if($info['age'] == 1)
         {
             $result[] = $this->childrendFomular($info);
         }
