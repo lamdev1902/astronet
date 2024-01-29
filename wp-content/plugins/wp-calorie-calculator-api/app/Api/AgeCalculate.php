@@ -24,7 +24,7 @@ class AgeCalculate extends AbstractApi{
 
 
     public function age_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/age/', array(
+        register_rest_route('api/v1', '/age-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'age_calculate_api_endpoint'),
         ));

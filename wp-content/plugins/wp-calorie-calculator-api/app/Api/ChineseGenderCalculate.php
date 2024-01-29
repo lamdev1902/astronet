@@ -24,7 +24,7 @@ class ChineseGenderCalculate extends AbstractApi{
 
 
     public function chinese_gender_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/chinese-gender/', array(
+        register_rest_route('api/v1', '/chinesegender-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'chinese_gender_calculate_api_endpoint'),
         ));

@@ -24,7 +24,7 @@ class IdealWeightCalculate extends AbstractApi {
 
 
     public function ideal_weight_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/ideal-weight/', array(
+        register_rest_route('api/v1', '/idealweight-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'ideal_weight_calculate_api_endpoint'),
         ));

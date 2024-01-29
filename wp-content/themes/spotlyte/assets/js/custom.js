@@ -71,7 +71,7 @@ jQuery(function($){
 		var receipValue = 0;
 
 		$.ajax({
-			url: 'https://34.163.253.54///wp-json/api/v1/calorie-calculate/',
+			url: 'https://dev.ehproject.org///wp-json/api/v1/calorie-calculate/',
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify(jsonData),

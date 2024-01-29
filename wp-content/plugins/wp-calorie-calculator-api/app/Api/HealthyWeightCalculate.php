@@ -29,7 +29,7 @@ class HealthyWeightCalculate extends AbstractApi {
 
 
     public function healthy_weight_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/healthy-weight/', array(
+        register_rest_route('api/v1', '/healthyweight-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'healthy_weight_calculate_api_endpoint'),
         ));

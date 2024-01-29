@@ -106,7 +106,7 @@ jQuery(function($){
                 $(".content-top .result").empty();
                 $(".content-top .result").append(paragraph);
             }else {
-                ajaxHandle('age','https://34.163.253.54/wp-json/api/v1/age/', jsonData);
+                ajaxHandle('age','https://dev.ehproject.org/wp-json/api/v1/age-calculate/', jsonData);
             }
         });
 
@@ -167,7 +167,7 @@ jQuery(function($){
                 $(".content-top .result").empty();
                 $(".content-top .result").append(paragraph);
             }else {
-                ajaxHandle('gender','https://34.163.253.54//wp-json/api/v1/chinese-gender/', jsonData);
+                ajaxHandle('gender','https://dev.ehproject.org//wp-json/api/v1/chinesegender-calculate/', jsonData);
             }
         });
     });

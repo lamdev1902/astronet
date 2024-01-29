@@ -4,6 +4,51 @@ include(TEMPLATEPATH.'/include/general-function.php');
 add_theme_support( 'post-thumbnails', array('post','page','informational_posts' ) );
 /* Script Admin */
 
+function remove_figure_image($args = null) {
+
+	global $wpdb;
+
+	$query = "
+		SELECT ID, post_content
+		FROM {$wpdb->prefix}posts
+		WHERE post_type = 'post' AND post_status = 'publish'
+			AND post_content LIKE '%<span>Photo: Shutterstock%'
+	";
+
+	$results = $wpdb->get_results($query);
+	
+	if ($results) {
+        foreach ($results as $item) {
+            $post_id = $item->ID;
+            $content = $item->post_content;
+
+            $dom = new \DOMDocument();
+            libxml_use_internal_errors(true);
+            $dom->loadHTML($content);
+            libxml_clear_errors();
+
+			$figures = $dom->getElementsByTagName('figure');
+
+            foreach ($figures as $figure) {
+                $figcaption = $figure->getElementsByTagName('figcaption')->item(0);
+
+                if ($figcaption && strpos($figcaption->nodeValue, 'Shutterstock') !== false) {
+                    $figure->parentNode->removeChild($figure);
+                }
+            }
+
+            $new_content = $dom->saveHTML();
+            wp_update_post(array('ID' => $post_id, 'post_content' => $new_content));
+        }
+
+        wp_reset_postdata(); 
+    } else {
+        echo 'No posts found.';
+    }
+   
+}
+// add_action('init', 'remove_figure_image');
+
 add_action ( 'edited_category', 'saveCategoryFields');
 function my_script() { ?>
 	<style type="text/css">

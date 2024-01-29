@@ -24,7 +24,7 @@ class BodyFatCalculate extends AbstractApi
 
 
     public function body_fat_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/body-fat/', array(
+        register_rest_route('api/v1', '/bodyfat-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'body_fat_calculate_api_endpoint'),
         ));
