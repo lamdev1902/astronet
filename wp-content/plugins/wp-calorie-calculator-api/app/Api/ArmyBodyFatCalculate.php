@@ -22,7 +22,7 @@ class ArmyBodyFatCalculate extends AbstractApi
 
 
     public function army_body_fat_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/armybodyfat-calculate/', array(
+        register_rest_route('api/v1', '/army-bodyfat-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'army_body_fat_calculate_api_endpoint'),
         ));

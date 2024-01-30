@@ -23,7 +23,7 @@ class LeanBodyMassCalculate extends AbstractApi{
 
 
     public function lean_body_mass_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/leanbodymass-calculate/', array(
+        register_rest_route('api/v1', '/lean-body-mass-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'lean_body_mass_calculate_api_endpoint'),
         ));
