@@ -167,7 +167,7 @@ jQuery(function($){
                 $(".content-top .result").empty();
                 $(".content-top .result").append(paragraph);
             }else {
-                ajaxHandle('gender','https://dev.ehproject.org//wp-json/api/v1/chinesegender-calculate/', jsonData);
+                ajaxHandle('gender','https://dev.ehproject.org//wp-json/api/v1/chinese-gender-calculate/', jsonData);
             }
         });
     });

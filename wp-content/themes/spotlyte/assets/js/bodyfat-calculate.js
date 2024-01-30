@@ -271,7 +271,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://dev.ehproject.org//wp-json/api/v1/bodyfat-calculate/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/body-fat-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -432,7 +432,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://dev.ehproject.org//wp-json/api/v1/idealweight-calculate/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/ideal-weight-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -487,7 +487,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://dev.ehproject.org//wp-json/api/v1/healthyweight-calculate/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/healthy-weight-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
@@ -526,7 +526,7 @@ jQuery(function($){
             var jsonData = handleData(formDataArray);
 
             $.ajax({
-                url: 'https://dev.ehproject.org//wp-json/api/v1/leanbodymass-calculate/',
+                url: 'https://dev.ehproject.org//wp-json/api/v1/lean-body-mass-calculate/',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData),
