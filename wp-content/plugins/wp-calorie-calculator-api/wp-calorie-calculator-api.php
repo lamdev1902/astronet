@@ -15,13 +15,17 @@ namespace Calculator;
 require __DIR__ . '/vendor/autoload.php';
 
 
-$endpoint = $_SERVER['REQUEST_URI'];
+if (strpos($_SERVER['REQUEST_URI'], '/api/') !== false) {
+    $endpoint = $_SERVER['REQUEST_URI'];
 
-$className = ucwords(str_replace('-', ' ', basename($endpoint)));
+    $className = ucwords(str_replace('-', ' ', basename($endpoint)));
 
-$className = '\\Calculator\\Api\\'.str_replace(' ', '', $className);
+    $className = '\\Calculator\\Api\\'.str_replace(' ', '', $className);
 
-new $className();
+    new $className();
+}
+
+
 
 // $testApi = new \Calculator\Api\AgeCalculate();
 // $bodyFatApi = new \Calculator\Api\BodyFatCalculate();
