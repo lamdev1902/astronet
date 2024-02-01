@@ -38,7 +38,7 @@ class LeanBodyMassModel extends AbstractModel
         foreach($result['lean_body_mass'] as $key => $item)
         {
             $result['lean_body_mass'][$key]['percent'] = round(($item['score']/$pounds)* 100); 
-            $result['lean_body_mass'][$key]['body_fat'] = 100 - $result[$key]['percent']; 
+            $result['lean_body_mass'][$key]['body_fat'] = 100 - $result['lean_body_mass'][$key]['percent']; 
         }
 
         return $result;
