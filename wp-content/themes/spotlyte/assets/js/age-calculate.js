@@ -13,8 +13,7 @@ jQuery(function($){
 
         var today = year + "-" + month + "-" + day;   
 
-        $("[name=dayOfBirth]").attr("value", '1990-01-01');
-        $("[name=ageOfTheDate]").attr("value", today);
+        $("[name=ageat]").attr("value", today);
 
 
         var optionMonDate = '.dateMonthInput option:eq(0)';
@@ -51,37 +50,37 @@ jQuery(function($){
         $('[name=date-birth]').change(function(){
             var result = getTime(1);
     
-            changeTime(result, "dayOfBirth");
+            changeTime(result, "dob");
         })
         $('[name=mon-birth]').change(function(){
             var result = getTime(1);
     
-            changeTime(result, "dayOfBirth");
+            changeTime(result, "dob");
             
         })
         $('[name=year-birth]').change(function(){
             var result = getTime(1);
     
-            changeTime(result, "dayOfBirth");
+            changeTime(result, "dob");
             
         })
         $('[name=date-age]').change(function(){
             var result = getTime(2);
     
-            changeTime(result, "ageOfTheDate");
+            changeTime(result, "ageat");
             
         })
         $('[name=mon-age]').change(function(){
             var result = getTime(2);
     
-            changeTime(result, "ageOfTheDate");
+            changeTime(result, "ageat");
             
         })
     
         $('[name=year-age]').change(function(){
             var result = getTime(2);
     
-            changeTime(result, "ageOfTheDate");
+            changeTime(result, "ageat");
 
         })
 
@@ -90,7 +89,10 @@ jQuery(function($){
             $('#spinner').show();
 
             var formDataArray = $('.form.age-calculate').serializeArray();
-    
+
+            formDataArray = formDataArray.filter(function(item) {
+                return item.name == 'dob' || item.name == 'ageat';
+            });
             var jsonData = handleData(formDataArray);
             
             var date1 = new Date(jsonData['dob']);
