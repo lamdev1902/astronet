@@ -29,16 +29,16 @@ class LeanBodyMassModel extends AbstractModel
 
         if($info['age'] == 1)
         {
-            $result[] = $this->childrendFomular($info);
+            $result['lean_body_mass'][] = $this->childrendFomular($info);
         }
-        $result[] = $this->boerFomular($info);
-        $result[] = $this->jamesFomular($info);
-        $result[] = $this->humeFomular($info);
+        $result['lean_body_mass'][] = $this->boerFomular($info);
+        $result['lean_body_mass'][] = $this->jamesFomular($info);
+        $result['lean_body_mass'][] = $this->humeFomular($info);
 
-        foreach($result as $key => $item)
+        foreach($result['lean_body_mass'] as $key => $item)
         {
-            $result[$key]['percent'] = round(($item['lean_body']/$pounds)* 100); 
-            $result[$key]['body_fat'] = 100 - $result[$key]['percent']; 
+            $result['lean_body_mass'][$key]['percent'] = round(($item['score']/$pounds)* 100); 
+            $result['lean_body_mass'][$key]['body_fat'] = 100 - $result[$key]['percent']; 
         }
 
         return $result;
@@ -56,7 +56,7 @@ class LeanBodyMassModel extends AbstractModel
         $leanbody = $this->helper->poundsConvert($leanbody);
 
         $result['title'] = 'Boer';
-        $result['lean_body'] = $leanbody;
+        $result['score'] = $leanbody;
         return $result;
 
     }
@@ -74,7 +74,7 @@ class LeanBodyMassModel extends AbstractModel
         $leanbody = $this->helper->poundsConvert($leanbody);
 
         $result['title'] = 'James';
-        $result['lean_body'] = $leanbody;
+        $result['score'] = $leanbody;
         return $result;
     }
 
@@ -91,7 +91,7 @@ class LeanBodyMassModel extends AbstractModel
         $leanbody = $this->helper->poundsConvert($leanbody);
 
         $result['title'] = 'Hume';
-        $result['lean_body'] = $leanbody;
+        $result['score'] = $leanbody;
         return $result;
 
     }
@@ -106,7 +106,7 @@ class LeanBodyMassModel extends AbstractModel
         $leanbody = $this->helper->poundsConvert($leanbody);
 
         $result['title'] = 'Peters (for Children)';
-        $result['lean_body'] = $leanbody;
+        $result['score'] = $leanbody;
         return $result;
 
     }
