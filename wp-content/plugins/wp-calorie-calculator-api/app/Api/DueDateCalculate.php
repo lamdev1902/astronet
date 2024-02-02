@@ -52,8 +52,6 @@ class DueDateCalculate extends AbstractApi
             return $requestValidate;
         }
 
-        
-
         $result = $this->dueDate->calculate($request->get_params());
 
 

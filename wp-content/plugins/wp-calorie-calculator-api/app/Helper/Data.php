@@ -45,4 +45,16 @@ class Data
         return $data;
     }
 
+    /**
+     * Convert Calorie to Kilojoules
+     * 
+     */
+    public function inchesConvert($data)
+    {
+        $feet = (int)$data['feet'];
+        $inches = (int)$data['inches'];
+
+        return round( $feet * 12 + $inches ,2);
+    }
+
 }
