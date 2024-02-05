@@ -41,7 +41,7 @@ class AbsiModel extends AbstractModel
         $heightPow = pow($height, 1/2);
 
         $absi = $waist / ($bmiPow * $heightPow);
-        $result = round($absi,3);
+        $result = round($absi,5);
 
         return $result;
     }
@@ -74,7 +74,7 @@ class AbsiModel extends AbstractModel
             $item = $this->femaleAbsi($age);
         }
 
-        $absiScore = round(($absi - $item[0][1]) / $item[0][2],3);
+        $absiScore = round(($absi - $item[0][1]) / $item[0][2],4);
 
         return $absiScore;
     }
