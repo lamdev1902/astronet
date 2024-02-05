@@ -26,7 +26,7 @@ class AbsiModel extends AbstractModel
 
         $result['absi']['score'] = $this->absiCalculate($data);
         $result['absi']['zscore'] = $this->absiZScore($result['absi']['score'], $data['gender'], $data['age']);
-        $result['absi']['description'] = $this->mortalityRisk($result['absi']['z-score']);
+        $result['absi']['description'] = $this->mortalityRisk($result['absi']['zscore']);
         return $result;
     }
 
@@ -74,7 +74,7 @@ class AbsiModel extends AbstractModel
             $item = $this->femaleAbsi($age);
         }
 
-        $absiScore = ($absi - $item[0][1]) / $item[0][2];
+        $absiScore = round(($absi - $item[0][1]) / $item[0][2],3);
 
         return $absiScore;
     }
