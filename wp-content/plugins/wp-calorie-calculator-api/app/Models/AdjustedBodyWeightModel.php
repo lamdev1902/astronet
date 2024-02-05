@@ -20,9 +20,9 @@ class AdjustedBodyWeightModel extends AbstractModel
     {
         $idealWeight = $this->idealWeightModel->calculate($info);
         
-        $idealWeightResult = $this->helper->kgConvert($idealWeight['ideal_weight']['robin']['pounds']);
+        $idealWeightResult = $idealWeight['ideal_weight']['robin']['pounds'];
 
-        $weight = $this->helper->kgConvert($info['weight']);
+        $weight = $info['weight'];
 
         $adjusted = round($idealWeightResult + 0.4 * ($weight - $idealWeightResult),2);
 
