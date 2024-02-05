@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Calculator\\Api\\AbsiCalculate' => $baseDir . '/app/Api/AbsiCalculate.php',
     'Calculator\\Api\\AbstractApi' => $baseDir . '/app/Api/AbstractApi.php',
+    'Calculator\\Api\\AdjustedBodyWeightCalculate' => $baseDir . '/app/Api/AdjustedBodyWeightCalculate.php',
     'Calculator\\Api\\AgeCalculate' => $baseDir . '/app/Api/AgeCalculate.php',
     'Calculator\\Api\\ArmyBodyFatCalculate' => $baseDir . '/app/Api/ArmyBodyFatCalculate.php',
     'Calculator\\Api\\BmiCalculate' => $baseDir . '/app/Api/BmiCalculate.php',
@@ -27,6 +28,7 @@ return array(
     'Calculator\\Helper\\Data' => $baseDir . '/app/Helper/Data.php',
     'Calculator\\Models\\AbsiModel' => $baseDir . '/app/Models/AbsiModel.php',
     'Calculator\\Models\\AbstractModel' => $baseDir . '/app/Models/AbstractModel.php',
+    'Calculator\\Models\\AdjustedBodyWeightModel' => $baseDir . '/app/Models/AdjustedBodyWeightModel.php',
     'Calculator\\Models\\AgeModel' => $baseDir . '/app/Models/AgeModel.php',
     'Calculator\\Models\\ArmyBodyFatModel' => $baseDir . '/app/Models/ArmyBodyFatModel.php',
     'Calculator\\Models\\BmiModel' => $baseDir . '/app/Models/BmiModel.php',

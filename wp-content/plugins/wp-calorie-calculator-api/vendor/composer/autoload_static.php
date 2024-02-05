@@ -28,6 +28,7 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
     public static $classMap = array (
         'Calculator\\Api\\AbsiCalculate' => __DIR__ . '/../..' . '/app/Api/AbsiCalculate.php',
         'Calculator\\Api\\AbstractApi' => __DIR__ . '/../..' . '/app/Api/AbstractApi.php',
+        'Calculator\\Api\\AdjustedBodyWeightCalculate' => __DIR__ . '/../..' . '/app/Api/AdjustedBodyWeightCalculate.php',
         'Calculator\\Api\\AgeCalculate' => __DIR__ . '/../..' . '/app/Api/AgeCalculate.php',
         'Calculator\\Api\\ArmyBodyFatCalculate' => __DIR__ . '/../..' . '/app/Api/ArmyBodyFatCalculate.php',
         'Calculator\\Api\\BmiCalculate' => __DIR__ . '/../..' . '/app/Api/BmiCalculate.php',
@@ -47,6 +48,7 @@ class ComposerStaticInit59e74e0a806cda5594fea4eb9938ef2f
         'Calculator\\Helper\\Data' => __DIR__ . '/../..' . '/app/Helper/Data.php',
         'Calculator\\Models\\AbsiModel' => __DIR__ . '/../..' . '/app/Models/AbsiModel.php',
         'Calculator\\Models\\AbstractModel' => __DIR__ . '/../..' . '/app/Models/AbstractModel.php',
+        'Calculator\\Models\\AdjustedBodyWeightModel' => __DIR__ . '/../..' . '/app/Models/AdjustedBodyWeightModel.php',
         'Calculator\\Models\\AgeModel' => __DIR__ . '/../..' . '/app/Models/AgeModel.php',
         'Calculator\\Models\\ArmyBodyFatModel' => __DIR__ . '/../..' . '/app/Models/ArmyBodyFatModel.php',
         'Calculator\\Models\\BmiModel' => __DIR__ . '/../..' . '/app/Models/BmiModel.php',
