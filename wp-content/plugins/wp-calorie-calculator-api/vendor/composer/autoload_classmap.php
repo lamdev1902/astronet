@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Calculator\\Api\\AbsiCalculate' => $baseDir . '/app/Api/AbsiCalculate.php',
     'Calculator\\Api\\AbstractApi' => $baseDir . '/app/Api/AbstractApi.php',
     'Calculator\\Api\\AgeCalculate' => $baseDir . '/app/Api/AgeCalculate.php',
     'Calculator\\Api\\ArmyBodyFatCalculate' => $baseDir . '/app/Api/ArmyBodyFatCalculate.php',
@@ -24,6 +25,7 @@ return array(
     'Calculator\\Api\\TdeeCalculate' => $baseDir . '/app/Api/TdeeCalculate.php',
     'Calculator\\Api\\WaistToHeightRatioCalculate' => $baseDir . '/app/Api/WaistToHeightRatioCalculate.php',
     'Calculator\\Helper\\Data' => $baseDir . '/app/Helper/Data.php',
+    'Calculator\\Models\\AbsiModel' => $baseDir . '/app/Models/AbsiModel.php',
     'Calculator\\Models\\AbstractModel' => $baseDir . '/app/Models/AbstractModel.php',
     'Calculator\\Models\\AgeModel' => $baseDir . '/app/Models/AgeModel.php',
     'Calculator\\Models\\ArmyBodyFatModel' => $baseDir . '/app/Models/ArmyBodyFatModel.php',

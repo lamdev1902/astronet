@@ -57,4 +57,16 @@ class Data
         return round( $feet * 12 + $inches ,2);
     }
 
+    /**
+     * Convert Feet && Inches to M
+     * 
+     */
+    public function metersConvert($data)
+    {
+        $feet = (int)$data['feet'];
+        $inches = (int)$data['inches'];
+
+        return round( $feet * 0.3048 + $inches * 0.0254,2);
+    }
+
 }

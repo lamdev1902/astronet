@@ -23,7 +23,7 @@ class CalorieBurnedCalculate extends AbstractApi{
 
 
     public function calorie_burned_calculate_api_register_routes() {
-        register_rest_route('api/v1', '/calorie-burned/', array(
+        register_rest_route('api/v1', '/calorie-burned-calculate/', array(
             'methods' => 'POST',
             'callback' => array($this, 'calorie_burned_calculate_api_endpoint'),
         ));
