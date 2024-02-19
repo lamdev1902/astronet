@@ -1417,8 +1417,7 @@ function reviews_shortcode($atts) {
     ob_start();
     include(plugin_dir_path(__FILE__) . 'template/review.php');
 	$rt = ob_get_clean();
-	wp_enqueue_style( 'review-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
-	wp_enqueue_script( 'review-js', get_template_directory_uri() . '/assets/js/review-validate.js','','1.0.0');
+	
     return $rt;
 }
 
