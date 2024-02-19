@@ -1401,6 +1401,13 @@ function lean_body_mass_calculator($content)
 
 add_shortcode('lean_body_mass_calculate','lean_body_mass_calculator');
 
+function enqueue_review_assets() {
+    wp_enqueue_style( 'review-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
+    wp_enqueue_script( 'review-js', get_template_directory_uri() . '/assets/js/review-validate.js','','1.0.0');
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_review_assets');
+
 function reviews_shortcode($atts) {
     $atts = shortcode_atts(
         array(
@@ -1411,11 +1418,11 @@ function reviews_shortcode($atts) {
         'customer_reviews_shortcode'
     );
 
+    ob_start();
     include(plugin_dir_path(__FILE__) . 'template/review.php');
-	wp_enqueue_style( 'review-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
-	wp_enqueue_script( 'review-js', get_template_directory_uri() . '/assets/js/review-validate.js','','1.0.0');
-
+    return ob_get_clean();
 }
+
 add_shortcode('customer_reviews_shortcode', 'reviews_shortcode');
 
 
@@ -1430,8 +1437,8 @@ function get_reviews($atts)
 		'data' => $query_result,
     ), $atts, 'get_reviews_shortcode');	
 
-	wp_enqueue_style( 'review-item-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
+	ob_start();
     include(plugin_dir_path(__FILE__) . 'template/review-item.php');
-
+	return ob_get_clean();
 }
 add_shortcode('get_reviews_shortcode', 'get_reviews');
