@@ -1,13 +1,16 @@
 <?php 
 $data = $atts['data'];
 
-$limited_array = array_slice($atts['data'], 0, 9);
+if($data)
+{
+    $limited_array = array_slice($atts['data'], 0, 9);
 
 $count = 0;
 
 foreach($data as $review)
 {
     $count+= $review->review_count;
+}
 }
 ?>
 
