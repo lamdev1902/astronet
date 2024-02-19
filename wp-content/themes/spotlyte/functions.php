@@ -1414,9 +1414,15 @@ function reviews_shortcode($atts) {
     $title = $atts['title'];
     $content = $atts['content'];
 
-    ob_start();
-	$rt = ob_get_clean();
-    return $rt;
+	$data = array(
+        'title' => $title,
+        'content' => $content
+    );
+
+    include(plugin_dir_path(__FILE__) . 'template/review.php');
+	wp_enqueue_style( 'review-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
+	wp_enqueue_script( 'review-js', get_template_directory_uri() . '/assets/js/review-validate.js','','1.0.0');
+
 }
 add_shortcode('customer_reviews_shortcode', 'reviews_shortcode');
 
@@ -1432,10 +1438,8 @@ function get_reviews($atts)
 		'data' => $query_result,
     ), $atts, 'get_reviews_shortcode');	
 
-    ob_start();
 	wp_enqueue_style( 'review-item-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
     include(plugin_dir_path(__FILE__) . 'template/review-item.php');
-    return ob_get_clean();
 
 }
 add_shortcode('get_reviews_shortcode', 'get_reviews');
