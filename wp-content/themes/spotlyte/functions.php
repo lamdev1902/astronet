@@ -449,7 +449,6 @@ function age_calculator($content)
 							<form action="#" class="form age-calculate">
 								<div class="column">
 									<div class="text-wrapper">
-
 										<div class="text-wrapper__item">
 											<input type="hidden" class="" value="1990-01-01" name="dob" id="dayOfBirth">
 										</div>
@@ -1401,3 +1400,45 @@ function lean_body_mass_calculator($content)
 }
 
 add_shortcode('lean_body_mass_calculate','lean_body_mass_calculator');
+
+function reviews_shortcode($atts) {
+    $atts = shortcode_atts(
+        array(
+            'title' => 'Default Title',
+            'content' => 'Default Content',
+        ),
+        $atts,
+        'customer_reviews_shortcode'
+    );
+
+    $title = $atts['title'];
+    $content = $atts['content'];
+
+    ob_start();
+	wp_enqueue_style( 'review-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
+	wp_enqueue_script( 'review-js', get_template_directory_uri() . '/assets/js/review-validate.js','','1.0.0');
+    include(plugin_dir_path(__FILE__) . 'template/review.php');
+    return ob_get_clean();
+}
+
+add_shortcode('customer_reviews_shortcode', 'reviews_shortcode');
+
+
+function get_reviews($atts)
+{
+    global $wpdb;
+
+	$table_name = $wpdb->prefix . 'customer_reviews'; 
+    $query_result = $wpdb->get_results("SELECT * FROM $table_name where review_status = 1");
+
+    $atts = shortcode_atts(array(
+		'data' => $query_result,
+    ), $atts, 'get_reviews_shortcode');	
+
+    ob_start();
+	wp_enqueue_style( 'review-item-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
+    include(plugin_dir_path(__FILE__) . 'template/review-item.php');
+    return ob_get_clean();
+
+}
+add_shortcode('get_reviews_shortcode', 'get_reviews');
