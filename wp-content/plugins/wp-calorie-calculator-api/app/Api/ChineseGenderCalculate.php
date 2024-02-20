@@ -36,7 +36,6 @@ class ChineseGenderCalculate extends AbstractApi{
         {
             $checkDd = $this->dateValidate($request['dd']);
             $checkDob = $this->dateValidate($request['dob']);
-
             
             if($checkDd && $checkDob)
             {
@@ -50,10 +49,10 @@ class ChineseGenderCalculate extends AbstractApi{
                     return $this->_response([], 400);
                 }
 
-                if($dd < $dob)
-                {
-                    return $this->_response([], 400);
-                }
+                // if($dd < $dob)
+                // {
+                //     return $this->_response([], 400);
+                // }
             }else {
                 return $this->_response([], 400);
             }
