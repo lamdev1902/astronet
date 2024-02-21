@@ -1430,15 +1430,28 @@ function get_reviews($atts)
 {
     global $wpdb;
 
-	$table_name = $wpdb->prefix . 'customer_reviews'; 
-    $query_result = $wpdb->get_results("SELECT * FROM $table_name where review_status = 1");
+	$post_id = isset($atts['post_id']) ? $atts['post_id'] : '';
 
-    $atts = shortcode_atts(array(
-		'data' => $query_result,
-    ), $atts, 'get_reviews_shortcode');	
+	if ($post_id && is_numeric($post_id) && intval($post_id) > 0) {
+        $table_name = $wpdb->prefix . 'customer_reviews';
+        $query_result = $wpdb->get_results("SELECT * FROM $table_name WHERE review_status = 1 AND post_id = $post_id");
 
-	ob_start();
-    include(plugin_dir_path(__FILE__) . 'template/review-item.php');
-	return ob_get_clean();
+        $atts = shortcode_atts(array(
+            'data' => $query_result,
+        ), $atts, 'get_reviews_shortcode');
+
+        $atts = shortcode_atts(array(
+			'data' => $query_result,
+		), $atts, 'get_reviews_shortcode');	
+	
+		ob_start();
+		include(plugin_dir_path(__FILE__) . 'template/review-item.php');
+		return ob_get_clean();
+    } else {
+        return '<p>Invalid post ID provided.</p>';
+    }
+	
+
+    
 }
 add_shortcode('get_reviews_shortcode', 'get_reviews');
