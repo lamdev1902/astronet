@@ -42,18 +42,21 @@
                     <label for="nickname_field">Your name: *</label>
                     <div class="control">
                         <input type="text" class="field-input" id="nickname_field" name="nickname" >
+                        <p class="error nickname-error"></p>
                     </div>
                 </div>
                 <div class="reviews-title">
                     <label for="title_field">Title: *</label>
                     <div class="control">
                         <input type="text" class="field-input" id="title_field" name="title">
+                        <p class="error title-error"></p>
                     </div>
                 </div>
                 <div class="reviews-feedback">
                     <label for="feedback_field">Your feedback: *</label>
                     <div class="control">
                         <textarea name="feedback" class="field-input" id="feedback_field" cols="30" rows="10"></textarea>
+                        <p class="error feedback-error"></p>
                     </div>
                 </div>
             </div>

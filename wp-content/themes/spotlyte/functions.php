@@ -1402,8 +1402,19 @@ function lean_body_mass_calculator($content)
 add_shortcode('lean_body_mass_calculate','lean_body_mass_calculator');
 
 function enqueue_review_assets() {
+	global $wpdb;
+
+	$query = "
+		SELECT keyword
+		FROM {$wpdb->prefix}customer_reviews_keyword;
+	";
+
     wp_enqueue_style( 'review-css', get_template_directory_uri() . '/assets/css/review.css','','1.0.0');
     wp_enqueue_script( 'review-js', get_template_directory_uri() . '/assets/js/review-validate.js','','1.0.0');
+
+	$results = $wpdb->get_results($query);
+    wp_localize_script('review-js', 'ajax_object', array('data' => $results));
+
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_review_assets');

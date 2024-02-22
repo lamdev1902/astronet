@@ -23,11 +23,15 @@
 	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo get_field('favicon','option'); ?>" />
 </head>
 <body <?php body_class(); ?>> 
-
 <?php if ( is_front_page()) {  ?>
 	<div class="top-logo">
 		<div class="logo text-center">

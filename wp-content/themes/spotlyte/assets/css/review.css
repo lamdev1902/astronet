@@ -66,7 +66,7 @@
     grid-template-areas: 
     'nickname title' 
     'feedback feedback';
-    gap: 20px;
+    gap: 30px;
 }
 
 .reviews-form .field-input {
@@ -78,7 +78,7 @@
 
 .reviews-special {
     display: flex;
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 
 .reviews-additional {
@@ -185,4 +185,15 @@
 #load-more-reviews:hover {
     background: #333;
     color:#ffffff;
+}
+
+.control {
+    position: relative;
+}
+
+.error {
+    color : #D8000C;
+    position: absolute;
+    bottom: -30px;
+    font-size: 1rem;
 }

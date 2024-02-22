@@ -82,6 +82,12 @@ foreach($data as $review)
                 <div class="review-value">
                     <?= $item->detail; ?>
                 </div>
+                <div class="review-label">
+                    <?php if($item->reply):?>
+                        <label>Reply of admin:</label>
+                        <?= $item->reply ?>
+                    <?php endif;?>
+                </div>
             </div>
         </li>
         <?php endforeach;?>

@@ -63,7 +63,7 @@ function review_list() {
 add_shortcode('short_review_list', 'review_list');
 ?>
 
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
         jQuery(document).ready(function($) {
         $('.updateReview').on('click', function(e) {
@@ -104,4 +104,4 @@ add_shortcode('short_review_list', 'review_list');
     });
 });
     
-</script>
+</script> -->
