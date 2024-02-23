@@ -125,7 +125,7 @@ class Customer_Review_List extends WP_List_Table
                         __('Delete', 'textdomain')
                     );
                 case '':
-                    if ($item['reply'] == 'null') {
+                    if ($item['reply'] == null) {
                         return '';
                     } else {
                         return '<a href="#reply-'.$item['review_id'].'" rel="modal:open" class="view-reply">View</a>';
