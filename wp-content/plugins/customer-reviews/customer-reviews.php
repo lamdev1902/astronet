@@ -467,10 +467,7 @@ function handle_customer_reviews() {
     global $wpdb;
     $link = isset($_POST['link']) ? $_POST['link'] : get_home_url();
 
-    $message = [
-        'status' => 0,
-        'descrition' => ''
-    ];
+    $message = [];
 
     if(isset($_POST['keyword']))
     {
@@ -488,11 +485,13 @@ function handle_customer_reviews() {
             $message['status'] = 1;
             $message['description'] = 'Keyword added successfully';
         }else {
+            $messagem['status'] = 0;
             $message['description'] = 'Keyword added failed.';
         }
         set_transient('message', $message, 60*60*12);
 
     }else {
+        
         if(!isset($_POST['post_id']) || !isset($_POST['nickname']) || !isset($_POST['title']) || !isset($_POST['feedback']) || !isset($_POST['rate']))
         {
             wp_redirect($link);
@@ -505,30 +504,50 @@ function handle_customer_reviews() {
             exit;
         }
 
-        $postId =  $_POST['post_id'];
-        $nickname =  $_POST['nickname'];
-        $title =  $_POST['title'];
-        $feedback = $_POST['feedback'];
-        $age = isset($_POST['age']) ? $_POST['age'] : "";
-        $type = isset($_POST['type']) ? implode(', ' , $_POST['type']) : "";
-        $rate = $_POST['rate'];
+        if($_POST['g-recaptcha-response']) {
+            $privatekey = '6LdXB30pAAAAAHR0fTbGD7uVfKA5l_nFCqC7wHdj';
 
-        $table_name = $wpdb->prefix . 'customer_reviews';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_HEADER, 'Content-Type: application/json');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+                    'secret' => $privatekey,
+                    'response' => $_POST['g-recaptcha-response'],
+                    'remoteip' => $_SERVER['REMOTE_ADDR']
+                )
+            );
+
+            $resp = json_decode(curl_exec($ch));
+            curl_close($ch);
+            if ($resp->success) {
+                $postId =  $_POST['post_id'];
+                $nickname =  $_POST['nickname'];
+                $title =  $_POST['title'];
+                $feedback = $_POST['feedback'];
+                $age = isset($_POST['age']) ? $_POST['age'] : "";
+                $type = isset($_POST['type']) ? implode(', ' , $_POST['type']) : "";
+                $rate = $_POST['rate'];
+
+                $table_name = $wpdb->prefix . 'customer_reviews';
 
 
-        $result = $wpdb->insert(
-            $table_name,
-            array(
-                'post_id' => $postId,
-                'title' => $title,
-                'detail' => $feedback,
-                'nickname' => $nickname,
-                'age' => $age,
-                'type' => $type,
-                'review_count' => $rate,
-                'review_status' => 0
-            )
-        );
+                $result = $wpdb->insert(
+                    $table_name,
+                    array(
+                        'post_id' => $postId,
+                        'title' => $title,
+                        'detail' => $feedback,
+                        'nickname' => $nickname,
+                        'age' => $age,
+                        'type' => $type,
+                        'review_count' => $rate,
+                        'review_status' => 0
+                    )
+                );
+            }
+        }
     }
 
     wp_redirect($link);
