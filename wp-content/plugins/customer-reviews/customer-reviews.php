@@ -35,21 +35,24 @@ class Customer_Review_List extends WP_List_Table
       // Define table columns
       function get_columns()
       {
-            $columns = array(
-                'cb'            => '<input type="checkbox"/>',
-                'review_id' => 'ID',
-                'post_id' => 'POST',
-                'nickname' => 'User',
-                'title' => 'Title',
-                'detail'    => 'Detail',
-                'review_count' => 'Review Count',
-                'age' => 'Age',
-                'type' => 'Type',
-                'review_status' => 'Status',
-                'created_at' => 'Create At',
-                'actions' => 'Actions',
-            );
-            return $columns;
+        $columns = array(
+            'cb'            => '<input type="checkbox"/>',
+            'review_id'     => 'ID',
+            'post_id'       => 'POST',
+            'nickname'      => 'User',
+            'title'         => 'Title',
+            'detail'        => 'Detail',
+            'review_count'  => 'Review Count',
+            'age'           => 'Age',
+            'type'          => 'Type',
+            'review_status' => 'Status',
+            'created_at'    => 'Create At',
+            'actions'       => 'Actions',
+            'reply'         => 'Reply Detail',
+            ''              => 'Reply'
+        );
+
+        return $columns;
       }
 
       // Bind table with columns, data and all
@@ -121,6 +124,17 @@ class Customer_Review_List extends WP_List_Table
                         $item['review_id'],
                         __('Delete', 'textdomain')
                     );
+                case '':
+                    if ($item['reply'] == 'null') {
+                        return '';
+                    } else {
+                        return '<a href="#reply-'.$item['review_id'].'" rel="modal:open" class="view-reply">View</a>';
+                    };
+                case 'reply':
+                    return '<div id="reply-'.$item['review_id'].'" class="modal">
+                    <textarea id="replyReview" name="replyModel-'.$item['review_id'].'" rows="4" cols="50">'.$item['reply'].'</textarea>
+                    <a data-id="'.$item['review_id'].'" type="button" class="updateReply button button-primary">Edit Reply</a>
+                  </div>';
                 default:
                     return print_r($item, true); //Show the whole array for troubleshooting purposes
             }
@@ -522,11 +536,13 @@ function validateText($input)
 
 function enqueue_custom_script() {
     wp_enqueue_script('jquery');
-    // Thêm file JS của bạn vào hàng đợi
     wp_enqueue_script('custom-script', plugin_dir_url(__FILE__) . 'assets/js/review-action.js', array('jquery'), null, true);
     wp_localize_script('custom-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_enqueue_script('keyword-script', plugin_dir_url(__FILE__) . 'assets/js/keyword-action.js', array('jquery'), null, true);
     wp_localize_script('keyword-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
+
+    wp_enqueue_script('jquery-modal', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js', array('jquery'), null, true);
+    wp_enqueue_style('jquery-modal-css', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css');
 }
 
 add_action('admin_enqueue_scripts', 'enqueue_custom_script');

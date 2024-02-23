@@ -5,7 +5,8 @@ jQuery(function($) {
 
         $('#cb-select-all-1').attr('name', 'review[]');
 
-        
+        $('.column-reply').css('display','none');
+
         $("input[name='review[]']").change(function () {
             var checkedCheckboxes = $("input[name='review[]']:checked");
             var form = $('#replyForm').closest(".form");
@@ -149,6 +150,30 @@ jQuery(function($) {
                 }
             });
         });
+
+        $('.updateReply').on('click', function(e) {
+
+            var data = [];
+
+            var id = $(this).data('id');
+
+            data.push({ id:id});
+
+            var reply = $(`textarea[name='replyModel-${id}']`).val();
+
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'update_review_action',
+                    reply: reply,
+                    data: data
+                },
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        })
     });
 })
 
