@@ -20,6 +20,10 @@ jQuery(function($) {
             buttonType();
         })
 
+        $(".recaptcha-checkbox").on('attribute-change', function(){
+            buttonType();
+        })
+
     });
 })
 
@@ -57,7 +61,7 @@ function validateText(input,data)
 function buttonType()
 {
     var response = grecaptcha.getResponse();
-    if($("input[name='nickname']").val() && $("input[name='title']").val() && $("textarea[name='feedback']").val() && $("input[name='rate']:checked").val() != undefined && !response)
+    if($("input[name='nickname']").val() && $("input[name='title']").val() && $("textarea[name='feedback']").val() && $("input[name='rate']:checked").val() != undefined && response)
     {
         $('#btnReview').attr('disabled', false);
     }else {
