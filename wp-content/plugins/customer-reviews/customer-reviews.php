@@ -505,7 +505,7 @@ function handle_customer_reviews() {
         }
 
         if($_POST['g-recaptcha-response']) {
-            $privatekey = '6LdXB30pAAAAAHR0fTbGD7uVfKA5l_nFCqC7wHdj';
+            $privatekey = '6LeRDn0pAAAAAOApSyPFQ29h4t5vqmYEuLcA_uEw';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
@@ -520,7 +520,6 @@ function handle_customer_reviews() {
             );
 
             $resp = json_decode(curl_exec($ch));
-            die($resp->success ? 'CAPTCHA verification successful' : 'CAPTCHA verification failed');
             curl_close($ch);
             if ($resp->success) {
                 $postId =  $_POST['post_id'];
