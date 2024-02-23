@@ -520,7 +520,7 @@ function handle_customer_reviews() {
             );
 
             $resp = json_decode(curl_exec($ch));
-            die($resp);
+            die($resp->success ? 'CAPTCHA verification successful' : 'CAPTCHA verification failed');
             curl_close($ch);
             if ($resp->success) {
                 $postId =  $_POST['post_id'];
