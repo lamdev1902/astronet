@@ -214,9 +214,10 @@ class Customer_Review_Keyword_List extends WP_List_Table
       function get_columns()
       {
             $columns = array(
-                  'id' => 'ID',
-                  'keyword' => 'Keyword',
-                  'actions' => 'Actions',
+                'cb'            => '<input type="checkbox"/>',
+                'id' => 'ID',
+                'keyword' => 'Keyword',
+                'actions' => 'Actions',
             );
             return $columns;
       }
@@ -267,6 +268,24 @@ class Customer_Review_Keyword_List extends WP_List_Table
                     return print_r($item, true); //Show the whole array for troubleshooting purposes
             }
       }
+
+      function column_cb($item)
+      {
+            return sprintf(
+                  '<input type="checkbox" name="keyword[]" value="%s" />',
+                  $item['id']
+            );
+      }
+
+      function extra_tablenav($which)
+        {
+            if ($which == "top") {
+                echo '<div class="alignleft actions bulkactions update-multiple" style="display:flex;">
+                        <button class="button update-multiple-keyword" style="display: none">Update Multiple</button>
+                        <button class="button delete-multiple-keyword" style="margin-left: 15px;display: none">Delete Multiple</button>
+                    </div>';
+            }
+        }
 
        // Add sorting to columns
        protected function get_sortable_columns()
@@ -642,10 +661,7 @@ add_action('wp_ajax_delete_review_action', 'delete_review_callback');
 function delete_review_callback() {
     global $wpdb;
 
-    $message = [
-        'status' => 0,
-        'descrition' => ''
-    ];
+    $message = [];
 
     if (isset($_POST['id']) && !isset($_POST['keyword'])) {
         $id = $_POST['id'];
@@ -668,7 +684,7 @@ function delete_review_callback() {
             wp_send_json_success(array('redirect_url' => $redirect_url));
         }
 
-    }elseif(isset($_POST['data']) && isset($_POST['multiple'])) {
+    }elseif(isset($_POST['data']) && isset($_POST['multiple']) && !isset($_POST['keyword'])) {
         $table_name = $wpdb->prefix . 'customer_reviews';
 
         $data = $_POST['data'];
@@ -697,6 +713,37 @@ function delete_review_callback() {
 
         if ($remaining_count <= 5) {
             $redirect_url = admin_url('admin.php?page=customer_reviews');
+            wp_send_json_success(array('redirect_url' => $redirect_url));
+        }
+    }elseif(isset($_POST['data']) && isset($_POST['multiple']) && isset($_POST['keyword'])) {
+        $table_name = $wpdb->prefix . 'customer_reviews_keyword';
+
+        $data = $_POST['data'];
+        $i = 0;
+        foreach($data as $item)
+        {   
+            $id = $item['id'];
+
+            $result = $wpdb->delete($table_name, array('id' => $id), array('%d'));
+
+            if($result == true)
+            {
+                $i++;
+                $message['status'] = 1;
+                $message['description'] = 'Keyword ( ' . $i .' ) deleted successfully';
+            }else {
+                if(!isset($message['status']))
+                {
+                    $message['status'] = 0;
+                    $message['description'] = "Keyword deleted failed.";
+                }
+            }
+        }
+        set_transient('message', $message, 10);
+        $remaining_count = $wpdb->get_var("SELECT COUNT(*) FROM $table_name");
+
+        if ($remaining_count <= 5) {
+            $redirect_url = admin_url('admin.php?page=customer_reviews_keyword');
             wp_send_json_success(array('redirect_url' => $redirect_url));
         }
     }
