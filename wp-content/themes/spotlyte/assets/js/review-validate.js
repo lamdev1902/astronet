@@ -56,7 +56,8 @@ function validateText(input,data)
 
 function buttonType()
 {
-    if($("input[name='nickname']").val() && $("input[name='title']").val() && $("textarea[name='feedback']").val() && $("input[name='rate']:checked").val() != undefined)
+    var response = grecaptcha.getResponse();
+    if($("input[name='nickname']").val() && $("input[name='title']").val() && $("textarea[name='feedback']").val() && $("input[name='rate']:checked").val() != undefined && !response)
     {
         $('#btnReview').attr('disabled', false);
     }else {
