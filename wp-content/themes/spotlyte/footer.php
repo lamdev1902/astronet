@@ -57,6 +57,7 @@
 </footer>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-3.5.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/slick/slick.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/animate/animate.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom.js"></script>
