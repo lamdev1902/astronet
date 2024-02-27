@@ -56,6 +56,7 @@
 .reviews-nickname {grid-area: nickname;}
 .reviews-title {grid-area: title;}
 .reviews-feedback {grid-area: feedback;}
+.reviews-action {grid-area: action}
 
 .reviews-content .reviews-rating .reviews-rating-radio {
     padding: 20px 0;
@@ -65,7 +66,8 @@
     display:grid;
     grid-template-areas: 
     'nickname title' 
-    'feedback feedback';
+    'feedback feedback'
+    'action action';
     gap: 30px;
 }
 
@@ -95,7 +97,10 @@
 }
 
 .reviews-action {
-    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .reviews-action button {
