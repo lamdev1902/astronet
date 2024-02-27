@@ -66,16 +66,6 @@ foreach($data as $review)
                 </div>
             </div>
             <div class="review-item-content">
-                <div class="review-additional-details">
-                    <div class="review-age">
-                        <span class="review-label">Age: </span>
-                        <span class="review-value"><?= $item->age ?></span>
-                    </div>
-                    <div class="review-type">
-                        <span class="review-label">Reason for purchase:</span>
-                        <span class="review-value"><?= $item->type ?></span>
-                    </div>
-                </div>
                 <div class="review-label">
                     <?= $item->title ?>
                 </div>

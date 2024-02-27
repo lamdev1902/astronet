@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="reviews-title">
-                    <label for="title_field">Title: *</label>
+                    <label for="title_field">Email: *</label>
                     <div class="control">
                         <input type="text" class="field-input" id="title_field" name="title">
                         <p class="error title-error"></p>
@@ -60,71 +60,6 @@
                     </div>
                 </div>
             </div>
-            <div class="reviews-special">
-                <div class="reviews-additional">
-                    <div class="reviews-heading">
-                        <p>How old are you?</p>
-                    </div>
-                    <div class="control-wrapper">
-                        <div class="control">
-                            <input type="radio" name="age" value="18-35" id="age-range-1">
-                            <label for="age-range-1">18-35</label>
-                        </div>
-                        <div class="control">
-                            <input type="radio" name="age" value="36-55" id="age-range-2">
-                            <label for="age-range-2">36-55</label>
-                        </div>
-                        <div class="control">
-                            <input type="radio" name="age" value="56-79" id="age-range-3">
-                            <label for="age-range-3">56-79</label>
-                        </div>
-                        <div class="control">
-                            <input type="radio" name="age" value="80+" id="age-range-4">
-                            <label for="age-range-4">80+</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="reviews-additional">
-                    <div class="reviews-heading">
-                        <p>Why did you buy this product?</p>
-                    </div>
-                    <div class="control-wrapper">
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="Sleep" id="type-1">
-                            <label for="type-1">Sleep</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="Relaxation" id="type-2">
-                            <label for="type-2">Relaxation</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="immune system" id="type-2">
-                            <label for="type-3">immune system</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="regeneration" id="type-4">
-                            <label for="type-4">regeneration</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="concentration" id="type-5">
-                            <label for="type-5">concentration</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="Lose weight" id="type-6">
-                            <label for="type-6">Lose weight</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="Beauty" id="type-7">
-                            <label for="type-7">Beauty</label>
-                        </div>
-                        <div class="control">
-                            <input type="checkbox" name="type[]" value="Other" id="type-8">
-                            <label for="type-8">Other</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="g-recaptcha" data-sitekey="6LeRDn0pAAAAANGR4iPruRTcrrnO1tLaMFLfuokF"></div>
             <div class="reviews-action">
                 <button id="btnReview" disabled type="submit"  class="primary">
                     Send
