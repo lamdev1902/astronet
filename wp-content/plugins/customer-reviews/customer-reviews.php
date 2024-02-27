@@ -559,7 +559,23 @@ add_action( 'admin_post_customer_reviews', 'handle_customer_reviews' );  // for 
 function validateText($input)
 {
 
-    $pattern = '/(sex|porn)/i';
+    global $wpdb;
+
+    $result = $wpdb->get_results(
+            "SELECT * from {$wpdb->prefix}customer_reviews_keyword");
+
+    $regexArray = [];
+    foreach ($result as $item) {
+        $regexArray[] = $item->keyword;
+    }
+
+    
+    $pattern = '/(' . implode('|', $regexArray) . ')/i';
+            
+
+    if (preg_match('/<[^>]*>/', $input)) {
+        return false; 
+    }
 
     if (preg_match($pattern, $input)) {
         return false; 

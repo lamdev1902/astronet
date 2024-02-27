@@ -49,6 +49,10 @@ function validateText(input,data)
         $(element).val('');
         $('.' + input + '-error').text('');
         $('.' + input + '-error').text(`Your input contains disallowed characters ( ${containsKeyword.keyword} )`);
+    }else if(text.match(/<[^>]*>?/)){
+        $(element).val('');
+        $('.' + input + '-error').text('');
+        $('.' + input + '-error').text('Your input contains disallowed characters');
     }
     else {
         $('.' + input + '-error').text('');
