@@ -59,9 +59,8 @@
                         <p class="error feedback-error"></p>
                     </div>
                 </div>
-            </div>
-            <div class="g-recaptcha" data-sitekey="6LeRDn0pAAAAANGR4iPruRTcrrnO1tLaMFLfuokF"></div>
             <div class="reviews-action">
+                <div class="g-recaptcha" data-sitekey="6LeRDn0pAAAAANGR4iPruRTcrrnO1tLaMFLfuokF"></div>
                 <button id="btnReview" disabled type="submit"  class="primary">
                     Send
                 </button>
