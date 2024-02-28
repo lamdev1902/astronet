@@ -40,11 +40,9 @@ class Customer_Review_List extends WP_List_Table
             'review_id'     => 'ID',
             'post_id'       => 'POST',
             'nickname'      => 'User',
-            'title'         => 'Title',
+            'title'         => 'Email',
             'detail'        => 'Detail',
             'review_count'  => 'Review Count',
-            'age'           => 'Age',
-            'type'          => 'Type',
             'review_status' => 'Status',
             'created_at'    => 'Create At',
             'actions'       => 'Actions',
@@ -65,11 +63,12 @@ class Customer_Review_List extends WP_List_Table
             }            
             $columns = $this->get_columns();
             $hidden = array();
+
             $sortable = $this->get_sortable_columns();
             $this->_column_headers = array($columns, $hidden, $sortable);
 
             /* pagination */
-            $per_page = 5;
+            $per_page = $this->get_items_per_page('customer_review_per_page', 5);
             $current_page = $this->get_pagenum();
             $total_items = count($this->reviews_data);
 
@@ -95,8 +94,6 @@ class Customer_Review_List extends WP_List_Table
                 case 'title':
                 case 'detail':
                 case 'review_count':
-                case 'age':
-                case 'type':
                     return $item[$column_name];
                 case 'review_status':
                     $options = array(
@@ -168,8 +165,6 @@ class Customer_Review_List extends WP_List_Table
                    'title'   => array('title', true),
                    'detail'  => array('detail', false),
                    'review_count' => array('review_count', false),
-                   'age'   => array('age', true),
-                   'type'  => array('type', false),
                    'review_status' => array('review_status', false),
                    'created_at'   => array('created_at', true)
              );
@@ -235,7 +230,7 @@ class Customer_Review_Keyword_List extends WP_List_Table
             $this->_column_headers = array($columns, $hidden, $sortable);
 
             /* pagination */
-            $per_page = 5;
+            $per_page = $this->get_items_per_page('customer_review_key_per_page', 5);
             $current_page = $this->get_pagenum();
             $total_items = count($this->keyword_data);
 
@@ -313,11 +308,49 @@ class Customer_Review_Keyword_List extends WP_List_Table
 
 function my_add_menu_items()
 {
-      add_menu_page('Customer Review Listing', 'Customer Review Listing', 'activate_plugins', 'customer_reviews', 'customer_reviews');
-      add_menu_page('Customer Review Keyword Listing', 'Customer Review Keyword Listing', 'activate_plugins', 'customer_reviews_keyword', 'customer_reviews_keyword');
+      $hook = add_menu_page('Customer Review Listing', 'Customer Review Listing', 'activate_plugins', 'customer_reviews', 'customer_reviews');
+      add_action("load-$hook", 'my_tbl_add_options');
+
+      function my_tbl_add_options()
+      {
+            $option = 'per_page';
+
+            $args = array(
+                  'label' => 'Customer Review',
+                  'default' => 2,
+                  'option' => 'customer_review_per_page'
+            );
+            add_screen_option($option, $args);
+
+            $empTable = new Customer_Review_List();
+      }
+
+
+      $hookKey = add_menu_page('Customer Review Keyword Listing', 'Customer Review Keyword Listing', 'activate_plugins', 'customer_reviews_keyword', 'customer_reviews_keyword');
+      add_action("load-$hookKey", 'my_tbl_key_add_options');
+      
+      function my_tbl_key_add_options()
+      {
+            $option = 'per_page';
+
+            $args = array(
+                  'label' => 'Customer Review Key',
+                  'default' => 2,
+                  'option' => 'customer_review_key_per_page'
+            );
+            add_screen_option($option, $args);
+
+            $empTable = new Customer_Review_Keyword_List();
+      }
 }
 add_action('admin_menu', 'my_add_menu_items');
 
+add_filter('set-screen-option', 'my_table_set_option', 10, 3);
+
+function my_table_set_option($status, $option, $value)
+{
+      return $value;
+}
 // Plugin menu callback function
 function customer_reviews()
 {

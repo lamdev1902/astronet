@@ -38,7 +38,18 @@ function validateText(input,data)
         return text.includes(item.keyword);
     });
 
-    if(text.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g))
+    if(input == 'title'){
+        var regex = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;;
+
+        if(!regex.test(text)) {
+            $(element).val('');
+            $('.' + input + '-error').text('');
+            $('.' + input + '-error').text('Please check your email!');
+        }else {
+            $('.' + input + '-error').text('');
+        }
+        
+    }else if(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(text))
     {
         $(element).val('');
         $('.' + input + '-error').text('');

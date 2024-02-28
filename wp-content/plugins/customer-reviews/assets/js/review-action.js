@@ -7,6 +7,7 @@ jQuery(function($) {
 
         $('.column-reply').css('display','none');
 
+        $('input[name="reply-hide"]').closest('label').hide();
         $("input[name='review[]']").change(function () {
             var checkedCheckboxes = $("input[name='review[]']:checked");
             var form = $('#replyForm').closest(".form");
