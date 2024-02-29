@@ -42,6 +42,14 @@ class BmrModel extends AbstractModel
         {
             $result = $this->helper->kilojoulesConvert($result);
         }
+
+        $activity = $this->get_calculator_activity();
+
+        foreach($activity as $key => $item)
+        {
+            $result['bmr']['activity'][$key]['name'] = $item['name'];
+            $result['bmr']['activity'][$key]['calorie'] = round($result['bmr']['calorie'] * $item['coefficient']);
+        }
         
         return $result;
     }
@@ -66,6 +74,38 @@ class BmrModel extends AbstractModel
     private function BMRKatchMcArdle($data)
     {
         return floor( 370 + ( 21.6 * ( 1 - ( $data['body-fat'] / 100 ) ) * $data['weight'] ) );
+    }
+
+
+    private function get_calculator_activity() {
+        $activity = array(
+            array(
+                'name'        => esc_html__( 'Sedentary: little or no exercise', 'wp-calorie-calculator' ),
+                'coefficient' => 1.2,
+            ),
+            array(
+                'name'        => esc_html__( 'Light: exercise 1-3 times/week', 'wp-calorie-calculator' ),
+                'coefficient' => 1.375,
+            ),
+            array(
+                'name'        => esc_html__( 'Exercise 4-5 times/week', 'wp-calorie-calculator' ),
+                'coefficient' => 1.465,
+            ),
+            array(
+                'name'        => esc_html__( 'Daily exercise or intense exercise 3-4 times/week', 'wp-calorie-calculator' ),
+                'coefficient' => 1.55,
+            ),
+            array(
+                'name'        => esc_html__( 'Intense exercise 6-7 times/week', 'wp-calorie-calculator' ),
+                'coefficient' => 1.725,
+            ),
+            array(
+                'name'        => esc_html__( 'Very intense exercise daily, or physical job', 'wp-calorie-calculator' ),
+                'coefficient' => 1.9,
+            ),
+        );
+    
+        return $activity;
     }
 
 }
