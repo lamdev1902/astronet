@@ -34,21 +34,18 @@ class ChineseGenderModel extends AbstractModel
         $dobYear = date("y", $birthDate);
         $dobLunar = $this->convertLunarTime($dobYear, $dobMonth, $dobDay);
 
-
-        
-
         $age = $this->convertLunarAge($lunarTime, $dobLunar);
 
         $monthDueLunar = $dueLunar->lunarMonth;
 
         $chart = $this->chineseGenderChart();
 
-        $result['gender'] = $chart[$age->y][$monthDueLunar-1];
-
-        $result['age'] = [
-            'day' => $age->d,
-            'month' => $age->m,
-            'year' => $age->y
+        $result['gender'] = $chart[$age][$monthDueLunar-1];
+        $result['age'] = $age; 
+        $result['lunar'] = [
+            'day' => $lunarTime->lunarDay,
+            'month' => $lunarTime->lunarMonth,
+            'year' => $lunarTime->lunarYear
         ];
 
         $result['dob'] = [
@@ -62,7 +59,6 @@ class ChineseGenderModel extends AbstractModel
 
     private function convertLunarAge($lunarTime, $dobLunar)
     {   
-        $i = 0;
         $date = $lunarTime->lunarDay; 
         $month = $lunarTime->lunarMonth;
  
@@ -71,20 +67,19 @@ class ChineseGenderModel extends AbstractModel
 
         $strLunar = $lunarTime->lunarYear .'-'.$lunarTime->lunarMonth.'-'.$lunarTime->lunarDay;
         $strDob = $dobLunar->lunarYear .'-'.$dobLunar->lunarMonth.'-'.$dobLunar->lunarDay;
-
+        
         if ($month > $ageMonth || ($month == $ageMonth && $date >= $ageDate)) {
             $i = 1;
         } else {
             $i = 0;
         }
-        
+
         $currentDate = new \DateTime($strLunar);
         $dob = new \DateTime($strDob);
 
-        $year = $currentDate->diff($dob);
-        $year->y += $i;
 
-        return $year;
+        $diff = $currentDate->format('Y') - $dob->format('Y') + 1;
+        return $diff;
 
     }
 
