@@ -41,7 +41,7 @@ class BmiModel extends AbstractModel
 
         $idealWeight = $this->idealWeight($height);
 
-        $bmi['bmi']['ideal_weight'] = "Healthy weight for the height: " . $idealWeight[0] . ' lbs' . ' - ' . $idealWeight[1] . ' lbs';
+        $bmi['bmi']['ideal_weight'] = $idealWeight[0] . ' lbs' . ' - ' . $idealWeight[1] . ' lbs';
         $bmi['bmi']['propose'] = '';
         if($bmi['bmi']['type'] < 4)
         {
@@ -52,7 +52,7 @@ class BmiModel extends AbstractModel
             $bmi['bmi']['propose'] = 'Lose '  . $lose . ' lbs to reach a BMI of 18.5 kg/m2.';
         }
         $bmi['bmi']['ponderal'] = $ponderalIndex;
-        $bmi['bmi']['healthy_range'] = 'Healthy BMI range: 18.5 kg/m2 - 25 kg/m2';
+        $bmi['bmi']['healthy_range'] = '18.5 kg/m2 - 25 kg/m2';
 
         return $bmi;
     }
