@@ -49,10 +49,10 @@ class ChineseGenderCalculate extends AbstractApi{
                     return $this->_response([], 400);
                 }
 
-                // if($dd < $dob)
-                // {
-                //     return $this->_response([], 400);
-                // }
+                if($dd < $dob)
+                {
+                    return $this->_response([], 400);
+                }
             }else {
                 return $this->_response([], 400);
             }

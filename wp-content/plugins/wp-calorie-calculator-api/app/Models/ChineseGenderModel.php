@@ -23,9 +23,9 @@ class ChineseGenderModel extends AbstractModel
         
 
         $dueTime = strtotime($data['dd']);
-        $dueDay = date("d", $stTime);
-        $dueMonth = date("m", $stTime);
-        $dueYear = date("y", $stTime);
+        $dueDay = date("d", $dueTime);
+        $dueMonth = date("m", $dueTime);
+        $dueYear = date("y", $dueTime);
         $dueLunar = $this->convertLunarTime($dueYear, $dueMonth, $dueDay);
 
         $birthDate = strtotime($data['dob']);
@@ -42,6 +42,12 @@ class ChineseGenderModel extends AbstractModel
 
         $result['gender'] = $chart[$age][$monthDueLunar-1];
         $result['age'] = $age; 
+
+        $result['due'] = [
+            'day' => $dueLunar->lunarDay,
+            'month' => $dueLunar->lunarMonth,
+            'year' => $dueLunar->lunarYear
+        ];
         $result['lunar'] = [
             'day' => $lunarTime->lunarDay,
             'month' => $lunarTime->lunarMonth,
