@@ -46,7 +46,6 @@ function create_shortcode_tool_quiz($args, $content) {
 
     $code = isset($args['code']) ? $args['code'] : '';
     $caption = isset($args['caption']) ? $args['caption'] : 'Quiz';
-    $items = get_quiz($code);
     $result = 0;
 	?>
     <div class="quiz-container">
