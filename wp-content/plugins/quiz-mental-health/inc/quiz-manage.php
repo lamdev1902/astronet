@@ -486,16 +486,18 @@ function handle_data_submit($data, $type) {
                                 foreach($data['item'] as $option)
                                 {
                                     if(count($option) > 1) {
-                                        $arr = array(
-                                            "answer_id" => $last_id,
-                                            "content" => $option[0],
-                                            "score" => $option[1]
-                                        );
-    
-                                        $wpdb->insert(
-                                            "wp_quiz_answer_collection_mental_health",
-                                            $arr
-                                        );
+                                        if($option[0]) {
+                                            $arr = array(
+                                                "answer_id" => $last_id,
+                                                "content" => $option[0],
+                                                "score" => $option[1]
+                                            );
+        
+                                            $wpdb->insert(
+                                                "wp_quiz_answer_collection_mental_health",
+                                                $arr
+                                            );
+                                        }
                                     }
                                 }
                                 unset($data['item']);
