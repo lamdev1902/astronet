@@ -65,6 +65,7 @@ function create_shortcode_tool_quiz($args, $content) {
                 <?php foreach($items as $item): ?>
                     <?php $i = 0; 
                         $data = get_anwser_option($item->answer_id);
+                        $e = 0;
                     ?>
                     <div class="quiz-item">
                         <div class="quiz-title">
@@ -73,9 +74,10 @@ function create_shortcode_tool_quiz($args, $content) {
                         <div class="quiz-option">
                             <?php foreach($data as $option):?>
                                 <div class="option"><p data-value="<?=$option->score?>"><?= $option->content ?></p></div>
-                                <?php $i++; 
-                                    if($i == count($data)){
-                                        $result += $option->score;
+                                <?php $i++;
+                                    if($option->score >= $e) {
+                                        $result = $result + $option->score - $e;
+                                        $e = $option->score;
                                     }
                                 ?>
                             <?php endforeach; ?>
