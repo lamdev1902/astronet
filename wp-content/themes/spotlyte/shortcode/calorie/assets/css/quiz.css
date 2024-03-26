@@ -49,11 +49,21 @@
     color: #3D5A99;
     font-weight: 700;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .quiz-option .option:hover {
     background: #0F1B40;;
     color: #fff;
+}
+
+.quiz-option .option.checked {
+    background: #0F1B40;;
+    color: #fff;
+}
+
+.quiz-item .quiz-option .option p {
+    margin: 0;
 }
 
 .quiz-action  {
@@ -83,4 +93,20 @@
     .quiz-option {
         grid-template-columns: repeat(2,1fr);
     }
+}
+
+.result {
+    margin: 30px;
+    display: none;
+}
+
+.result .top {
+    text-align: center;
+    padding: 20px 0;
+    margin: 0 auto 30px;
+    border-bottom: 1px solid;
+}
+
+.result .bottom {
+    padding: 0 30px;
 }

@@ -1,7 +1,9 @@
 <?php
 
 function quiz_style() {
+    wp_enqueue_script('jquery');
 	wp_enqueue_style( 'quiz-css', get_template_directory_uri() . '/shortcode/calorie/assets/css/quiz.css', '', '1.0.0');
+	wp_enqueue_script( 'quiz-js', get_template_directory_uri() . '/shortcode/calorie/assets/js/quiz-plugin.js','','1.0.0');
 }
 
 add_action('init', 'quiz_style');
@@ -10,7 +12,7 @@ function get_quiz($code) {
     global $wpdb;
 
     $query = $wpdb->prepare(
-        "SELECT q.quiz_text, q.answer_id
+        "SELECT q.quiz_text, q.answer_id, t.name
         FROM {$wpdb->prefix}quiz_mental_health AS q
         JOIN {$wpdb->prefix}quiz_type_mental_health AS t ON q.type_id = t.id
         WHERE t.code = %s
@@ -44,7 +46,9 @@ function create_shortcode_tool_quiz($args, $content) {
 
     $code = isset($args['code']) ? $args['code'] : '';
     $caption = isset($args['caption']) ? $args['caption'] : 'Quiz';
-    $data = get_quiz($code);
+    $items = get_quiz($code);
+    $result = 0;
+    if(count($items) > 0){
 	?>
     <div class="quiz-container">
         <div class="quiz-caption">
@@ -58,25 +62,51 @@ function create_shortcode_tool_quiz($args, $content) {
         </div>
         <div class="quiz-content">
             <div class="quiz-list">
-                <?php foreach(get_quiz($code) as $item): ?>
+                <?php foreach($items as $item): ?>
+                    <?php $i = 0; 
+                        $data = get_anwser_option($item->answer_id);
+                    ?>
                     <div class="quiz-item">
                         <div class="quiz-title">
                             <h3><?=$item->quiz_text?></h3>
                         </div>
                         <div class="quiz-option">
-                            <?php foreach(get_anwser_option($item->answer_id) as $option):?>
-                                <div class="option"><p><?= $option->content ?></p></div>
+                            <?php foreach($data as $option):?>
+                                <div class="option"><p data-value="<?=$i?>"><?= $option->content ?></p></div>
+                                <?php $i++; 
+                                    if($i == count($data) - 1){
+                                        $result += $i;
+                                    }
+                                ?>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endforeach;?>
             </div>
+            <input type="hidden" name="total" value="<?=$result?>">
+            <div class="result">
+                <div class="top">
+                    <div class="">
+                        <p>Your result</p>
+                    </div>
+                    <div class="">
+                        <p>Adult ADD Quiz</p>
+                    </div>
+                    <div class="">
+                        <p style="font-size: 32px"><?=$items[0]->name?></p>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p style="font-size: 24px;font-weight: 600"></p>
+                </div>
+            </div>
             <div class="quiz-action">
-                <button id="quizAction">GET RESULTS</button>
+                <button type="button" id="quizAction">GET RESULTS</button>
             </div>
         </div>
     </div>
 	<?php 
+    }
 	$rt = ob_get_clean();
 	return $rt;
 }
