@@ -40,15 +40,12 @@ function get_anwser_option($answer_id)
     return $results;
 }
 
-function create_shortcode_tool_quiz($args, $content = '') {
+function create_shortcode_tool_quiz($args, $content) {
 	ob_start();
-    $code = isset($args['code']) ? $args['code'] : '';
-    $caption = isset($args['caption']) ? $args['caption'] : 'Quiz';
-    $result = 0;
 	?>
     <div class="quiz-container">
         <div class="quiz-caption">
-            <h2><?= $caption ?></h2>
+            <h2></h2>
         </div>
         <div class="quiz-instructions">
             <h3>Instructions</h3>
@@ -58,7 +55,6 @@ function create_shortcode_tool_quiz($args, $content = '') {
         </div>
         <div class="quiz-content">
             <div class="quiz-list">
-                
             </div>
             <input type="hidden" name="total" value="">
             <div class="result">
