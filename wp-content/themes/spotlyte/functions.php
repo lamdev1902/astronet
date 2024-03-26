@@ -1,4 +1,6 @@
 <?php 
+include(TEMPLATEPATH.'/shortcode/calorie/quiz-shortcode.php');
+include(TEMPLATEPATH.'/shortcode/calorie/email-shortcode.php');
 include(TEMPLATEPATH.'/include/menus.php');
 include(TEMPLATEPATH.'/include/general-function.php');
 add_theme_support( 'post-thumbnails', array('post','page','informational_posts' ) );
