@@ -1,7 +1,9 @@
 <?php
 
 function quiz_style() {
+    wp_enqueue_script('jquery');
 	wp_enqueue_style( 'quiz-css', get_template_directory_uri() . '/shortcode/calorie/assets/css/quiz.css', '', '1.0.0');
+	wp_enqueue_script( 'quiz-js', get_template_directory_uri() . '/shortcode/calorie/assets/js/quiz-plugin.js','','1.0.0');
 }
 
 add_action('init', 'quiz_style');
@@ -41,10 +43,16 @@ function get_anwser_option($answer_id)
 
 function create_shortcode_tool_quiz($args, $content) {
 	ob_start();
+
+    $code = isset($args['code']) ? $args['code'] : '';
+    $caption = isset($args['caption']) ? $args['caption'] : 'Quiz';
+    $items = get_quiz($code);
+    $result = 0;
+    if(count($items) > 0){
 	?>
     <div class="quiz-container">
         <div class="quiz-caption">
-            <h2></h2>
+            <h2><?= $caption ?></h2>
         </div>
         <div class="quiz-instructions">
             <h3>Instructions</h3>
@@ -54,8 +62,28 @@ function create_shortcode_tool_quiz($args, $content) {
         </div>
         <div class="quiz-content">
             <div class="quiz-list">
+                <?php foreach($items as $item): ?>
+                    <?php $i = 0; 
+                        $data = get_anwser_option($item->answer_id);
+                    ?>
+                    <div class="quiz-item">
+                        <div class="quiz-title">
+                            <h3><?=$item->quiz_text?></h3>
+                        </div>
+                        <div class="quiz-option">
+                            <?php foreach($data as $option):?>
+                                <div class="option"><p data-value="<?=$i?>"><?= $option->content ?></p></div>
+                                <?php $i++; 
+                                    if($i == count($data) - 1){
+                                        $result += $i;
+                                    }
+                                ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach;?>
             </div>
-            <input type="hidden" name="total" value="">
+            <input type="hidden" name="total" value="<?=$result?>">
             <div class="result">
                 <div class="top">
                     <div class="">
@@ -65,11 +93,11 @@ function create_shortcode_tool_quiz($args, $content) {
                         <p>Adult ADD Quiz</p>
                     </div>
                     <div class="">
-                        <p style="font-size: 32px"></p>
+                        <p style="font-size: 32px"><?=$items[0]->name?></p>
                     </div>
                 </div>
                 <div class="bottom">
-                    <p style="font-size: 24px;font-weight: 600"></p>
+                    <p style="font-size: 24px; font-weight:600"></p>
                 </div>
             </div>
             <div class="quiz-action">
@@ -78,6 +106,7 @@ function create_shortcode_tool_quiz($args, $content) {
         </div>
     </div>
 	<?php 
+    }
 	$rt = ob_get_clean();
 	return $rt;
 }
