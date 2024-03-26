@@ -111,6 +111,16 @@ jQuery(function($) {
 
         $('.answer-input').on('change', function() {
             var hasValue = false;
+            var input = $(this);
+            var deleteInput = input.closest('.answer-item').find('.answer-delete');
+            var score = input.closest('.answer-item').find('.answer-score');
+            if (input.val() === '') {
+                deleteInput.val('1');
+                score.val(0)
+            }else {
+                deleteInput.val('0');
+            }
+
             $('.answer-input').each(function() {
                 if ($(this).val() !== '') {
                     hasValue = true;

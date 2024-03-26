@@ -246,6 +246,7 @@ function create_answer_collection_table() {
 	id INT NOT NULL AUTO_INCREMENT,
     answer_id INT NOT NULL,
     content VARCHAR(255) NOT NULL,
+    score int default 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY  (id),
@@ -278,6 +279,7 @@ function create_quiz_table() {
  
     dbDelta($sql);
 }
+
 
 
 function quiz_mental_health_plugin_activation() {

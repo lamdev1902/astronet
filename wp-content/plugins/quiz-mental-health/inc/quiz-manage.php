@@ -228,16 +228,20 @@ function render_answer_form($tab, $id = '',$data = []){
                                 $i = 0;
                                 $options = get_answer_option_by_answer_id($data->id);
                                 $index = 0;
-                                if(count($options) > 0 && count($options) < 4){
+                                if(count($options) > 0 && count($options) <= 4){
                                     $index = 4 - count($options);
+                                }else {
+                                    $index = 4;
                                 }
                             ?>
                             <?php foreach($options as $key => $option): ?>
                                 <?php $i++; ?>
                             <div class="answer-item">
                                 <label>Answer <?=$i?></label>
-                                <input type="hidden" name="answer[item][<?=$i?>][id]" class="answer-input" value="<?= $option->id ?>">
-                                <input type="text" name="answer[item][<?=$i?>][content]" class="answer-input" value="<?= $option->content ?>">
+                                <input type="hidden" name="answer[item][<?=$option->id?>][id]" class="answer-id" value="<?= $option->id ?>">
+                                <input type="hidden" name="answer[item][<?=$option->id?>][delete]" class="answer-delete" value="0">
+                                <input type="text" name="answer[item][<?=$option->id?>][content]" style="margin-bottom: 10px" class="answer-input" value="<?= $option->content ?>">
+                                <input type="text" name="answer[item][<?=$option->id?>][score]" class="answer-score" value="<?= $option->score ?>">
                             </div>
                             <?php endforeach; ?>
                             <?php  if($index > 0):?>
@@ -245,7 +249,8 @@ function render_answer_form($tab, $id = '',$data = []){
                                     <?php $i++; ?>
                                     <div class="answer-item">
                                         <label>Answer <?=$i?></label>
-                                        <input type="text" name="answer[item][<?=$i?>][content]" class="answer-input" value="">
+                                        <input type="text" style="margin-bottom: 10px" name="answer[item][<?=$i?>][content]" class="answer-input" value="">
+                                        <input type="text" name="answer[item][<?=$i?>][score]" class="answer-score" value="0">
                                     </div>
                                 <?php endfor;?>
                             <?php endif;?>
@@ -307,19 +312,23 @@ function render_answer_form($tab, $id = '',$data = []){
                             <p class="close-popup">x</p>
                             <div class="answer-item">
                                 <label>Option 1</label>
-                                <input type="text" name="answer[item][]" class="answer-input" value="">
+                                <input type="text" style="margin-bottom: 10px" placeholder="content" name="answer[item][0][]" class="answer-input" value="">
+                                <input type="text" placeholder="score" name="answer[item][0][]" class="answer-score" value="0">
                             </div>
                             <div class="answer-item">
                                 <label>Option 2</label>
-                                <input type="text" name="answer[item][]" class="answer-input" value="">
+                                <input type="text" style="margin-bottom: 10px" placeholder="content" name="answer[item][1][]" class="answer-input" value="">
+                                <input type="text" placeholder="score" name="answer[item][1][]" class="answer-score" value="0">
                             </div>
                             <div class="answer-item">
                                 <label>Option 3</label>
-                                <input type="text" name="answer[item][]" class="answer-input" value="">
+                                <input type="text" style="margin-bottom: 10px" placeholder="content" name="answer[item][2][]" class="answer-input" value="">
+                                <input type="text" placeholder="score" name="answer[item][2][]" class="answer-score" value="0">
                             </div>
                             <div class="answer-item">
                                 <label>Option 4</label>
-                                <input type="text" name="answer[item][]" class="answer-input" value="">
+                                <input type="text" style="margin-bottom: 10px" placeholder="content" name="answer[item][3][]" class="answer-input" value="">
+                                <input type="text" placeholder="score" name="answer[item][3][]" class="answer-score" value="0">
                             </div>
                             <div class="action">
                                 <button type="button" class="button-primary" disabled id="btnAddAnswer">Add Answer</button>
@@ -476,15 +485,18 @@ function handle_data_submit($data, $type) {
                             if($data['item']) {
                                 foreach($data['item'] as $option)
                                 {
-                                    $arr = array(
-                                        "answer_id" => $last_id,
-                                        "content" => $option
-                                    );
-
-                                    $wpdb->insert(
-                                        "wp_quiz_answer_collection_mental_health",
-                                        $arr
-                                    );
+                                    if(count($option) > 1) {
+                                        $arr = array(
+                                            "answer_id" => $last_id,
+                                            "content" => $option[0],
+                                            "score" => $option[1]
+                                        );
+    
+                                        $wpdb->insert(
+                                            "wp_quiz_answer_collection_mental_health",
+                                            $arr
+                                        );
+                                    }
                                 }
                                 unset($data['item']);
                             }
@@ -586,29 +598,39 @@ function edit_data($data, $type){
             if($data['edit-option'] == true){
                 foreach($data['item'] as $item)
                 {
-                    $optionid = array("answer_id" => $data['id']);
                     if(isset($item['id'])) {
-                        $arr = array(
-                            "id" => $item['id'],
-                            "answer_id" => $data['id'],
-                            "content" => $item['content']
-                        );
-    
-                        $wpdb->update(
-                            "wp_quiz_answer_collection_mental_health",
-                            $arr,
-                            $optionid
-                        );
+                        $optionid = array("id" => $item['id']);
+                        if(!$item['delete']) {
+                            $arr = array(
+                                "answer_id" => $data['id'],
+                                "content" => $item['content'],
+                                "score" => $item['score']
+                            );
+        
+                            $wpdb->update(
+                                "wp_quiz_answer_collection_mental_health",
+                                $arr,
+                                $optionid
+                            );
+                        }else {
+                            $wpdb->delete(
+                                "wp_quiz_answer_collection_mental_health",
+                                $optionid
+                            );
+                        }
                     }else {
-                        $arr = array(
-                            "answer_id" => $data['id'],
-                            "content" => $item['content']
-                        );
-    
-                        $wpdb->insert(
-                            "wp_quiz_answer_collection_mental_health",
-                            $arr
-                        );
+                        if($item['content']){
+                            $arr = array(
+                                "answer_id" => $data['id'],
+                                "content" => $item['content'],
+                                "score" => $item['score']
+                            );
+        
+                            $wpdb->insert(
+                                "wp_quiz_answer_collection_mental_health",
+                                $arr
+                            );
+                        }
                     }
                 }
                 unset($data['item']);
@@ -625,8 +647,6 @@ function edit_data($data, $type){
             $data,
             $where
         );
-
-        
 
         if($result) {
             $i++;
