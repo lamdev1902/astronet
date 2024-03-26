@@ -1,7 +1,6 @@
 <?php
 
 function quiz_style() {
-    wp_enqueue_script('jquery');
 	wp_enqueue_style( 'quiz-css', get_template_directory_uri() . '/shortcode/calorie/assets/css/quiz.css', '', '1.0.0');
 	wp_enqueue_script( 'quiz-js', get_template_directory_uri() . '/shortcode/calorie/assets/js/quiz-plugin.js','','1.0.0');
 }
@@ -41,9 +40,8 @@ function get_anwser_option($answer_id)
     return $results;
 }
 
-function create_shortcode_tool_quiz($args, $content) {
+function create_shortcode_tool_quiz($args, $content = '') {
 	ob_start();
-
     $code = isset($args['code']) ? $args['code'] : '';
     $caption = isset($args['caption']) ? $args['caption'] : 'Quiz';
     $result = 0;
