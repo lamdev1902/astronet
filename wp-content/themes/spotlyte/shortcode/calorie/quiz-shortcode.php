@@ -61,28 +61,9 @@ function create_shortcode_tool_quiz($args, $content) {
         </div>
         <div class="quiz-content">
             <div class="quiz-list">
-                <?php foreach($items as $item): ?>
-                    <?php $i = 0; 
-                        $data = get_anwser_option($item->answer_id);
-                    ?>
-                    <div class="quiz-item">
-                        <div class="quiz-title">
-                            <h3><?=$item->quiz_text?></h3>
-                        </div>
-                        <div class="quiz-option">
-                            <?php foreach($data as $option):?>
-                                <div class="option"><p data-value="<?=$i?>"><?= $option->content ?></p></div>
-                                <?php $i++; 
-                                    if($i == count($data) - 1){
-                                        $result += $i;
-                                    }
-                                ?>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endforeach;?>
+                
             </div>
-            <input type="hidden" name="total" value="<?=$result?>">
+            <input type="hidden" name="total" value="">
             <div class="result">
                 <div class="top">
                     <div class="">
@@ -92,7 +73,7 @@ function create_shortcode_tool_quiz($args, $content) {
                         <p>Adult ADD Quiz</p>
                     </div>
                     <div class="">
-                        <p style="font-size: 32px"><?=$items[0]->name?></p>
+                        <p style="font-size: 32px"></p>
                     </div>
                 </div>
                 <div class="bottom">
