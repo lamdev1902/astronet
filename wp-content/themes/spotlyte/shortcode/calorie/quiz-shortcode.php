@@ -1,7 +1,6 @@
 <?php
 
 function quiz_style() {
-    wp_enqueue_script('jquery');
 	wp_enqueue_style( 'quiz-css', get_template_directory_uri() . '/shortcode/calorie/assets/css/quiz.css', '', '1.0.0');
 	wp_enqueue_script( 'quiz-js', get_template_directory_uri() . '/shortcode/calorie/assets/js/quiz-plugin.js','','1.0.0');
 }
