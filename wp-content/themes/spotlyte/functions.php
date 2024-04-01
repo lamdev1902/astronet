@@ -7,6 +7,14 @@ add_theme_support( 'post-thumbnails', array('post','page','informational_posts' 
 /* Script Admin */
 
 
+add_filter('rest_index', function ($response) {
+
+	if(!is_user_logged_in() && strpos($_SERVER['REQUEST_URI'], 'wp-json')){
+		wp_redirect(home_url());
+		exit;
+	}
+  }, 9999, 1);
+
 function remove_figure_image($args = null) {
 
 	global $wpdb;
