@@ -6,6 +6,16 @@ include(TEMPLATEPATH.'/include/general-function.php');
 add_theme_support( 'post-thumbnails', array('post','page','informational_posts' ) );
 /* Script Admin */
 
+
+add_action('template_redirect', 'custom_check_json_endpoint');
+
+function custom_check_json_endpoint() {
+	if (!is_user_logged_in() && strpos($_SERVER['REQUEST_URI'], 'wp-json') === true) {
+		wp_redirect(home_url());
+		exit;
+	}
+}
+
 function remove_figure_image($args = null) {
 
 	global $wpdb;
