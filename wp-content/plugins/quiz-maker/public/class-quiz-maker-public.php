@@ -5005,7 +5005,7 @@ class Quiz_Maker_Public {
             #ays-quiz-container-" . $id . ".ays_quiz_classic_light .correct_div{
                 border-color: green !important;
                 opacity: 1 !important;
-                background-color: rgba(39,174,96,0.4) !important;
+                background-color: rgba(0, 103, 86, 0.6) !important;
             }
             #ays-quiz-container-" . $id . ".ays_quiz_classic_dark .correct_div .selected-field,
             #ays-quiz-container-" . $id . ".ays_quiz_classic_light .correct_div .selected-field {
@@ -5015,14 +5015,14 @@ class Quiz_Maker_Public {
 
             #ays-quiz-container-" . $id . ".ays_quiz_classic_dark .wrong_div,
             #ays-quiz-container-" . $id . ".ays_quiz_classic_light .wrong_div{
-                border-color: red !important;
+                border-color: green !important;
                 opacity: 1 !important;
-                background-color: rgba(243,134,129,0.4) !important;
+                background-color: rgba(0, 103, 86, 0.6) !important;
             }
 
             #ays-quiz-container-" . $id . ".ays_quiz_classic_dark .ays-field.checked_answer_div.wrong_div input:checked~label,
             #ays-quiz-container-" . $id . ".ays_quiz_classic_light .ays-field.checked_answer_div.wrong_div input:checked~label {
-                background-color: rgba(243,134,129,0.4) !important;
+                background-color: rgba(0, 103, 86, 0.6) !important;
             }
 
             #ays-quiz-container-" . $id . " .ays_question_result .ays-field .ays_quiz_hide_correct_answer:after{
