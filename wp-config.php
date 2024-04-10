@@ -1,6 +1,6 @@
-
-
 <?php
+define('ALLOW_UNFILTERED_UPLOADS', true);
+
 /**
  * The base configuration for WordPress
  *
