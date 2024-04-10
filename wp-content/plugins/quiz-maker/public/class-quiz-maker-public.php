@@ -3691,7 +3691,7 @@ class Quiz_Maker_Public {
                     {$empty_questions_notification}
                 </div>
             </div>
-            <div class='no-step'>
+            <div class='no-step ays_display_none'>
             {$live_progress_bar_custom}
             </div>
             ";
@@ -4618,7 +4618,7 @@ class Quiz_Maker_Public {
 
             #ays-quiz-container-" . $id . " input[type='button'],
             #ays-quiz-container-" . $id . " input[type='submit'] {
-                color: " . $buttons_text_color . " !important;
+                color: " . $buttons_text_color . ";
                 outline: none;
             }
 
@@ -6090,7 +6090,7 @@ class Quiz_Maker_Public {
                 #ays-quiz-container-" . $quiz_id . " + .ays-quiz-category-selective-main-container .ays-quiz-category-selective-restart-bttn:hover,
                 #ays-quiz-container-" . $quiz_id . " .ays-quiz-category-selective-submit-bttn:focus {
                     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 3px " . $quiz->quizColors['buttonsTextColor'] . ";
-                    background: " . $quiz->quizColors['Color'] . ";
+                    background-color: " . $quiz->quizColors['Color'] . ";
                 }
             </style>";
 

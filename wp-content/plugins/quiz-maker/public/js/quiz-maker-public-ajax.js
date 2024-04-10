@@ -764,6 +764,8 @@
             var data = form.serializeFormJSON();
             var questionsIds = data.ays_quiz_questions.split(',');
             
+            // custom quiz
+            form.find('div.no-step').addClass('ays_display_none');
             var questionsObjs = {};
             form.find('div[data-question-id]').each(function (){
                 questionsObjs[$(this).data('questionId')] = $(this).data('type');
@@ -869,6 +871,12 @@
 
         $(document).find('.ays_next.start_button').on('click',function(e){
             var $this = $(this);
+            var noStep = $this.parents('form').find('div.no-step');
+
+            if(noStep.eq(0)){
+                noStep.removeClass('ays_display_none');
+            }
+
             var thisCont = $this.parents('.ays-quiz-container');
             var quizId = thisCont.find('input[name="ays_quiz_id"]').val();
             var myOptions = JSON.parse(window.atob(window.aysQuizOptions[quizId]));
