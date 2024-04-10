@@ -2521,7 +2521,12 @@
                     next_fs.find('.ays-question-counter').addClass(counterClass);
                 }
                 current_fs.removeClass('active-step');
-                next_fs.addClass('active-step');
+                if(next_fs.hasClass('no-step')){
+                    next_fs = next_fs.next();
+                    next_fs.addClass('active-step');
+                }else {
+                    next_fs.addClass('active-step');
+                }
                 var nextQuestionType = next_fs.find('input[name^="ays_questions"]').attr('type');
                 var buttonsDiv = next_fs.find('.ays_buttons_div');
                 var enableArrows = $(document).find(".ays-questions-container .ays_qm_enable_arrows").val();

@@ -2170,6 +2170,7 @@ class Quiz_Maker_Public {
         $options['enable_live_progress_bar'] = isset($options['enable_live_progress_bar']) ? $options['enable_live_progress_bar'] : 'off';
         $enable_live_progress_bar = (isset($options['enable_live_progress_bar']) && $options['enable_live_progress_bar'] == 'on') ? true : false;
 
+        $live_progress_bar_custom = "";
         if( $enable_live_progress_bar ){
             $live_preview_view = isset($options['progress_live_bar_style']) && $options['progress_live_bar_style'] != '' ? $options['progress_live_bar_style'] : '';
             
@@ -2199,6 +2200,10 @@ class Quiz_Maker_Public {
 
             
             $live_progress_bar = "<div class='ays-live-bar-wrap $filling_type_wrap'><div class='ays-live-bar-fill $filling_type' style='width: 0%;'><span>$live_progress_bar_percent</span></div></div>";
+
+            $live_progress_bar_custom = "<div class='ays-live-bar-wrap $filling_type_wrap'><p>PROCESS</p><div class='ays-live-bar-fill $filling_type' style='width: 0%;'></div></div>
+                <div class='live-bar-count'><span>Step </span><span class='ays-live-bar-percent ays-live-bar-count'>0</span><span> of $questions_count</span></div>
+            ";
         }
         
 
@@ -3685,7 +3690,11 @@ class Quiz_Maker_Public {
                     {$count_of_attempts_remaining}
                     {$empty_questions_notification}
                 </div>
-            </div>";
+            </div>
+            <div class='no-step'>
+            {$live_progress_bar_custom}
+            </div>
+            ";
         
         if($limit_users === false || $limit_users === null){
             $restart_button_html = $restart_button;
@@ -4462,6 +4471,13 @@ class Quiz_Maker_Public {
                 " . $ays_quiz_bg_style_value . ";
             }";
         }
+        // custom quiz
+        
+        if($ays_quiz_bg_image != null){
+            $quiz_styles .=  "#ays-quiz-container-" . $id . " .step:first-of-type  {
+                background-image: url('$ays_quiz_bg_image');
+            }";
+        } 
 
         $quiz_styles .= "
             #ays-quiz-container-" . $id . " .ays-progress-value {
@@ -6730,7 +6746,7 @@ class Quiz_Maker_Public {
                             $additional_css = "<style>
                                 #ays-quiz-container-" . $quiz_id . " div.step[data-question-id='".$question["id"]."'] {
                                     background-image:url('{$question_bg_image}');
-                                }
+                                };
                             </style>";
                         }
                         break;
