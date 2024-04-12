@@ -2201,7 +2201,7 @@ class Quiz_Maker_Public {
             
             $live_progress_bar = "<div class='ays-live-bar-wrap $filling_type_wrap'><div class='ays-live-bar-fill $filling_type' style='width: 0%;'><span>$live_progress_bar_percent</span></div></div>";
 
-            $live_progress_bar_custom = "<div class='ays-live-bar-wrap $filling_type_wrap'><p>PROCESS</p><div class='ays-live-bar-fill $filling_type' style='width: 0%;'></div></div>
+            $live_progress_bar_custom = "<div class='ays-live-bar-wrap $filling_type_wrap'><p>PROCESS</p><div class='bg-process'><div class='ays-live-bar-fill $filling_type' style='width: 0%;'></div></div></div>
                 <div class='live-bar-count'><span>Step </span><span class='ays-live-bar-percent ays-live-bar-count'>0</span><span> of $questions_count</span></div>
             ";
         }
