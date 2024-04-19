@@ -3,11 +3,124 @@ include(TEMPLATEPATH.'/shortcode/calorie/quiz-shortcode.php');
 include(TEMPLATEPATH.'/include/menus.php');
 include(TEMPLATEPATH.'/shortcode/calorie/email-shortcode.php');
 include(TEMPLATEPATH.'/include/general-function.php');
+include(TEMPLATEPATH.'/sitemap/sitemap-loader.php');
 add_theme_support( 'post-thumbnails', array('post','page','informational_posts' ) );
 /* Script Admin */
 
 
+// add_action('init', 'update_post_id_by_post_name');
 
+// function update_post_id_by_post_name() {
+// 	global $wpdb;
+// 	$postName  = [
+// 		"nancy-twine-briogeo-interview" => 1121298,
+// 		"what-is-the-difference-between-dermarolling-and-dermastamping" => 1121312,
+// 		"kat-rudu-jet-set-venus-viva-skin-resurfacing-facial-review" => 1121343,
+// 		"dr-seth-matarasso-interview" => 1121365,
+// 		"carole-radziwill-beauty-interview" => 1121367,
+// 		"tracy-anderson-interview-beauty-tips" => 1121372,
+// 		"giorgio-armani-power-fabric-foundation-balm-review" => 1121378,
+// 		"can-you-get-coolsculpting-after-pregnancy" => 1121393,
+// 		"can-i-use-retinol-during-the-day" => 1121432,
+// 		"rachel-liverman-beauty-interview" => 1121442,
+// 		"best-makeup-to-cover-melasma" => 1121457,
+// 		"what-is-a-banana-roll" => 1121464,
+// 		"dr-michele-green-dermatologist-nyc-interview" => 1121468,
+// 		"christine-chin-facial-review" => 1121479,
+// 		"bluestone-sun-shield-review" => 1121490,
+// 		"how-to-take-care-of-skin-on-body" => 1121510,
+// 		"kristie-streicher-beauty-interview" => 1121544,
+// 		"lauryn-evarts-bosstick-interview" => 1121548,
+// 		"nicole-psomas-interview" => 1121571,
+// 		"is-dairy-bad-for-your-skin" => 1121582,
+// 		"dr-shereene-idriss-interview-2018" => 1121597,
+// 		"queeze-massage-review" => 1121601,
+// 		"irene-khan-beauty-interview" => 1121606,
+// 		"laser-genesis-review" => 1121651,
+// 		"dr-annie-chiu-interview" => 1121653,
+// 		"dr-kay-durairaj-interview" => 1121657,
+// 		"best-butt-cream" => 1121663,
+// 		"natural-hair-curls-changing-with-age" => 1121734,
+// 		"five-makeup-routine-for-busy-moms" => 1121736,
+// 			"when-to-start-using-retinol" => 1121767,
+// 			"best-laser-treatments-for-face-guide" => 1121795,
+// 			"can-you-get-injectables-while-you-are-pregnant" => 1121797,
+// 			"best-skin-care-routine-for-40s" => 1121805,
+// 			"bee-venom-skincare-products" => 1121813,
+// 			"how-to-treat-nasolabial-folds" => 1121820,
+// 			"cassondra-kaeding-beauty-interview" => 1121847,
+// 			"best-self-tanners-2019" => 1121891,
+// 			"how-to-do-makeup-on-hooded-eyelids" => 1121905,
+// 			"what-to-do-after-picking-a-pimple" => 1121952,
+// 			"pat-wexler-dermatologist-interview" => 1121962,
+// 			"best-whole-foods-beauty-products-2019" => 1121978,
+// 			"best-primers-with-sunscreen" => 1122010,
+// 			"reusable-makeup-remover-pads" => 1122043,
+// 			"how-to-get-injectables-without-looking-overdone-dr-dendy-engelman" => 1122080,
+// 			"how-to-get-rid-of-blackhead-on-lip" => 1122089,
+// 			"lo-bosworth-beauty-interview" => 1122094,
+// 			"renee-rouleau-beauty-skincare-interview" => 1122098,
+// 			"riawna-capri-beauty-interview" => 1122127,
+// 			"fat-freezing/difference-between-visceral-and-subcutaneous-fat" => 1122132,
+// 			"skin-camp-facial-workout-review" => 1122136,
+// 			"best-makeup-to-wear-after-a-medical-aesthetics-treatment" => 1122148,
+// 			"best-products-to-use-after-laser-resurfacing-treatment" => 1122155,
+// 			"ursula-stephen-beauty-interview" => 1122163,
+// 			"mdna-skin-beauty-roller-review" => 1122177,
+// 			"urban-decay-wende-zomnir-beauty-interview" => 1122194,
+// 			"best-vitamin-c-skincare-at-sephora" => 1122204,
+// 			"how-does-vitamin-c-work-in-skincare" => 1122211,
+// 			"best-eye-creams-at-sephora" => 1122236,
+// 			"benefits-of-hyaluronic-acid-for-" => 1122280,
+// 			"lauren-finney-atlantan-editor-in-chief-beauty-interview" => 1122293,
+// 			"best-spas-in-atlanta-georgia-2019" => 1122302,
+//     "dermatologist-christine-law-interview" => 1122323,
+//     "plastic-surgeon-carmen-kavali-interview" => 1122333,
+//     "best-caffeine-infused-eye-cream-2019" => 1122360,
+//     "daphne-studio-hydrating-body-wrap-review" => 1122387,
+//     "natasha-cornstein-blushington" => 1122443,
+//     "primers-that-fill-in-wrinkles" => 1122467,
+//     "dermaflash-review" => 1122513,
+//     "estee-lauder-retinol-review" => 1122522,
+//     "best-at-home-chemical-peel-at-sephora-2019" => 1122536,
+//     "drunk-elephant-a-passioni-cream-review" => 1122554,
+//     "blackout-laser-peel-review" => 1122563,
+//     "what-should-i-avoid-when-getting-injectable-filler" => 1122587,
+//     "anna-kaiser-beauty-tips" => 1122593,
+//     "megan-driscoll-interview" => 1122620,
+//     "how-to-remove-individual-lashes" => 1122628,
+//     "brow-expert-sania-vucetaj-beauty-interview" => 1122695,
+//     "how-to-break-out-of-a-makeup-rut" => 1122722,
+//     "how-long-does-it-take-for-retinol-to-work" => 1122728,
+//     "best-beauty-books-2019" => 1122751,
+//     "how-to-get-rid-of-banana-roll-below-butt" => 1122762,
+//     "best-men-s-grooming-gifts-valentine-s-day-2019" => 1122775,
+//     "what-facial-did-katy-perry-get-for-the-2019-grammys" => 1122792,
+//     "boy-de-chanel-makeup-for-men-review" => 1122843,
+//     "gisele-bundchen-beauty-tips" => 1122867,
+//     "what-are-sebaceous-filaments" => 1122894,
+//     "facial-at-heyday-review" => 1122896,
+//     "charlotte-tilbury-interview" => 1122907,
+//     "how-to-detox-your-scalp" => 1122919,
+//     "what-to-buy-from-tata-harper" => 1122940
+// 		];
+//         // Kiểm tra xem post có tồn tại không
+//         foreach($postName as $key => $value){
+// 			$post = get_page_by_path($key, OBJECT, 'post');
+// 			if ($post) {
+// 				$parts = parse_url($post->guid);
+// 				parse_str($parts['query'], $query);
+// 				$number = (int)$query['p'];
+	
+// 				$wpdb->update(
+// 					$wpdb->postmeta,
+// 					array('post_id' => $value),
+// 					array('post_id' => $number)
+// 				);			
+		
+// 			}
+// 		}
+// }
 
 function remove_figure_image($args = null) {
 
@@ -1455,7 +1568,7 @@ function get_reviews($atts)
         $atts = shortcode_atts(array(
             'data' => $query_result,
         ), $atts, 'get_reviews_shortcode');
-
+ 
         $atts = shortcode_atts(array(
 			'data' => $query_result,
 		), $atts, 'get_reviews_shortcode');	
