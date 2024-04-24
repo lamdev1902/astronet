@@ -507,12 +507,11 @@ main {
     display: none  !important;
   }
   #header .hd-box .header-logo {
-    display: block !important;
+    display: block ;
     padding-top: 10px !important;
   }
   #header .hd-box .provider-link {
     width: 100px;
-    margin-right: 26px;
     padding-top: 5px;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
@@ -1769,7 +1768,7 @@ main {
 }
 
 .single-custom {
-  max-width: 530px;
+  max-width: calc(100% - 324px);
   margin: 20px auto;
 }
 .single-custom p {
@@ -1781,18 +1780,7 @@ main {
 .single-custom p sup {
   top: -0.5em;
 }
-.single-custom p:first-child:first-letter {
-  color: #222222;
-  font-family: 'Lingerie Bold Plain Picot';
-  line-height: 1;
-  font-size: 120px;
-  text-transform: none;
-  margin-top: -10px;
-  margin-bottom: -10px;
-  float: left;
-  padding-right: 20px;
-  font-weight: 700;
-}
+
 .single-custom ul {
   margin-left: 1em;
 }
@@ -2016,9 +2004,7 @@ main {
   .single-custom .wp-caption .wp-caption-text {
     padding: 0 20px;
   }
-  .single-custom p:first-child:first-letter {
-    font-size: 90px;
-  }
+
 
   .single-related .related-list .related-it {
     margin-bottom: 10px;
@@ -2257,16 +2243,16 @@ main {
   font-family: Georgia, serif;
   margin-left: 5%;
 }
-.privacy-custom .box h1 {
+/* .privacy-custom .box h1 {
   margin-bottom: 15px;
   font-size: 32px;
   line-height: 44px;
   margin-left: 5%;
-}
-.privacy-custom .box p {
+} */
+/* .privacy-custom .box p {
   margin-bottom: 20px;
   margin-left: 5%;
-}
+} */
 .privacy-custom .box p a {
   border-bottom: 1px solid #222222;
 }
@@ -2278,11 +2264,11 @@ main {
   font-size: 32px;
   line-height: 44px;
 }
-.privacy-custom .box h2 {
+/* .privacy-custom .box h2 {
   font-size: 32px;
   line-height: 44px;
   margin: 0 0 15px 5%;
-}
+} */
 .privacy-custom .box ul {
   margin-left: 7%;
   margin-bottom: 20px;
