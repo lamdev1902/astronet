@@ -107,7 +107,7 @@
 				<div class="provider-link inactive">
 				<?php if ( is_active_sidebar( 'custom-header-widget' ) ) : ?>
 			
-					<div id="header-widget-area"  class="custom-search chw-widget-area widget-area inactive" role="complementary">
+					<div id="header-widget-area"  class="custom-search chw-widget-area widget-area mobile-header inactive" role="complementary">
 						<?php dynamic_sidebar( 'custom-header-widget' ); ?>
 						<button class="close">
 							<img src="<?php echo get_template_directory_uri() ?>/assets/images/x-10326.svg" alt="" class="">
