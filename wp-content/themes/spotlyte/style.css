@@ -8,6 +8,131 @@ Version: 1.0
 Tags: html, css, wordpress, woocommrece, responsive, tablet, mobile, 37code, good seo
 */
 
+
+@media (max-width: 767px) {
+    .hd-box .provider-link {
+        display: block !important;
+        top: 9px !important;
+        right: 20px !important;
+        padding-top: 0px !important;
+        width: auto !important;
+    }
+
+    #header-widget-area.custom-search {
+        right: -45px;
+        position: relative;
+        top: -8px;
+    }
+}
+.inactive {
+    display:none !important;
+}
+
+#header .hd-box .provider-link {
+    transition: none !important;
+    ---webkit-transition: none !important;
+}
+
+
+.header_right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 15px;
+}
+
+
+
+#header-widget-area form {
+    display:flex;
+    align-items: center;
+}
+
+#header-widget-area form label {
+    margin-right: 0.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.5rem;
+    text-underline-offset: 0.125rem;
+    font-weight: 700;
+    width: 24%;
+}
+
+#header-widget-area form .wp-block-search__inside-wrapper > input {
+    border-color: rgba(0, 0, 0, .65);
+    border-right: 0;
+    height: 2.5rem;
+    border-radius: 0;
+    outline: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.5rem;
+    text-underline-offset: 0.125rem;
+    width: 100%;
+}
+
+#header-widget-area form .wp-block-search__inside-wrapper > button {
+    padding: 0;
+    width: 3rem;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #004f44;
+    border: none;
+    margin-left: 0;
+    cursor:pointer;
+}
+.custom-search form .wp-block-search__inside-wrapper button > svg {
+    fill: #fff;
+    vertical-align: middle;
+    transform: rotate(260deg);
+}
+
+#header-widget-area.custom-search {
+    display:flex;
+    justify-content: space-evenly;
+}
+#header-widget-area.custom-search .close {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+#header-widget-area.custom-search .close img {
+    height: 1.1rem;
+}
+
+
+.header_right button {
+    padding: 0;
+    border: 0;
+    background: 0 0;
+    margin-left: auto;
+    text-align: right;
+    outline: 0;
+    cursor:pointer;
+    margin-right: 10px;
+}
+
+.header_right li {
+    display: block;
+}
+
+.header_right .news {
+    padding-left: 0.9rem;
+    border-left: 1px solid rgba(0,0,0,.15);
+    text-decoration: underline;
+}
+
+.header_right button .search-icon {
+    vertical-align: middle;
+    transform: rotate(260deg);
+}
+
 @media (min-width: 60em) {
     .top-logo{
         padding-left: max(2rem,calc(50% - 38.125rem));
@@ -22,35 +147,6 @@ Tags: html, css, wordpress, woocommrece, responsive, tablet, mobile, 37code, goo
         flex-wrap: nowrap;
     }
 
-    .header_right {
-        display:flex;
-        align-items: center;
-        gap: 1.5rem 0.75rem;
-    }
-
-    .header_right button {
-        padding: 0;
-        border: 0;
-        background: 0 0;
-        margin-left: auto;
-        text-align: right;
-        outline: 0;
-        cursor:pointer;
-    }
-
-    .header_right li {
-        display: block;
-    }
-
-    .header_right .news {
-        padding-left: 0.9rem;
-        border-left: 1px solid rgba(0,0,0,.15);
-        text-decoration: underline;
-    }
-    .header_right button .search-icon {
-        vertical-align: middle;
-        transform: rotate(260deg);
-    }
 
     .logo {
         padding: 0;
@@ -108,9 +204,7 @@ Tags: html, css, wordpress, woocommrece, responsive, tablet, mobile, 37code, goo
     }
 
 
-    .inactive {
-        display:none !important;
-    }
+    
 
     #header-widget-area.custom-search {
         display:flex;

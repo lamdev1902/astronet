@@ -1768,7 +1768,7 @@ main {
 }
 
 .single-custom {
-  max-width: calc(100% - 324px);
+  max-width: 100%;
   margin: 20px auto;
 }
 .single-custom p {
